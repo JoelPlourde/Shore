@@ -12,18 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d26e20cfda80046b9311ea6298a385, type: 3}
   m_Name: D_apple
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 44845cad6bde1d04098a94df36dc689e, type: 3}
-  Prefab: {fileID: 0}
-  Tooltip: '<color=#BFBFBF><size=20>Eat</size></color> <size=22>Apple</size>
-
-    <size=16>Consumable</size>
-
-    <size=16><color=#1DFF00>+2
-    Nutrition</color></size>'
+  Sprite: {fileID: 21300000, guid: 8558269f77fa1c64c98e56b51b36ae97, type: 3}
+  Prefab: {fileID: 2757360198992087656, guid: 67caf10815aa8d942a3da337c84e582c, type: 3}
   ItemType: 2
   ItemEffects:
   - ItemEffectType: 1
-    Magnitude: 0.5
+    effectName: eat
+    Magnitude: 1
     Duration: 0
     StatusEffectData: {fileID: 0}
-  Stackable: 1
+    RecipeDatas: []
+    IsImmediate: 0
+  Stackable: 0
+  Burnable: 0
+  Power: 0

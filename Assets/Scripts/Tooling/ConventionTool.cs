@@ -8,9 +8,11 @@ namespace Tools {
 
         private static readonly string DATA_PREFIX = "D_";
         private static readonly string PREFAB_PREFIX = "P_";
+        private static readonly string SPRITE_PREFIX = "S_";
 
         private static readonly string ASSET_EXTENSION = "*.asset";
         private static readonly string PREFAB_EXTENSION = "*.prefab";
+        private static readonly string SPRITE_EXTENSION = "*.png";
 
         // Scriptable Objects Suffixes:
         private static readonly string RECIPE_SUFFIX = "_recipe";
@@ -25,6 +27,9 @@ namespace Tools {
 
         // Prefab Directories:
         private static readonly string ITEM_PREFAB_DIRECTORY = "Assets/Prefabs/Items";
+
+        // Sprite Directories:
+        private static readonly string ITEM_SPRITE_DIRECTORY = "Assets/Textures/Items";
 
         #region Scriptable Objects
         [MenuItem("Tools/Naming Convention/Scriptable Objects/Rename Items", false, 1)]
@@ -56,6 +61,14 @@ namespace Tools {
         [MenuItem("Tools/Naming Convention/Prefabs/Rename Items", false, 1)]
         public static void RenamePrefabItems() {
             RenameFiles(ITEM_PREFAB_DIRECTORY, PREFAB_EXTENSION, PREFAB_PREFIX);
+            Debug.Log("Rename Items complete!");
+        }
+        #endregion
+
+        #region Sprites
+        [MenuItem("Tools/Naming Convention/Sprites/Rename Items", false, 1)]
+        public static void RenameSpriteItems() {
+            RenameFiles(ITEM_SPRITE_DIRECTORY, SPRITE_EXTENSION, SPRITE_PREFIX);
             Debug.Log("Rename Items complete!");
         }
         #endregion

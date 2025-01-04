@@ -110,10 +110,6 @@ namespace Tools {
         private string GetObjectName(string name) {
             // Start from scratch
             name = name.Replace(" ", "_").Replace("(Object)", "").ToLower();
-            // Capitalize all words
-            // name = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(name);
-            // Append " (Object)" to the end
-            name += " (Object)";
             return name;
         }
     }

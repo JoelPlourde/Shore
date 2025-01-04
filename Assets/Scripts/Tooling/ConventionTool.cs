@@ -1,0 +1,82 @@
+using System.IO;
+using System.Runtime.ConstrainedExecution;
+using UnityEditor;
+using UnityEngine;
+
+namespace Tools {
+    public static class ConventionTools {
+
+        private static readonly string DATA_PREFIX = "D_";
+
+        private static readonly string RECIPE_SUFFIX = "_recipe";
+        private static readonly string NODE_SUFFIX = "_node";
+        private static readonly string DROP_TABLE_SUFFIX = "_drop_table";
+
+        private static readonly string ITEMS_DIRECTORY = "Assets/Resources/Scriptable Objects/Items";
+        private static readonly string RECIPE_DIRECTORY = "Assets/Resources/Scriptable Objects/Recipes";
+        private static readonly string NODE_DIRECTORY = "Assets/Resources/Scriptable Objects/Nodes";
+        private static readonly string DROP_TABLE_DIRECTORY = "Assets/Resources/Scriptable Objects/Drop Tables";
+
+        [MenuItem("Tools/Naming Convention/Rename Items", false, 1)]
+        public static void RenameItems() {
+            RenameFiles(ITEMS_DIRECTORY, DATA_PREFIX);
+            Debug.Log("Rename Items complete!");
+        }
+
+        [MenuItem("Tools/Naming Convention/Rename Recipes", false, 2)]
+        public static void RenameRecipes() {
+            RenameFiles(RECIPE_DIRECTORY, DATA_PREFIX, RECIPE_SUFFIX);
+            Debug.Log("Rename Recipes complete!");
+        }
+
+        [MenuItem("Tools/Naming Convention/Rename Nodes", false, 2)]
+        public static void RenameNodes() {
+            RenameFiles(NODE_DIRECTORY, DATA_PREFIX, NODE_SUFFIX);
+            Debug.Log("Rename Nodes complete!");
+        }
+
+        [MenuItem("Tools/Naming Convention/Rename Drop Tables", false, 3)]
+        public static void RenameDropTables() {
+            RenameFiles(DROP_TABLE_DIRECTORY, DATA_PREFIX, DROP_TABLE_SUFFIX);
+            Debug.Log("Rename Drop Tables complete!");
+        }
+
+        private static void RenameFiles(string directory, string prefix, string suffix = "") {
+            string[] files = Directory.GetFiles(directory, "*.asset", SearchOption.AllDirectories);
+            foreach (string file in files) {
+                string absolutePath = file.Replace("\\", "/");
+                string fileName = Path.GetFileNameWithoutExtension(file);
+                string formattedName = FormatName(fileName, prefix, suffix);
+                string result = AssetDatabase.RenameAsset(absolutePath, formattedName);
+                if (result == "") {
+                    Debug.Log(fileName + " has been renamed to " + formattedName);
+                }
+            }
+        }
+
+        private static string FormatName(string name, string prefix, string suffix) {
+            name = name
+                .Replace(prefix, "")
+                .Replace(" ", "_")
+                .Replace("(", "")
+                .Replace(")", "")
+                .ToLower();
+
+            if (suffix != "") {
+                name = name.Replace(suffix, "");
+            }
+
+            if (!name.StartsWith(prefix)) {
+                // Add the prefix to the name:
+                name = prefix + name;
+            }
+
+            if (!name.EndsWith(suffix)) {
+                // Add the suffix to the name:
+                name += suffix;
+            }
+
+            return name;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656fd23eb31f3ac4aa3b80ee64427820, type: 3}
+  m_Name: D_iron_axe
+  m_EditorClassIdentifier: 
+  Sprite: {fileID: 21300000, guid: 4abd813c82090ba45b338189ca47c707, type: 3}
+  Prefab: {fileID: 804981527568601892, guid: 9b81cc5f78a44fe4bbfb7f5cdbbabf78, type: 3}
+  ItemType: 1
+  ItemEffects:
+  - ItemEffectType: 0
+    effectName: equip
+    Magnitude: 0
+    Duration: 0
+    StatusEffectData: {fileID: 0}
+    RecipeDatas: []
+    IsImmediate: 0
+  Stackable: 0
+  Burnable: 0
+  Power: 0
+  EquipmentPrefab: {fileID: 1620621167640937075, guid: f024720d3c9b8e34188f70d55c40094e,
+    type: 3}
+  SlotType: 5
+  WeaponType: 4
+  HideBodyPart: 0
+  HideArms: 0
+  HideHair: 0
+  EquipmentStats:
+    Statistics:
+    - StatisticType: 12
+      Value: 5

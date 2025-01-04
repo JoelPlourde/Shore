@@ -7,7 +7,22 @@
         "a": 0.0
     },
     "Icon": {
-        "instanceID": 12772
+        "instanceID": 26616
     },
-    "Competencies": []
+    "Competencies": [
+        {
+            "Descriptive": "mine_stone",
+            "Icon": {
+                "instanceID": 7536
+            },
+            "Requirement": 1
+        },
+        {
+            "Descriptive": "mine_iron",
+            "Icon": {
+                "instanceID": 62166
+            },
+            "Requirement": 5
+        }
+    ]
 }

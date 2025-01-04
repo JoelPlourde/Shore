@@ -19,17 +19,17 @@ namespace SkillSystem {
 				_button = transform.GetComponent<Button>();
 			}
 
-			public void Enable(Competency competency, Level level, UnityAction<CompetencyComponent, Competency> callback) {
+			public void Enable(SkillType skillType, Competency competency, Level level, UnityAction<SkillType, CompetencyComponent, Competency> callback) {
 				_icon.sprite = competency.Icon;
 				_requirement.text = competency.Requirement.ToString();
-				_description.text = competency.Descriptive;
+				_description.text = I18N.GetValue("skills." + EnumExtensions.FormatEnum(skillType.ToString() + ".competencies." + competency.Descriptive + ".name"));
 				if (level.Value >= competency.Requirement) {
 					_icon.sprite = competency.Icon;
 				} else {
 					_icon.sprite = IconManager.Instance.GetSprite("lock");
 				}
 				_button.onClick.RemoveAllListeners();
-				_button.onClick.AddListener(delegate { callback(this, competency); });
+				_button.onClick.AddListener(delegate { callback(skillType, this, competency); });
 			}
 
 			private void Destroy() {

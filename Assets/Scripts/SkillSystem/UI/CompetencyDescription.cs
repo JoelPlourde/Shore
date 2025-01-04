@@ -15,7 +15,7 @@ namespace SkillSystem {
 				_text = GetComponentInChildren<Text>();
 			}
 
-			public void Open(CompetencyComponent competencyComponent, Competency competency) {
+			public void Open(SkillType skillType, CompetencyComponent competencyComponent, Competency competency) {
 				// Set the description as the last sibling initially.
 				transform.SetAsLastSibling();
 
@@ -30,7 +30,7 @@ namespace SkillSystem {
 				_index = siblingIndex;
 
 				// TODO implement Tag
-				_text.text = competency.Description;
+				_text.text = I18N.GetValue("skills." + EnumExtensions.FormatEnum(skillType.ToString() + ".competencies." + competency.Descriptive + ".description"));
 
 				_sizeDelta = _rectTransform.sizeDelta;
 				_sizeDelta.y = _text.preferredHeight + 20f;

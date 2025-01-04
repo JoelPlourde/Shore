@@ -20,7 +20,17 @@
         },
         "mining": {
             "name": "Mining",
-            "description": "The art of mining ores from the earth."
+            "description": "The art of mining ores from the earth.",
+            "competencies": {
+                "mine_stone": {
+                    "name": "Mine Stone",
+                    "description": "Mine stones from rocks scattered in the world."
+                },
+                "mine_iron": {
+                    "name": "Mine Iron",
+                    "description": "Mine iron ores from iron veins."
+                }
+            }
         },
         "cooking": {
             "name": "Cooking",

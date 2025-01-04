@@ -45,6 +45,9 @@ namespace Tools {
         private GameObject BuildPrefabObject(GameObject gameObject, string name, string category) {
             name = GetObjectName(name); // e.g "iron_axe (Object)"
 
+            // Add the "P_" prefix to the name
+            name = "P_" + name;
+
             string prefabPath = "Assets/Prefabs/Items/" + category + "/" + name + ".prefab";
             AssetDatabase.DeleteAsset(prefabPath);
 
@@ -70,6 +73,9 @@ namespace Tools {
 
         private void BuildData(GameObject prefab, string name, string category, ItemData itemData) {
             name = GetHierarchyName(name); // e.g "iron_axe"
+
+            // Add the "D_" prefix to the name
+            name = "D_" + name;
 
             itemData.name = name;
             itemData.Prefab = prefab;

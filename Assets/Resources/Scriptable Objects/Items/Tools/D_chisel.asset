@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d26e20cfda80046b9311ea6298a385, type: 3}
+  m_Name: D_chisel
+  m_EditorClassIdentifier: 
+  Sprite: {fileID: 21300000, guid: f69cd6d0af48f474792f233264e42cc2, type: 3}
+  Prefab: {fileID: 1502839346186902275, guid: 2c9d057149975f943aaf5f6fb69ba50c, type: 3}
+  Tooltip: '<size=22>Chisel</size>
+
+    <size=16>For all your Chiseling!</size>'
+  Examine: 
+  ItemType: 0
+  ItemEffects:
+  - ItemEffectType: 4
+    effectName: Carve
+    Magnitude: 0
+    Duration: 0
+    StatusEffectData: {fileID: 0}
+    RecipeDatas:
+    - {fileID: 11400000, guid: 4870a684c230df045ac524ca0b8012f7, type: 2}
+    - {fileID: 11400000, guid: 5b19ae5e7bcfbad4d8ce66c87f8b1fa8, type: 2}
+    - {fileID: 11400000, guid: 2b1f5a8d5983393488763a4f4373f0cf, type: 2}
+    - {fileID: 11400000, guid: 6889d55a2180f3c4eb41f132886d26c4, type: 2}
+    - {fileID: 11400000, guid: d510de7dfe26d8d409cd1c050ef6a3e7, type: 2}
+    - {fileID: 11400000, guid: 6f5712246914a244396b3ba67fe025b2, type: 2}
+  Stackable: 0
+  Burnable: 0
+  Power: 0

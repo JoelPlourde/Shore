@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d26e20cfda80046b9311ea6298a385, type: 3}
+  m_Name: D_carved_stone_life
+  m_EditorClassIdentifier: 
+  Sprite: {fileID: 21300000, guid: af0b1e820fbb3834a87f0ff0c436d863, type: 3}
+  Prefab: {fileID: 1498349272345642681, guid: ce4f1e554f318bc458b313b8122b8080, type: 3}
+  Tooltip: '<size=22>Carved Stone (Life)</size>
+
+    <size=16>Resource</size>'
+  Examine: 
+  ItemType: 0
+  ItemEffects: []
+  Stackable: 0
+  Burnable: 0
+  Power: 0

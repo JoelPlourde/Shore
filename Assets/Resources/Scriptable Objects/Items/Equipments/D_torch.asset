@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656fd23eb31f3ac4aa3b80ee64427820, type: 3}
+  m_Name: D_torch
+  m_EditorClassIdentifier: 
+  Sprite: {fileID: 21300000, guid: 37b3d7066198ede4c9d38bd1e7749058, type: 3}
+  Prefab: {fileID: 0}
+  Tooltip: '<color=#BFBFBF><size=20>Equip</size></color> <size=22>Torch</size>
+
+    <size=16>Off-hand</size>
+
+    <size=16><color=#1DFF00>+5
+    Logging Speed</color></size>'
+  ItemType: 1
+  ItemEffects:
+  - ItemEffectType: 0
+    Magnitude: 0
+    Duration: 0
+    StatusEffectData: {fileID: 0}
+  Stackable: 0
+  EquipmentPrefab: {fileID: 5410415800866126915, guid: f4646ee5da322d94db59a6ca6bb92944,
+    type: 3}
+  SlotType: 6
+  WeaponType: 6
+  HideBodyPart: 0
+  HideArms: 0
+  HideHair: 0
+  EquipmentStats:
+    Statistics:
+    - StatisticType: 11
+      Value: 5

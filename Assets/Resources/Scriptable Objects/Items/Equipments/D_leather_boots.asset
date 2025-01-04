@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656fd23eb31f3ac4aa3b80ee64427820, type: 3}
+  m_Name: D_leather_boots
+  m_EditorClassIdentifier: 
+  Sprite: {fileID: 21300000, guid: db133e97bd969d44faa9d915d1f8be2c, type: 3}
+  Prefab: {fileID: 9013216995371323266, guid: 2e62e9be1424086449a121e9c2998ab6, type: 3}
+  Tooltip: '<color=#BFBFBF><size=20>Equip</size></color> <size=22>Leather Boots</size>
+
+    <size=16>Boots</size>
+
+    <size=16><color=#1DFF00>+5
+    Armor</color></size>
+
+    <size=16><color=#1DFF00>+4 Cold Resistance</color></size>'
+  ItemType: 1
+  ItemEffects:
+  - ItemEffectType: 0
+    Magnitude: 0
+    Duration: 0
+    StatusEffectData: {fileID: 0}
+  Stackable: 0
+  EquipmentPrefab: {fileID: 9013216995371323266, guid: 2e62e9be1424086449a121e9c2998ab6,
+    type: 3}
+  SlotType: 4
+  WeaponType: 0
+  HideBodyPart: 1
+  HideArms: 0
+  HideHair: 0
+  EquipmentStats:
+    Statistics:
+    - StatisticType: 0
+      Value: 5
+    - StatisticType: 6
+      Value: 4

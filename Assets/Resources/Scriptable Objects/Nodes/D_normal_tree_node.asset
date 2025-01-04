@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecc94826f9ac444aa3f6e3aea55fcd7, type: 3}
+  m_Name: D_normal_tree_node
+  m_EditorClassIdentifier: 
+  ID: normal_tree
+  Action: chop
+  Health: 100
+  Durability: 0
+  Capacity: 5
+  DropTable: {fileID: 0}
+  SkillType: 1
+  WeaponType: 4
+  Requirement: 1
+  Experience: 1
+  DamageStatistic: 12
+  SpeedStatistic: 11
+  OnHit:
+    ParticleSystem: {fileID: 2647849099764195650, guid: 2c253c7f68f028641ab30e12ea3ec862,
+      type: 3}
+    RelativePosition: {x: -1.04, y: 0.97, z: 0.45}
+    Sound: {fileID: 8300000, guid: 78886a3d2cbf54f45abb7764e0c5521f, type: 3}
+  OnResponse:
+    ParticleSystem: {fileID: 3490109510393429610, guid: ba3a3ce34410dde4f835700f8a1f22df,
+      type: 3}
+    RelativePosition: {x: 0, y: 2, z: 0}
+    Sound: {fileID: 8300000, guid: c2ae32c7ca8427c478a162fcab826041, type: 3}

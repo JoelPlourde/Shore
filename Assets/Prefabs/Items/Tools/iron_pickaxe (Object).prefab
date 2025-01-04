@@ -101,8 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e69320eb1a803348abd89dc42bc295b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UUID: fdab3e2c-befb-42eb-a21a-4dd53ec35751
   InteractionRadius: 1
-  _itemData: {fileID: 11400000, guid: edcfd897f5b8567438ecf5d91e5b78ef, type: 2}
+  ItemData: {fileID: 0}
 --- !u!65 &169497677906803480
 BoxCollider:
   m_ObjectHideFlags: 0

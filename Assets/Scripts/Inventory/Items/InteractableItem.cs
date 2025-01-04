@@ -16,10 +16,10 @@ namespace ItemSystem {
 		public float InteractionRadius = 1f;
 
         [SerializeField]
-        protected ItemData _itemData;
+        public ItemData ItemData;
 
         public void OnInteractEnter(Actor actor) {
-			Item item = new Item(_itemData, 1);
+			Item item = new Item(ItemData, 1);
 
 			actor.Inventory.AddItemsToInventory(new List<Item> { item }, out List<Item> remainingItems);
             if (remainingItems.Count > 0) {
@@ -39,7 +39,7 @@ namespace ItemSystem {
 
         private void OnMouseOver() {
             if (Input.GetMouseButtonDown(1)) {
-                OptionsHandler.Instance.OpenRightClickMenu(this, _itemData, InteractCallback);
+                OptionsHandler.Instance.OpenRightClickMenu(this, ItemData, InteractCallback);
             }
         }
 
@@ -84,7 +84,7 @@ namespace ItemSystem {
         }
 
         public void Save(Save save) {
-            WorldItemDto worldItemDto = new WorldItemDto(GetUUID(), _itemData.ID, 1, transform.position, transform.eulerAngles);
+            WorldItemDto worldItemDto = new WorldItemDto(GetUUID(), ItemData.ID, 1, transform.position, transform.eulerAngles);
 
             // Get any IConditionaSaveable on this object or underneath it.
             IConditionalSaveable[] conditionalSaveables = GetComponentsInChildren<IConditionalSaveable>();

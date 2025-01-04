@@ -13,12 +13,9 @@ MonoBehaviour:
   m_Name: D_flour
   m_EditorClassIdentifier: 
   Sprite: {fileID: 0}
-  Prefab: {fileID: 0}
-  Tooltip: '<size=22>Flour</size>
-
-    <size=16>Resource</size>'
+  Prefab: {fileID: 1265148537947554419, guid: 7422ad672893c5e4288171e68edc3cd6, type: 3}
   ItemType: 0
   ItemEffects: []
-  Stackable: 1
+  Stackable: 0
   Burnable: 0
   Power: 0

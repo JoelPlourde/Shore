@@ -12,3 +12,8 @@ Ore:
 -- Rotation: 33.63, -219, -0.3
 -- Scale: 4,4,4
 -- Light: All the way down
+
+Powder:
+-- Position: 0,-0.15,0
+-- Rotation: -13.3, -219, -0.3
+-- Scale: 4.5,6.44,4.4

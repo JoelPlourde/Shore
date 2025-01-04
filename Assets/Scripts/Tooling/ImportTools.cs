@@ -8,6 +8,10 @@ namespace Tools {
         private static readonly string MODEL_DIRECTORY = "Assets/Models/Items";
 
         private static readonly string EQUIPMENT_DIRECTORY = "Assets/Models/Items/Equipment";
+
+        private static readonly string SPRITE_DIRECTORY = "Assets/Textures/Items";
+
+        private static readonly string GENERATED_ICONS_DIRECTORY = "Assets/GeneratedIcons/128x128/Black";
     
         [MenuItem("Tools/Import Tools/Configure Import Settings", false, 1)]
         public static void ConfigureImportSettings() {
@@ -45,6 +49,31 @@ namespace Tools {
                 modelImporter.materialImportMode = ModelImporterMaterialImportMode.None;
 
                 modelImporter.SaveAndReimport();
+            }
+        }
+
+        [MenuItem("Tools/Import Tools/Import Generated Icons", false, 2)]
+        public static void ImportGeneratedIcons() {
+            // Move the generated icons from Assets/GeneratedIcons/128x128/Black to Assets/Textures/Items
+            string[] generatedIconFiles = Directory.GetFiles(GENERATED_ICONS_DIRECTORY, "*.png", SearchOption.AllDirectories);
+
+            // For each generated icon, move it to the Items directory
+            foreach (string generatedIconFile in generatedIconFiles) {
+                string fileName = Path.GetFileName(generatedIconFile).Replace("P_", "S_");
+                string destination = $"{SPRITE_DIRECTORY}/{fileName}";
+
+                AssetDatabase.MoveAsset(generatedIconFile, destination);
+
+                TextureImporter textureImporter = AssetImporter.GetAtPath(destination) as TextureImporter;
+                if (textureImporter == null) {
+                    Debug.LogError("Texture Importer is null");
+                    continue;
+                }
+
+                textureImporter.textureType = TextureImporterType.Sprite;
+                textureImporter.spriteImportMode = SpriteImportMode.Single;
+
+                textureImporter.SaveAndReimport();
             }
         }
     }

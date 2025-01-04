@@ -88,13 +88,5 @@ namespace Tools {
                 }
             }
         }
-
-        public static void ImportGeneratedIcons() {
-            // Move the generated icons from Assets/GeneratedIcons/128x128/Black to Assets/Textures/Items
-
-            // Configure the import settings for the generated icons
-
-            //TextureImporter textureImporter = AssetImporter.GetAtPath(absolutePath) as TextureImporter;
-        }
     }
 }

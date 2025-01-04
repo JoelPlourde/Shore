@@ -37,7 +37,7 @@ namespace SkillSystem {
 				int i;
 				for (i = 0; i < skillData.Competencies.Length; i++) {
 					_competencyComponents[i].gameObject.SetActive(true);
-					_competencyComponents[i].Enable(skillData.Competencies[i], level, OnClick);
+					_competencyComponents[i].Enable(skillData.SkillType, skillData.Competencies[i], level, OnClick);
 				}
 
 				// Disable those which you do not need.
@@ -50,9 +50,9 @@ namespace SkillSystem {
 				_rectTransform.sizeDelta = size;
 			}
 
-			public void OnClick(CompetencyComponent competencyComponent, Competency competency) {
+			public void OnClick(SkillType skillType, CompetencyComponent competencyComponent, Competency competency) {
 				_competencyDescription.gameObject.SetActive(true);
-				_competencyDescription.Open(competencyComponent, competency);
+				_competencyDescription.Open(skillType, competencyComponent, competency);
 			}
 		}
 	}

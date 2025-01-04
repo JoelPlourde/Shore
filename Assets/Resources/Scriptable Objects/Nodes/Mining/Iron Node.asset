@@ -20,7 +20,7 @@ MonoBehaviour:
   DropTable: {fileID: 11400000, guid: 669aad1d0dfc8f14fb22770f06614bf3, type: 2}
   SkillType: 0
   WeaponType: 3
-  Requirement: 1
+  Requirement: 5
   Experience: 1
   DamageStatistic: 9
   SpeedStatistic: 8

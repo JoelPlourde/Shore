@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73e65da5e1cbb0742963b7ea76472fe8, type: 3}
-  m_Name: Mining
+  m_Name: mining
   m_EditorClassIdentifier: 
   SkillType: 0
   Color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0}
-  Title: Mining
-  Description: Dictates the ability of the character to exploit the earth for its
-    minerals.
   Icon: {fileID: 21300000, guid: 3e49c9d6b9403d34fbd92c8a9d1eb84f, type: 3}
-  Competencies: []
+  Competencies:
+  - Descriptive: mine_stone
+    Icon: {fileID: 21300000, guid: 7429735f3684c514c8683a7fcebadd1b, type: 3}
+    Requirement: 1
+  - Descriptive: mine_iron
+    Icon: {fileID: 21300000, guid: 3dfcbb28b6b8d0347826787545bb09b4, type: 3}
+    Requirement: 5

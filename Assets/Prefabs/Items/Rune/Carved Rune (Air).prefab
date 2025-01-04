@@ -4987,8 +4987,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e69320eb1a803348abd89dc42bc295b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UUID: 9e204c1a-c627-411a-b8e2-ce5190b2ea4e
   InteractionRadius: 1
-  _itemData: {fileID: 11400000, guid: dcf58ba9141c81044a163216850ae994, type: 2}
+  ItemData: {fileID: 11400000, guid: b0931faaf9a0a514c9f2f22c5850ce08, type: 2}
 --- !u!65 &6951641303852611767
 BoxCollider:
   m_ObjectHideFlags: 0

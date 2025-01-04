@@ -5008,8 +5008,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e69320eb1a803348abd89dc42bc295b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UUID: 3a24b0ec-3397-49c2-b0e8-bf1085525ec4
   InteractionRadius: 1
-  _itemData: {fileID: 11400000, guid: e76a5bae6dc218b46a660e120b569212, type: 2}
+  ItemData: {fileID: 11400000, guid: 86ce46bdb3df02a42ac6977c0e733670, type: 2}
 --- !u!4 &2127388618803559174 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 52927e59bf6c99844bf28437ea7cde1e,

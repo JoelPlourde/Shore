@@ -171,5 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e69320eb1a803348abd89dc42bc295b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UUID: 2631cb06-6ba0-4484-94d7-a46aabce2f9d
   InteractionRadius: 1
-  _itemData: {fileID: 11400000, guid: d5ffbb5f42da3cd4ca27b49686ce98d2, type: 2}
+  ItemData: {fileID: 11400000, guid: 61fee0ffdefc27f4b92a154a232fd403, type: 2}

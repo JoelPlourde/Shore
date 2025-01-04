@@ -175,8 +175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e69320eb1a803348abd89dc42bc295b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UUID: ca481707-bfa6-4656-8398-4239c1d3b499
   InteractionRadius: 1
-  _itemData: {fileID: 11400000, guid: da9b2bc6c47664e46b08b932a2357139, type: 2}
+  ItemData: {fileID: 11400000, guid: 53a55d6ec421bcd42b6cab9dfd0337c0, type: 2}
 --- !u!114 &9043081149821909493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,5 +192,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ParticleCount: 0
   RuneData: {fileID: 11400000, guid: ff0b77d0cd1e69a4da02b0569c735ce0, type: 2}
-  ItemData: {fileID: 11400000, guid: d37e9738ece2982488d9f51bb71b1933, type: 2}
+  ItemData: {fileID: 11400000, guid: 2e0c9470641fe0d4e85289b8b9e84099, type: 2}
   ElementType: 1

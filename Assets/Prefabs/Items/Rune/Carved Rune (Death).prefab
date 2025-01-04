@@ -5014,5 +5014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e69320eb1a803348abd89dc42bc295b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UUID: 4bf2b01b-24b5-4e42-9895-a55679287ad8
   InteractionRadius: 1
-  _itemData: {fileID: 11400000, guid: 50fcb23e580df3b46b70536484b4f2ab, type: 2}
+  ItemData: {fileID: 11400000, guid: 2236ea177a49b8843959aa7e3cd14f37, type: 2}

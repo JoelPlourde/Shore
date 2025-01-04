@@ -7,39 +7,58 @@ namespace Tools {
     public static class ConventionTools {
 
         private static readonly string DATA_PREFIX = "D_";
+        private static readonly string PREFAB_PREFIX = "P_";
 
+        // Scriptable Objects Suffixes:
         private static readonly string RECIPE_SUFFIX = "_recipe";
         private static readonly string NODE_SUFFIX = "_node";
         private static readonly string DROP_TABLE_SUFFIX = "_drop_table";
 
+        // Prefab Suffixes:
+        private static readonly string ITEM_PREFAB_SUFFIX = " (Object)";
+
+        // Scriptable Objects Directories:
         private static readonly string ITEMS_DIRECTORY = "Assets/Resources/Scriptable Objects/Items";
         private static readonly string RECIPE_DIRECTORY = "Assets/Resources/Scriptable Objects/Recipes";
         private static readonly string NODE_DIRECTORY = "Assets/Resources/Scriptable Objects/Nodes";
         private static readonly string DROP_TABLE_DIRECTORY = "Assets/Resources/Scriptable Objects/Drop Tables";
 
-        [MenuItem("Tools/Naming Convention/Rename Items", false, 1)]
-        public static void RenameItems() {
+        // Prefab Directories:
+        private static readonly string ITEM_PREFAB_DIRECTORY = "Assets/Prefabs/Items";
+
+        #region Scriptable Objects
+        [MenuItem("Tools/Naming Convention/Scriptable Objects/Rename Items", false, 1)]
+        public static void RenameScriptableObjectItems() {
             RenameFiles(ITEMS_DIRECTORY, DATA_PREFIX);
             Debug.Log("Rename Items complete!");
         }
 
-        [MenuItem("Tools/Naming Convention/Rename Recipes", false, 2)]
-        public static void RenameRecipes() {
+        [MenuItem("Tools/Naming Convention/Scriptable Objects/Rename Recipes", false, 2)]
+        public static void RenameScriptableObjectRecipes() {
             RenameFiles(RECIPE_DIRECTORY, DATA_PREFIX, RECIPE_SUFFIX);
             Debug.Log("Rename Recipes complete!");
         }
 
-        [MenuItem("Tools/Naming Convention/Rename Nodes", false, 2)]
-        public static void RenameNodes() {
+        [MenuItem("Tools/Naming Convention/Scriptable Objects/Rename Nodes", false, 2)]
+        public static void RenameScriptableObjectNodes() {
             RenameFiles(NODE_DIRECTORY, DATA_PREFIX, NODE_SUFFIX);
             Debug.Log("Rename Nodes complete!");
         }
 
-        [MenuItem("Tools/Naming Convention/Rename Drop Tables", false, 3)]
-        public static void RenameDropTables() {
+        [MenuItem("Tools/Naming Convention/Scriptable Objects/Rename Drop Tables", false, 3)]
+        public static void RenameScriptableObjectDropTables() {
             RenameFiles(DROP_TABLE_DIRECTORY, DATA_PREFIX, DROP_TABLE_SUFFIX);
             Debug.Log("Rename Drop Tables complete!");
         }
+        #endregion
+
+        #region Prefabs
+        [MenuItem("Tools/Naming Convention/Prefabs/Rename Items", false, 1)]
+        public static void RenamePrefabItems() {
+            RenameFiles(ITEM_PREFAB_DIRECTORY, PREFAB_PREFIX, ITEM_PREFAB_SUFFIX);
+            Debug.Log("Rename Items complete!");
+        }
+        #endregion
 
         private static void RenameFiles(string directory, string prefix, string suffix = "") {
             string[] files = Directory.GetFiles(directory, "*.asset", SearchOption.AllDirectories);

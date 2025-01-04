@@ -87,6 +87,8 @@ namespace Tools {
                     }
                 }
             }
+
+            Debug.Log("Finished checking for missing prefabs");
         }
     }
 }

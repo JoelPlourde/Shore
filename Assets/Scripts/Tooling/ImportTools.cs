@@ -25,8 +25,6 @@ namespace Tools {
                     continue;
                 }
 
-                Debug.Log("Configuring import settings for " + fileName);
-
                 ModelImporter modelImporter = AssetImporter.GetAtPath(absolutePath) as ModelImporter;
 
                 // Model Tab
@@ -50,6 +48,8 @@ namespace Tools {
 
                 modelImporter.SaveAndReimport();
             }
+
+            Debug.Log("Finished configuring import settings");
         }
 
         [MenuItem("Tools/Import Tools/Import Generated Icons", false, 2)]
@@ -75,6 +75,8 @@ namespace Tools {
 
                 textureImporter.SaveAndReimport();
             }
+
+            Debug.Log("Finished importing generated icons");
         }
     }
 }

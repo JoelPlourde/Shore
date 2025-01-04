@@ -39,13 +39,13 @@ namespace Tools {
             Debug.Log("Rename Recipes complete!");
         }
 
-        [MenuItem("Tools/Naming Convention/Scriptable Objects/Rename Nodes", false, 2)]
+        [MenuItem("Tools/Naming Convention/Scriptable Objects/Rename Nodes", false, 3)]
         public static void RenameScriptableObjectNodes() {
             RenameFiles(NODE_DIRECTORY, ASSET_EXTENSION, DATA_PREFIX, NODE_SUFFIX);
             Debug.Log("Rename Nodes complete!");
         }
 
-        [MenuItem("Tools/Naming Convention/Scriptable Objects/Rename Drop Tables", false, 3)]
+        [MenuItem("Tools/Naming Convention/Scriptable Objects/Rename Drop Tables", false, 4)]
         public static void RenameScriptableObjectDropTables() {
             RenameFiles(DROP_TABLE_DIRECTORY, ASSET_EXTENSION, DATA_PREFIX, DROP_TABLE_SUFFIX);
             Debug.Log("Rename Drop Tables complete!");

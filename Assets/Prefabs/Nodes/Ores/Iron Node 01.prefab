@@ -141,4 +141,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionRadius: 0.5
-  _nodeData: {fileID: 11400000, guid: f1b4161b11a4c1b40a584e9778d8c46d, type: 2}
+  _nodeData: {fileID: 11400000, guid: 39e06c3ef0434bb4a9f7093fcc0db0b8, type: 2}

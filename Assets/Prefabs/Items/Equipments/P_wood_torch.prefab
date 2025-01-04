@@ -1234,7 +1234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9029419670538538576}
   m_Layer: 0
-  m_Name: wood_torch
+  m_Name: P_wood_torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

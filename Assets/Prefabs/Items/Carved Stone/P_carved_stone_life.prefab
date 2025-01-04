@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6226092203182781077}
   - component: {fileID: 8060004073628786334}
   m_Layer: 0
-  m_Name: Carved Stone (Life)
+  m_Name: P_carved_stone_life
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

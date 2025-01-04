@@ -1602,7 +1602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5120689308698408086}
   m_Layer: 0
-  m_Name: leather_pants
+  m_Name: P_leather_pants
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -253,7 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2316754036392554592}
   m_Layer: 0
-  m_Name: iron_axe
+  m_Name: P_iron_axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

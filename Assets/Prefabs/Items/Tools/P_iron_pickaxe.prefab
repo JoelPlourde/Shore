@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 169497677906803480}
   - component: {fileID: 6134192986822806379}
   m_Layer: 0
-  m_Name: iron_pickaxe (Object)
+  m_Name: P_iron_pickaxe
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -43,7 +43,7 @@ namespace Tools {
         }
 
         private GameObject BuildPrefabObject(GameObject gameObject, string name, string category) {
-            name = GetObjectName(name); // e.g "iron_axe (Object)"
+            name = GetObjectName(name); // e.g "iron_axe"
 
             // Add the "P_" prefix to the name
             name = "P_" + name;

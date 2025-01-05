@@ -7,7 +7,7 @@ namespace NodeSystem {
 		private TreeData _treeData;
 
 		public override void OnStart() {
-			_treeData = (TreeData)_nodeData;
+			_treeData = (TreeData)NodeData;
 			if (!ReferenceEquals(_treeData.OnResponse, null)) {
 				ParticleSystemManager.Instance.RegisterParticleSystem(_treeData.OnResponse.ParticleSystem.name, _treeData.OnResponse.ParticleSystem);
 			}

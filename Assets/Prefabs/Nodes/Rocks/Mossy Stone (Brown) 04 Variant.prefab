@@ -70,6 +70,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6603869663626131763, guid: 6b7e6c9375f6c5549bc648c1b888428e,
         type: 3}
+      propertyPath: NodeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d3729a5e65c77644971f463144e4f66,
+        type: 2}
+    - target: {fileID: 6603869663626131763, guid: 6b7e6c9375f6c5549bc648c1b888428e,
+        type: 3}
+      propertyPath: _nodeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d3729a5e65c77644971f463144e4f66,
+        type: 2}
+    - target: {fileID: 6603869663626131763, guid: 6b7e6c9375f6c5549bc648c1b888428e,
+        type: 3}
       propertyPath: InteractionRadius
       value: 2
       objectReference: {fileID: 0}

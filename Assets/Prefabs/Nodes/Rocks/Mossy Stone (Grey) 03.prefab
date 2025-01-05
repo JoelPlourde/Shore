@@ -491,7 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionRadius: 3
-  _nodeData: {fileID: 11400000, guid: 212c3c7aff7208b4e8801d3de8b9c630, type: 2}
+  NodeData: {fileID: 11400000, guid: 4d3729a5e65c77644971f463144e4f66, type: 2}
 --- !u!65 &7076708233990409702
 BoxCollider:
   m_ObjectHideFlags: 0

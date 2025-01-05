@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6fb8310d4201904b8ca8fcb39d8d651, type: 3}
-  m_Name: D_iron_node
+  m_Name: D_stone_node
   m_EditorClassIdentifier: 
-  ID: iron_node
+  ID: stone_node
   Action: mine
   Health: 100
   Durability: 0
   Capacity: 5
-  DropTable: {fileID: 11400000, guid: 669aad1d0dfc8f14fb22770f06614bf3, type: 2}
+  DropTable: {fileID: 11400000, guid: efd476b365329164aada0b5a9cbbbf49, type: 2}
   SkillType: 0
   WeaponType: 3
-  Requirement: 5
+  Requirement: 1
   Experience: 1
-  DamageStatistic: 9
-  SpeedStatistic: 8
+  DamageStatistic: 10
+  SpeedStatistic: 9
   OnHit:
     ParticleSystem: {fileID: 1012558301860995777, guid: 9614f92314ef4db4699e10082cd877c9,
       type: 3}

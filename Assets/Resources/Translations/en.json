@@ -226,6 +226,14 @@
         "bucket": {
             "name": "Bucket",
             "description": "A bucket to carry liquids."
+        },
+        "poppy": {
+            "name": "Poppy",
+            "description": "A red poppy."
+        },
+        "poppy_seed": {
+            "name": "Poppy Seed",
+            "description": "A poppy seed."
         }
     },
     "nodes": {

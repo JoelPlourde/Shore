@@ -19,7 +19,9 @@ namespace NodeSystem {
 		public void Start() {
 			// Register the particle system if any.
 			if (!ReferenceEquals(NodeData.OnHit, null)) {
-				ParticleSystemManager.Instance.RegisterParticleSystem(NodeData.OnHit.ParticleSystem?.name, NodeData.OnHit.ParticleSystem);
+				if (NodeData.OnHit.ParticleSystem != null) {
+					ParticleSystemManager.Instance.RegisterParticleSystem(NodeData.OnHit.ParticleSystem?.name, NodeData.OnHit.ParticleSystem);
+				}
 			}
 
 			OnStart();
@@ -83,7 +85,7 @@ namespace NodeSystem {
 		/// </summary>
 		/// <param name="actor">The actor the event is called on.</param>
 		protected virtual void OnHit(Actor actor) {
-			if (!ReferenceEquals(NodeData.OnHit.ParticleSystem, null)) {
+			if (NodeData.OnHit.ParticleSystem != null) {
 				ParticleSystemManager.Instance.SpawnParticleSystem(NodeData.OnHit.ParticleSystem.name, actor.transform.position + NodeData.OnHit.RelativePosition);
 			}
 

@@ -10,6 +10,15 @@ namespace ItemSystem {
 		public override void OnInspectorGUI() {
 			ItemData itemData = (ItemData) target;
 
+			if (itemData.ID == null) {
+				itemData.ID = itemData.name
+					.Replace("D_", "")
+					.ToLower()
+					.Replace(" ", "_")
+					.Replace("(", "")
+					.Replace(")", "");
+			}
+
 			// Show the ItemData.ID as a label field
 			EditorGUILayout.LabelField("ID", itemData.ID.ToString(CultureInfo.InvariantCulture));
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: D_fiber
   m_EditorClassIdentifier: 
   Sprite: {fileID: 0}
-  Prefab: {fileID: 2785638929537003308, guid: fd75464e647f8f749b86e4792cf17b96, type: 3}
+  Prefab: {fileID: 7813624472476581670, guid: fd75464e647f8f749b86e4792cf17b96, type: 3}
   ItemType: 0
   ItemEffects: []
   Stackable: 0

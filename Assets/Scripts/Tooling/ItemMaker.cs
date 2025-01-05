@@ -48,6 +48,11 @@ namespace Tools {
             // Add the "P_" prefix to the name
             name = "P_" + name;
 
+            // Make the path if it does not exists:
+            if (!AssetDatabase.IsValidFolder("Assets/Prefabs/Items/" + category)) {
+                AssetDatabase.CreateFolder("Assets/Prefabs/Items", category);
+            }
+
             string prefabPath = "Assets/Prefabs/Items/" + category + "/" + name + ".prefab";
             AssetDatabase.DeleteAsset(prefabPath);
 

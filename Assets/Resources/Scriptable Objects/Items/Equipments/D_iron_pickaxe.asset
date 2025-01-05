@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: D_iron_pickaxe
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 3e49c9d6b9403d34fbd92c8a9d1eb84f, type: 3}
-  Prefab: {fileID: 4249973635940045744, guid: 675b3c3c507c2a142837d0cd7250054f, type: 3}
+  Prefab: {fileID: 7944880159758977329, guid: 675b3c3c507c2a142837d0cd7250054f, type: 3}
   ItemType: 1
   ItemEffects:
   - ItemEffectType: 0

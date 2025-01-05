@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: D_iron_axe
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 4abd813c82090ba45b338189ca47c707, type: 3}
-  Prefab: {fileID: 804981527568601892, guid: 60925906abddfb74a93d24e0090f3c1a, type: 3}
+  Prefab: {fileID: 2352964782237795557, guid: 60925906abddfb74a93d24e0090f3c1a, type: 3}
   ItemType: 1
   ItemEffects:
   - ItemEffectType: 0

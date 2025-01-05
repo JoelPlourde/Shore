@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: poppy_cluster
   Action: pick
+  DestroyOnDepletion: 1
   Health: 1
   Durability: 0
   Capacity: 1
@@ -25,6 +26,10 @@ MonoBehaviour:
   DamageStatistic: 0
   SpeedStatistic: 0
   OnHit:
+    ParticleSystem: {fileID: 0}
+    RelativePosition: {x: 0, y: 0, z: 0}
+    Sound: {fileID: 0}
+  OnDestroy:
     ParticleSystem: {fileID: 0}
     RelativePosition: {x: 0, y: 0, z: 0}
     Sound: {fileID: 0}

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using ItemSystem;
 using UI;
 using TaskSystem;
+using JL.Splitting;
 
 namespace NodeSystem {
 	public class NodeBehaviour : InteractableBehavior, IInteractable {
@@ -100,6 +101,36 @@ namespace NodeSystem {
 			OnResponse(actor);
 		}
 
+		protected virtual void OnDepleted() {
+			if (NodeData.DestroyOnDepletion) {
+				if (NodeData.OnDestroy.ParticleSystem != null) {
+					Instantiate(NodeData.OnDestroy.ParticleSystem, transform.position + NodeData.OnDestroy.RelativePosition, Quaternion.identity);
+				}
+
+				Splittable splittable = gameObject.AddComponent<Splittable>();
+				splittable.targetMeshFilter = GetComponent<MeshFilter>();
+				splittable.CapMaterial = GetComponent<MeshRenderer>().material;
+				splittable.generateMeshColliders = true;
+
+				splittable.SplitForce = 100f;
+
+				Quaternion randomRotation = Random.rotation;
+				Debug.Log(randomRotation);
+
+				PointPlane plane = new PointPlane(transform.GetComponent<Collider>().bounds.center, randomRotation);
+
+				SplitResult splitResult = splittable.Split(plane);
+
+				Rigidbody rigidbody1 = splitResult.negObject.AddComponent<Rigidbody>();
+				rigidbody1.AddForce(-plane.normal * 1f, ForceMode.Impulse);
+				LeanTween.alpha(splitResult.negObject, 0f, 2f).setOnComplete(() => Destroy(splitResult.negObject));
+
+				Rigidbody rigidbody2 =splitResult.posObject.AddComponent<Rigidbody>();
+				rigidbody2.AddForce(plane.normal * 1f, ForceMode.Impulse);
+				LeanTween.alpha(splitResult.posObject, 0f, 2f).setOnComplete(() => Destroy(splitResult.posObject));
+			}
+		}
+
 		/// <summary>
 		/// On Interact Exit, stops the gathering process.
 		/// </summary>
@@ -112,6 +143,7 @@ namespace NodeSystem {
 		public virtual void OnStart() {}
 
 		public virtual void OnResponse(Actor actor) {}
+	
 
 		private void OnHarvest(Actor actor) {
 			Drop drop = NodeData.DropTable.GetRandomDrop();
@@ -122,6 +154,10 @@ namespace NodeSystem {
 			}
 
 			actor.Skills.GainExperience(NodeData.SkillType, NodeData.Experience);
+
+			if (_node.IsDepleted()) {
+				OnDepleted();
+			}
 		}
 
 		public float GetInteractionRadius() {

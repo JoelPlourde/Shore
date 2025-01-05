@@ -14,8 +14,11 @@ namespace NodeSystem {
 		[Tooltip("The unique identifier of the node.")]
 		public string ID;
 
-		[Tooltip("The name of the action.")]
+		[Tooltip("The name of the action shown in the tooltip.")]
 		public string Action;
+
+		[Tooltip("The Node will destroy itself whenever the node is depleted.")]
+		public bool DestroyOnDepletion = true;
 
 		[Header("Harvest Parameters")]
 		[Tooltip("The healthbar of this node.")]
@@ -54,5 +57,8 @@ namespace NodeSystem {
 		[Header("Particle System")]
 		[Tooltip("The particle System to be played whenever the character hits this node.")]
 		public ParticleSystemData OnHit;
+
+		[Tooltip("The particle System to be played whenever the node is destroyed.")]
+		public ParticleSystemData OnDestroy;
 	}
 }

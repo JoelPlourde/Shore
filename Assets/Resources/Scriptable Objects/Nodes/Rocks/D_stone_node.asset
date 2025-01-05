@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: stone_node
   Action: mine
-  Health: 100
+  DestroyOnDepletion: 1
+  Health: 1
   Durability: 0
-  Capacity: 5
+  Capacity: 1
   DropTable: {fileID: 11400000, guid: efd476b365329164aada0b5a9cbbbf49, type: 2}
   SkillType: 0
   WeaponType: 3
@@ -29,3 +30,7 @@ MonoBehaviour:
       type: 3}
     RelativePosition: {x: 0, y: 1, z: 1}
     Sound: {fileID: 8300000, guid: 5319ed8706fc0b44eb7b7745d52fddf9, type: 3}
+  OnDestroy:
+    ParticleSystem: {fileID: 0}
+    RelativePosition: {x: 0, y: 0, z: 0}
+    Sound: {fileID: 0}

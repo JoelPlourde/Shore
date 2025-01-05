@@ -8,9 +8,12 @@ namespace ItemSystem {
 	public class ItemDataEditor : Editor {
 
 		public override void OnInspectorGUI() {
-			base.OnInspectorGUI();
-
 			ItemData itemData = (ItemData) target;
+
+			// Show the ItemData.ID as a label field
+			EditorGUILayout.LabelField("ID", itemData.ID.ToString(CultureInfo.InvariantCulture));
+
+			base.OnInspectorGUI();
 
 			if (itemData.Burnable) {
 				itemData.Power = EditorGUILayout.IntField("Power", itemData.Power);

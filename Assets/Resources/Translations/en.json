@@ -153,6 +153,78 @@
         "iron_ore": {
             "name": "Iron Ore",
             "description": "Ore containing iron."
+        },
+        "hunter_jacket": {
+            "name": "Hunter Jacket",
+            "description": "A jacket made for hunting."
+        },
+        "iron_axe": {
+            "name": "Iron Axe",
+            "description": "An axe made of iron."
+        },
+        "lantern": {
+            "name": "Lantern",
+            "description": "A lantern to light your way."
+        },
+        "apple": {
+            "name": "Apple",
+            "description": "A juicy apple."
+        },
+        "berry": {
+            "name": "Berry",
+            "description": "A sweet sweet berry."
+        },
+        "bread": {
+            "name": "Bread",
+            "description": "A loaf of bread."
+        },
+        "branch": {
+            "name": "Branch",
+            "description": "A branch from a tree."
+        },
+        "bronze_bar": {
+            "name": "Bronze Bar",
+            "description": "A bar of bronze."
+        },
+        "coal": {
+            "name": "Coal",
+            "description": "A piece of coal."
+        },
+        "dough": {
+            "name": "Dough",
+            "description": "A piece of dough."
+        },
+        "fiber": {
+            "name": "Fiber",
+            "description": "A piece of fiber."
+        },
+        "flour": {
+            "name": "Flour",
+            "description": "Some flour for baking."
+        },
+        "gold_ore": {
+            "name": "Gold Ore",
+            "description": "Ore containing gold."
+        },
+        "iron_bar": {
+            "name": "Iron Bar",
+            "description": "A bar of iron."
+        },
+        "log": {
+            "name": "Log",
+            "description": "A log from a tree."
+        },
+        "tin_ore": {
+            "name": "Tin Ore",
+            "description": "Ore containing tin."
+        },
+        "wheat": {
+            "name": "Wheat",
+            "description": "A tied cluster of golden stalks."
+        },
+        "bucket": {
+            "name": "Bucket",
+            "description": "A bucket to carry liquids."
         }
     },
     "nodes": {

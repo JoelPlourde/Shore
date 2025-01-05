@@ -4914,7 +4914,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 711adc7a75049524da10518138e8fbc3,
         type: 3}
       propertyPath: m_Name
-      value: Carved Rune (Life)
+      value: P_carved_rune_life
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 711adc7a75049524da10518138e8fbc3,
         type: 3}
@@ -5015,5 +5015,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UUID: e21fe564-1bf0-4072-b397-7dac334b1869
-  InteractionRadius: 1
+  InteractionRadius: 0.5
   ItemData: {fileID: 11400000, guid: 5965319ff10652044bd982f98971e8ba, type: 2}

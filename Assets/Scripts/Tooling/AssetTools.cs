@@ -90,5 +90,39 @@ namespace Tools {
 
             Debug.Log("Finished checking for missing prefabs");
         }
+
+        [MenuItem("Tools/Asset Tools/Find Missing Translations", false, 2)]
+        public static void FindMissingTranslations() {
+            // Load all ItemDatas from the Items directory
+            string[] itemDataFiles = Directory.GetFiles(ITEMS_DIRECTORY, "*.asset", SearchOption.AllDirectories);
+
+            // Load the file content of the translations directory
+            string[] translationFiles = Directory.GetFiles("Assets/Resources/Translations", "*.json", SearchOption.AllDirectories);
+
+            // For each translationFile, get the filename without extension
+            for (int i = 0; i < translationFiles.Length; i++) {
+                translationFiles[i] = Path.GetFileNameWithoutExtension(translationFiles[i]);
+
+                TextAsset languageFile = Resources.Load<TextAsset>("Translations/" + translationFiles[i]);
+
+                if (languageFile != null) {
+                    Dictionary<string, string> translations = I18N.FlattenJson(languageFile.text);
+
+                    foreach (string itemDataFile in itemDataFiles) {
+                        string fileName = Path.GetFileNameWithoutExtension(itemDataFile);
+                        fileName = fileName.Replace("D_", "").Replace(".asset", "");
+                        string jsonPath = "items." + fileName + ".name";
+
+                        ItemData itemData = AssetDatabase.LoadAssetAtPath<ItemData>(itemDataFile);
+
+                        if (!translations.ContainsKey(jsonPath)) {
+                            Debug.LogError($"Missing Translation for Item Data: {jsonPath}");
+                        }
+                    }
+                }
+            }
+
+            Debug.Log("Finished checking for missing translations");
+        }
     }
 }

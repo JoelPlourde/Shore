@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 776616a574253754cba2398b05024ec8,
         type: 3}
       propertyPath: m_Name
-      value: iron_axe (Object)
+      value: P_iron_axe
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 776616a574253754cba2398b05024ec8,
         type: 3}
@@ -172,5 +172,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UUID: f8af8639-7d94-4bef-aa58-e2a77447369d
-  InteractionRadius: 1
+  InteractionRadius: 0.5
   ItemData: {fileID: 11400000, guid: 85df11d1e737ab345806d09e190a5647, type: 2}

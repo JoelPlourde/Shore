@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7a1bf53f3e6a9574587e16a4afb7eb6c,
         type: 3}
       propertyPath: m_Name
-      value: Coal (Object)
+      value: P_coal
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7a1bf53f3e6a9574587e16a4afb7eb6c,
         type: 3}
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UUID: 6bb05790-75fe-4a62-a82c-e9edb0415111
-  InteractionRadius: 1
+  InteractionRadius: 0.5
   ItemData: {fileID: 11400000, guid: 999b9a5f5d2adc44193c9656e5e82001, type: 2}
 --- !u!65 &8505100273015192393
 BoxCollider:

@@ -4914,7 +4914,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8fe058d5100c4e945a306bfd740a7392,
         type: 3}
       propertyPath: m_Name
-      value: Carved Rune (Air)
+      value: P_carved_rune_air
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8fe058d5100c4e945a306bfd740a7392,
         type: 3}
@@ -4988,7 +4988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UUID: 9e204c1a-c627-411a-b8e2-ce5190b2ea4e
-  InteractionRadius: 1
+  InteractionRadius: 0.5
   ItemData: {fileID: 11400000, guid: b0931faaf9a0a514c9f2f22c5850ce08, type: 2}
 --- !u!65 &6951641303852611767
 BoxCollider:

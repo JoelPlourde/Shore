@@ -13,7 +13,7 @@ namespace Tools {
                 collider = gameObject.AddComponent<BoxCollider>();
             }
 
-            collider.isTrigger = !isObstacle(nodeCategory);
+            collider.isTrigger = false;
 
             AddNodeBehaviour(nodeCategory);
 
@@ -47,6 +47,7 @@ namespace Tools {
                     if (ReferenceEquals(nodeBehaviour, null)) {
                         nodeBehaviour = gameObject.AddComponent<NodeBehaviour>();
                     }
+                    nodeBehaviour.InteractionRadius = 0.5f;
                     break;
                 case NodeCategory.TREES:
                     nodeBehaviour = gameObject.GetComponent<TreeBehaviour>();
@@ -171,6 +172,9 @@ namespace Tools {
                     break;
                 case NodeCategory.PLANTS:
                     nodeData.Action = "pick";
+                    nodeData.Health = 1;
+                    nodeData.Durability = 0;
+                    nodeData.Capacity = 5;
                     nodeData.SkillType = SkillSystem.SkillType.FARMING;
                     nodeData.WeaponType  = ItemSystem.EquipmentSystem.WeaponType.NONE;
                     nodeData.DamageStatistic = ItemSystem.EquipmentSystem.StatisticType.NONE;
@@ -188,17 +192,7 @@ namespace Tools {
         }
 
         private bool isObstacle(NodeCategory nodeCategory) {
-            switch (nodeCategory) {
-                case NodeCategory.ORES:
-                case NodeCategory.ROCKS:
-                    return true;
-                case NodeCategory.TREES:
-                    return true;
-                case NodeCategory.PLANTS:
-                    return false;
-                default:
-                    return true;
-            }
+            return true;
         }
 
         public enum NodeCategory {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public static class GameplayUtils {
 
@@ -17,7 +18,7 @@ public static class GameplayUtils {
 	/// <param name="luck">The value of the luck.</param>
 	/// <returns>Whether or not it was a critical strike.</returns>
 	public static bool CalculateIfCriticalStrikeBasedOnLuck(int luck) {
-		return (Random.Range(0, Constant.MAXIMUM_LUCK) <= luck);
+		return UnityEngine.Random.Range(0, Constant.MAXIMUM_LUCK) <= luck;
 	}
 
 	/// <summary>
@@ -28,6 +29,7 @@ public static class GameplayUtils {
 	/// <param name="luck">The value of the luck of the character, 0, if luck is not a factor.</param>
 	/// <returns>Return the calculated damage based on the input parameters.</returns>
 	public static int CalculateDamageBasedOnStrength(int durability, int damage, int luck) {
-		return Mathf.RoundToInt(Mathf.Clamp(damage - durability, 0, int.MaxValue) * ((CalculateIfCriticalStrikeBasedOnLuck(luck)) ? 1.5f : 1f));
+		int result = Mathf.RoundToInt(Mathf.Clamp(damage - durability, 0, int.MaxValue) * ((CalculateIfCriticalStrikeBasedOnLuck(luck)) ? 1.5f : 1f));
+		return Mathf.Max(result, 1);
 	}
 }

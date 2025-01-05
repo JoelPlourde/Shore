@@ -76,6 +76,8 @@ namespace Tools {
                 textureImporter.SaveAndReimport();
             }
 
+            AssetTools.FindMissingSprites();
+
             Debug.Log("Finished importing generated icons");
         }
     }

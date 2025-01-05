@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: D_iron_axe
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 4abd813c82090ba45b338189ca47c707, type: 3}
-  Prefab: {fileID: 804981527568601892, guid: 9b81cc5f78a44fe4bbfb7f5cdbbabf78, type: 3}
+  Prefab: {fileID: 804981527568601892, guid: 60925906abddfb74a93d24e0090f3c1a, type: 3}
   ItemType: 1
   ItemEffects:
   - ItemEffectType: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
   Stackable: 0
   Burnable: 0
   Power: 0
-  EquipmentPrefab: {fileID: 1620621167640937075, guid: f024720d3c9b8e34188f70d55c40094e,
+  EquipmentPrefab: {fileID: 1620621167640937075, guid: 0b25000b178ff504a8ae96d87797ddae,
     type: 3}
   SlotType: 5
   WeaponType: 4

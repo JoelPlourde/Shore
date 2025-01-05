@@ -13,14 +13,7 @@ MonoBehaviour:
   m_Name: D_iron_pickaxe
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 3e49c9d6b9403d34fbd92c8a9d1eb84f, type: 3}
-  Prefab: {fileID: 4249973635940045744, guid: 5f0ce35775527b1409ae95175bfcc03a, type: 3}
-  Tooltip: '<color=#BFBFBF><size=20>Equip</size></color> <size=22>Iron Pickaxe</size>
-
-    <size=16>Tool</size>
-
-    <size=16><color=#1DFF00>+5
-    Mining Strength</color></size>'
-  Examine: 
+  Prefab: {fileID: 4249973635940045744, guid: 675b3c3c507c2a142837d0cd7250054f, type: 3}
   ItemType: 1
   ItemEffects:
   - ItemEffectType: 0
@@ -29,10 +22,11 @@ MonoBehaviour:
     Duration: 0
     StatusEffectData: {fileID: 0}
     RecipeDatas: []
+    IsImmediate: 0
   Stackable: 0
   Burnable: 0
   Power: 0
-  EquipmentPrefab: {fileID: 4837317121008528336, guid: 34609e7abf40d9243b352149b4a0ee0e,
+  EquipmentPrefab: {fileID: 4837317121008528336, guid: bfd908dc0ed0952438fdff14aa4e9af1,
     type: 3}
   SlotType: 5
   WeaponType: 3

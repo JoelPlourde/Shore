@@ -32,7 +32,7 @@ public static class I18N {
         }
     }
 
-    private static Dictionary<string, string> FlattenJson(string json)
+    public static Dictionary<string, string> FlattenJson(string json)
     {
         Dictionary<string, string> dict = new Dictionary<string, string>();
         JToken token = JToken.Parse(json);

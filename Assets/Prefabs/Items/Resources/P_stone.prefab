@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6cd9d2334ee5a74a92219824da84bc0,
         type: 3}
       propertyPath: m_Name
-      value: Stone (Object)
+      value: P_stone
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f6cd9d2334ee5a74a92219824da84bc0,
         type: 3}
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UUID: adf337ec-321d-40a1-85ca-4f094c743700
-  InteractionRadius: 1
+  InteractionRadius: 0.5
   ItemData: {fileID: 11400000, guid: 39eb8051f9a13e342913d450413ab723, type: 2}
 --- !u!54 &8498520869587773237
 Rigidbody:

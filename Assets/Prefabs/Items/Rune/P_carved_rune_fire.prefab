@@ -4914,7 +4914,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f64a7bb5785906f42acf73089b55d4de,
         type: 3}
       propertyPath: m_Name
-      value: Carved Rune (Fire)
+      value: P_carved_rune_fire
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f64a7bb5785906f42acf73089b55d4de,
         type: 3}
@@ -5015,5 +5015,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UUID: 8cd039e8-a798-4f8f-8846-da70f6bd4cca
-  InteractionRadius: 1
+  InteractionRadius: 0.5
   ItemData: {fileID: 11400000, guid: b187c1421b6003d48afd714843269d63, type: 2}

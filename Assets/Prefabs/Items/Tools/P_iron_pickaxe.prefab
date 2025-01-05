@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UUID: fdab3e2c-befb-42eb-a21a-4dd53ec35751
-  InteractionRadius: 1
+  InteractionRadius: 0.5
   ItemData: {fileID: 11400000, guid: 386c414ce30f2fe4ea0c24d9885e3e9f, type: 2}
 --- !u!65 &169497677906803480
 BoxCollider:

@@ -4914,7 +4914,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 071c9cd6ca08e6f4c8adcd35397249ac,
         type: 3}
       propertyPath: m_Name
-      value: Carved Rune (Death)
+      value: P_carved_rune_death
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 071c9cd6ca08e6f4c8adcd35397249ac,
         type: 3}
@@ -5015,5 +5015,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UUID: 4bf2b01b-24b5-4e42-9895-a55679287ad8
-  InteractionRadius: 1
+  InteractionRadius: 0.5
   ItemData: {fileID: 11400000, guid: 2236ea177a49b8843959aa7e3cd14f37, type: 2}

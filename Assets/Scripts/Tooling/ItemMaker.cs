@@ -91,6 +91,7 @@ namespace Tools {
             InteractableItem interactableItem = prefab.GetComponent<InteractableItem>();
             interactableItem.InteractionRadius = 0.5f;
             interactableItem.ItemData = itemData;
+            interactableItem.RegenerateUUID();
 
             // Attempt to find the Texture in 
             Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Textures/Items/" + category + "/" + name + ".png");

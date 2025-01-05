@@ -4914,7 +4914,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0802066d79951a74dac68f857974f128,
         type: 3}
       propertyPath: m_Name
-      value: Carved Rune (Water)
+      value: P_carved_rune_water
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0802066d79951a74dac68f857974f128,
         type: 3}
@@ -4988,7 +4988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UUID: e7b3dd83-8840-49e1-8b86-a57801049f58
-  InteractionRadius: 1
+  InteractionRadius: 0.5
   ItemData: {fileID: 11400000, guid: 2e0c9470641fe0d4e85289b8b9e84099, type: 2}
 --- !u!65 &975243358704851684
 BoxCollider:

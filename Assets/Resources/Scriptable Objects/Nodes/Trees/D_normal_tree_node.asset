@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eecc94826f9ac444aa3f6e3aea55fcd7, type: 3}
   m_Name: D_normal_tree_node
   m_EditorClassIdentifier: 
-  ID: normal_tree
+  ID: normal_tree_node
   Action: chop
   Health: 100
   Durability: 0
@@ -22,8 +22,8 @@ MonoBehaviour:
   WeaponType: 4
   Requirement: 1
   Experience: 1
-  DamageStatistic: 12
-  SpeedStatistic: 11
+  DamageStatistic: 13
+  SpeedStatistic: 12
   OnHit:
     ParticleSystem: {fileID: 2647849099764195650, guid: 2c253c7f68f028641ab30e12ea3ec862,
       type: 3}

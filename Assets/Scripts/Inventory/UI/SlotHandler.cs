@@ -76,6 +76,10 @@ namespace ItemSystem {
 
                         int count = equipmentData.EquipmentStats.Statistics.Count;
                         foreach (Statistic statistic in equipmentData.EquipmentStats.Statistics) {
+							if (statistic.StatisticType == StatisticType.NONE) {
+								continue;
+							}
+
                             string statisticType = I18N.GetValue("statistics." + EnumExtensions.FormatEnum(statistic.StatisticType.ToString()) + ".name");
                             statistics += string.Format("<size=16><color=#1DFF00>+{0} {1}</color></size>", statistic.Value, statisticType);
                             count--;

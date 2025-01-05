@@ -20,7 +20,7 @@ namespace NodeSystem {
             }
 
             // Generate the ID from the path.
-            nodeData.ID = path.ToLower().Replace(".asset", "").Replace(" ", "_");
+            nodeData.ID = path.Replace("D_", "").ToLower().Replace(".asset", "").Replace(" ", "_");
 		}
     }
 }

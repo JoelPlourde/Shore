@@ -12,14 +12,14 @@ namespace NodeSystem {
 		public float InteractionRadius;
 
 		[SerializeField]
-		protected NodeData _nodeData;
+		public NodeData NodeData;
 
 		protected Node _node;
 
 		public void Start() {
 			// Register the particle system if any.
-			if (!ReferenceEquals(_nodeData.OnHit, null)) {
-				ParticleSystemManager.Instance.RegisterParticleSystem(_nodeData.OnHit.ParticleSystem?.name, _nodeData.OnHit.ParticleSystem);
+			if (!ReferenceEquals(NodeData.OnHit, null)) {
+				ParticleSystemManager.Instance.RegisterParticleSystem(NodeData.OnHit.ParticleSystem?.name, NodeData.OnHit.ParticleSystem);
 			}
 
 			OnStart();
@@ -30,7 +30,7 @@ namespace NodeSystem {
 		/// </summary>
 		private void OnMouseOver() {
             if (Input.GetMouseButtonDown(1)) {
-                OptionsHandler.Instance.OpenRightClickMenu(this, _nodeData, InteractCallback);
+                OptionsHandler.Instance.OpenRightClickMenu(this, NodeData, InteractCallback);
             }
         }
 
@@ -51,7 +51,7 @@ namespace NodeSystem {
 		public void OnInteractEnter(Actor actor) {
 
 			if (ReferenceEquals(_node, null)) {
-				_node = new Node(_nodeData);
+				_node = new Node(NodeData);
 				_node.Initialize(OnHarvest);
 			}
 
@@ -61,19 +61,19 @@ namespace NodeSystem {
 				return;
 			}
 
-			if (actor.Skills.GetLevel(_nodeData.SkillType).Value < _nodeData.Requirement) {
+			if (actor.Skills.GetLevel(NodeData.SkillType).Value < NodeData.Requirement) {
 				actor.Emotion.PlayEmote(EmoteSystem.EmoteType.WONDERING);
 				actor.TaskScheduler.CancelTask();
 				return;
 			}
 
-			if (!actor.Armory.HasWeaponEquipped(_nodeData.WeaponType)) {
+			if (!actor.Armory.HasWeaponEquipped(NodeData.WeaponType)) {
 				actor.Emotion.PlayEmote(EmoteSystem.EmoteType.WONDERING);
 				actor.TaskScheduler.CancelTask();
 				return;
 			}
 
-			actor.Animator.SetFloat("Harvest Speed", GameplayUtils.CalculateRepeatRateBasedOnSpeed(actor.Statistics.GetStatistic(_nodeData.SpeedStatistic)));
+			actor.Animator.SetFloat("Harvest Speed", GameplayUtils.CalculateRepeatRateBasedOnSpeed(actor.Statistics.GetStatistic(NodeData.SpeedStatistic)));
 			actor.Animator.SetBool("Harvest", true);
 			actor.OnHarvestEvent += OnHit;
 		}
@@ -83,15 +83,15 @@ namespace NodeSystem {
 		/// </summary>
 		/// <param name="actor">The actor the event is called on.</param>
 		protected virtual void OnHit(Actor actor) {
-			if (!ReferenceEquals(_nodeData.OnHit.ParticleSystem, null)) {
-				ParticleSystemManager.Instance.SpawnParticleSystem(_nodeData.OnHit.ParticleSystem.name, actor.transform.position + _nodeData.OnHit.RelativePosition);
+			if (!ReferenceEquals(NodeData.OnHit.ParticleSystem, null)) {
+				ParticleSystemManager.Instance.SpawnParticleSystem(NodeData.OnHit.ParticleSystem.name, actor.transform.position + NodeData.OnHit.RelativePosition);
 			}
 
-			if (!ReferenceEquals(_nodeData.OnHit.Sound, null)) {
-				actor.AudioPlayer.PlayOneShot(_nodeData.OnHit.Sound);
+			if (!ReferenceEquals(NodeData.OnHit.Sound, null)) {
+				actor.AudioPlayer.PlayOneShot(NodeData.OnHit.Sound);
 			}
 
-			if (_node.ReduceHealth(actor, actor.Statistics.GetStatistic(_nodeData.DamageStatistic)) <= 0) {
+			if (_node.ReduceHealth(actor, actor.Statistics.GetStatistic(NodeData.DamageStatistic)) <= 0) {
 				actor.TaskScheduler.CancelTask();
 			}
 
@@ -112,14 +112,14 @@ namespace NodeSystem {
 		public virtual void OnResponse(Actor actor) {}
 
 		private void OnHarvest(Actor actor) {
-			Drop drop = _nodeData.DropTable.GetRandomDrop();
+			Drop drop = NodeData.DropTable.GetRandomDrop();
 
 			actor.Inventory.AddItemsToInventory(new List<Item> { drop.ToItem() }, out List<Item> remainingItems);
 			if (remainingItems.Count > 0) {
 				Debug.Log("Do something with the exceeding items!");
 			}
 
-			actor.Skills.GainExperience(_nodeData.SkillType, _nodeData.Experience);
+			actor.Skills.GainExperience(NodeData.SkillType, NodeData.Experience);
 		}
 
 		public float GetInteractionRadius() {
@@ -127,7 +127,7 @@ namespace NodeSystem {
 		}
 
 		public string GetDefaultAction() {
-			return _nodeData.Action;
+			return NodeData.Action;
 		}
 
 		protected override OutlineType GetOutlineType() {

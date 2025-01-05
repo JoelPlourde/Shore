@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: D_poppy_seed
   m_EditorClassIdentifier: 
   Sprite: {fileID: 0}
-  Prefab: {fileID: 2657624807190859716, guid: 71979a47e13288d4a9901afbb38d5ce0, type: 3}
+  Prefab: {fileID: 6823823161764977212, guid: 71979a47e13288d4a9901afbb38d5ce0, type: 3}
   ItemType: 0
   ItemEffects: []
-  Stackable: 1
+  Stackable: 0
   Burnable: 0
   Power: 0

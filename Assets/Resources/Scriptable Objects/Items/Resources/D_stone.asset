@@ -12,12 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d26e20cfda80046b9311ea6298a385, type: 3}
   m_Name: D_stone
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 7429735f3684c514c8683a7fcebadd1b, type: 3}
-  Prefab: {fileID: 18933969921263529, guid: 49af58770bfa0cc43870ba6b6046cc4a, type: 3}
-  Tooltip: '<size=22>Stone</size>
-
-    <size=16>Resource</size>'
-  Examine: I wonder what I can do with this!
+  Sprite: {fileID: 0}
+  Prefab: {fileID: 7259319235019696210, guid: a1a01590956afce4096816b63e38e833, type: 3}
   ItemType: 0
   ItemEffects: []
   Stackable: 0

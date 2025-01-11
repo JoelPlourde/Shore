@@ -14,6 +14,10 @@ namespace SkillSystem {
 
 			private void Awake() {
 				_text = GetComponent<Text>();
+
+				_text.color = Color.black;
+				_text.fontSize = 50;
+				_text.alignment = TextAnchor.MiddleCenter;
 			}
 
 			/// <summary>

@@ -55,6 +55,10 @@
         }
     },
     "items": {
+        "bristlethorn": {
+            "name": "Bristlethorn",
+            "description": "Not every rose has its thorn."
+        },
         "stone": {
             "name": "Stone",
             "description": "A stone found on the ground."

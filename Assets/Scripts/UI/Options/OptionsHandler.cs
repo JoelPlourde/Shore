@@ -62,6 +62,8 @@ namespace UI {
 			// Hide the tooltip
 			Tooltip.Instance.HideTooltip();
 
+			string translatedItemName = I18N.GetValue("items." + slotHandler.Item.ItemData.ID + ".name");
+
 			_childCount = 0;
 			float preferredWidth = 0;
 			foreach (var itemEffect in slotHandler.Item.ItemData.ItemEffects) {
@@ -72,12 +74,13 @@ namespace UI {
 					effectName = itemEffect.effectName;
 				}
 
-				AddOption(I18N.GetValue("effects." + effectName), slotHandler.Item.ItemData.name, ref preferredWidth, delegate { OnItemEffectClicked(slotHandler.Item); });
+				AddOption(I18N.GetValue("effects." + effectName), translatedItemName, ref preferredWidth, delegate { OnItemEffectClicked(slotHandler.Item); });
 			}
 
 			// Set default option on items.
-			AddOption(I18N.GetValue("select"), slotHandler.Item.ItemData.name, ref preferredWidth, delegate { OnItemSelect(slotHandler); });
-			AddOption(I18N.GetValue("drop"), slotHandler.Item.ItemData.name, ref preferredWidth, delegate { OnItemDropped(slotHandler); });
+			AddOption(I18N.GetValue("select"), translatedItemName, ref preferredWidth, delegate { OnItemSelect(slotHandler); });
+			AddOption(I18N.GetValue("drop"), translatedItemName, ref preferredWidth, delegate { OnItemDropped(slotHandler); });
+			AddOption(I18N.GetValue("examine"), "", ref preferredWidth, delegate { OnItemExamine(slotHandler.Item.ItemData); });
 			AddOption(I18N.GetValue("cancel"), "", ref preferredWidth, Close);
 
 			// Disable all the unused options!

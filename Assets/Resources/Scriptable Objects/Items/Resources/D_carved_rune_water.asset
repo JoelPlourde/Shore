@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: D_carved_rune_water
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 4909223899136eb4d91b12a63f0914a1, type: 3}
-  Prefab: {fileID: 8075035751379768339, guid: e6120b17df25ae144843df8bfc35ccb6, type: 3}
-  Tooltip: '<size=22>Carved Rune (Water)</size>
-
-    <size=16>Resource</size>'
-  Examine: 
+  Prefab: {fileID: 6706432186646368783, guid: 5dad3ae764637c1478d7c1f6971571b2, type: 3}
   ItemType: 0
   ItemEffects:
   - ItemEffectType: 4
@@ -26,7 +22,7 @@ MonoBehaviour:
     Duration: 0
     StatusEffectData: {fileID: 0}
     RecipeDatas:
-    - {fileID: 11400000, guid: c2900f044d2a41c45963d2abb2d1309f, type: 2}
+    - {fileID: 11400000, guid: 7d1780c31c693e2458b1fb626d8d6129, type: 2}
     IsImmediate: 1
   Stackable: 0
   Burnable: 0

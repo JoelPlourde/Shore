@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: D_carved_rune_fire
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 4b051d7b583c9314883e2dd4e4c8077e, type: 3}
-  Prefab: {fileID: 1894117709666032991, guid: a459c1cbeb8b24149a93b58f84fe8f58, type: 3}
-  Tooltip: '<size=22>Carved Rune (Fire)</size>
-
-    <size=16>Resource</size>'
-  Examine: 
+  Prefab: {fileID: 6728443408311821875, guid: 4123c4080a726bb4c91d97a8556fbfe0, type: 3}
   ItemType: 0
   ItemEffects:
   - ItemEffectType: 4
@@ -26,7 +22,7 @@ MonoBehaviour:
     Duration: 0
     StatusEffectData: {fileID: 0}
     RecipeDatas:
-    - {fileID: 11400000, guid: 3b200df8549d92c49b616bfa1d4631fa, type: 2}
+    - {fileID: 11400000, guid: 943415781dd9e184eb839c75a0f29afe, type: 2}
     IsImmediate: 1
   Stackable: 0
   Burnable: 0

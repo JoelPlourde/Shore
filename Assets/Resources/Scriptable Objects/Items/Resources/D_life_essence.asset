@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d26e20cfda80046b9311ea6298a385, type: 3}
   m_Name: D_life_essence
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: a2442f1e013573f4fb7c36c8422a49d3, type: 3}
   Prefab: {fileID: 5131175475087393576, guid: cb2d77020de057c43aa55e8a39d61c76, type: 3}
   ItemType: 0
   ItemEffects: []

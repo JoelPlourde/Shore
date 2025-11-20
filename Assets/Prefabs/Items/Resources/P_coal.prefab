@@ -189,4 +189,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UUID: b754797f-d361-4780-baa8-149d1b2d548b
   InteractionRadius: 1
-  ItemData: {fileID: 0}
+  ItemData: {fileID: 11400000, guid: 999b9a5f5d2adc44193c9656e5e82001, type: 2}

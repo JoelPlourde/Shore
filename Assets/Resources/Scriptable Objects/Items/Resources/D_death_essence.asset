@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d26e20cfda80046b9311ea6298a385, type: 3}
   m_Name: D_death_essence
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: ee4692610ce27b949908c752cef2d9c2, type: 3}
   Prefab: {fileID: 656023728265029773, guid: f15182f56c5ca574ea0ec5448849975e, type: 3}
   ItemType: 0
   ItemEffects: []

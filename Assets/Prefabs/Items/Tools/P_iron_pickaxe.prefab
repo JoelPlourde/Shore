@@ -152,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UUID: 051f7027-64b5-431c-a83c-06d8a0e27a8e
   InteractionRadius: 0.5
-  ItemData: {fileID: 11400000, guid: bfcd70fc97d70a4488e63fedf1ad47ca, type: 2}
+  ItemData: {fileID: 11400000, guid: 386c414ce30f2fe4ea0c24d9885e3e9f, type: 2}
 --- !u!65 &2046894991445983487
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: D_carved_rune_life
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: b52dc72edc81e4a4eabbfe6136e6ab50, type: 3}
-  Prefab: {fileID: 737524031534236085, guid: 42aa4e04f41847d40bb2c81e138aed1c, type: 3}
-  Tooltip: '<size=22>Carved Rune (Life)</size>
-
-    <size=16>Resource</size>'
-  Examine: 
+  Prefab: {fileID: 646814625638557474, guid: b0e4906eebed2f1498a906e487f70c02, type: 3}
   ItemType: 0
   ItemEffects:
   - ItemEffectType: 4
@@ -26,7 +22,7 @@ MonoBehaviour:
     Duration: 0
     StatusEffectData: {fileID: 0}
     RecipeDatas:
-    - {fileID: 11400000, guid: 02c41eac123c23f47b676871419b1527, type: 2}
+    - {fileID: 11400000, guid: debac95a3fd029c469b060e9a0b46b42, type: 2}
     IsImmediate: 1
   Stackable: 0
   Burnable: 0

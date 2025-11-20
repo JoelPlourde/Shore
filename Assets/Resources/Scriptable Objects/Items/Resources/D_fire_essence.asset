@@ -16,6 +16,6 @@ MonoBehaviour:
   Prefab: {fileID: 1614228725048188647, guid: 0cf7fc3dd031f854a839f10d674aa386, type: 3}
   ItemType: 0
   ItemEffects: []
-  Stackable: 0
+  Stackable: 1
   Burnable: 0
   Power: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: D_carved_rune_air
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: b2a25c5c3f5f177479bf605722a4744b, type: 3}
-  Prefab: {fileID: 6990344618164671473, guid: f5f7d2b5a1dd81a4d8abb880f8ed3026, type: 3}
+  Prefab: {fileID: 6471994030846430034, guid: c25487c4d790abb41ad36be20ebb21df, type: 3}
   ItemType: 0
   ItemEffects:
   - ItemEffectType: 4

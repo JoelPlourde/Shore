@@ -14,7 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillType: 6
   Color: {r: 0.9382992, g: 0, b: 1, a: 0}
-  Title: Runecarving
-  Description: The ability to carve Runes
-  Icon: {fileID: 21300000, guid: b6ee559f78fc0834f87357adbb0a32b2, type: 3}
+  Icon: {fileID: 21300000, guid: 4b051d7b583c9314883e2dd4e4c8077e, type: 3}
   Competencies: []

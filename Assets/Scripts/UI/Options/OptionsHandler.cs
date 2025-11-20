@@ -80,6 +80,7 @@ namespace UI {
 			// Set default option on items.
 			AddOption(I18N.GetValue("select"), translatedItemName, ref preferredWidth, delegate { OnItemSelect(slotHandler); });
 			AddOption(I18N.GetValue("drop"), translatedItemName, ref preferredWidth, delegate { OnItemDropped(slotHandler); });
+			AddOption(I18N.GetValue("examine"), "", ref preferredWidth, delegate { OnItemExamine(slotHandler.Item.ItemData); });
 			AddOption(I18N.GetValue("cancel"), "", ref preferredWidth, Close);
 
 			// Disable all the unused options!

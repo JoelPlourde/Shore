@@ -16,7 +16,7 @@ MonoBehaviour:
   - ItemData: {fileID: 11400000, guid: b187c1421b6003d48afd714843269d63, type: 2}
     Amount: 1
   Outputs:
-  - ItemData: {fileID: 11400000, guid: ece189ea5d63d74479b700982eab09b8, type: 2}
+  - ItemData: {fileID: 11400000, guid: b2390417f26d10f4c8c37291b19f033c, type: 2}
     Amount: 10
   RequiredProgress: 1
   RequiredSkills:

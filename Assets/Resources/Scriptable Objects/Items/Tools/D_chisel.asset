@@ -12,10 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d26e20cfda80046b9311ea6298a385, type: 3}
   m_Name: D_chisel
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: f69cd6d0af48f474792f233264e42cc2, type: 3}
   Prefab: {fileID: 1454760096811882800, guid: 204d0d3b35635774b8e6492d826296c6, type: 3}
   ItemType: 0
-  ItemEffects: []
+  ItemEffects:
+  - ItemEffectType: 4
+    effectName: carve
+    Magnitude: 0
+    Duration: 0
+    StatusEffectData: {fileID: 0}
+    RecipeDatas:
+    - {fileID: 11400000, guid: 9768fac8eae31084bbd50072d6f2b4b7, type: 2}
+    - {fileID: 11400000, guid: 691803b06a0394d4785d6b2e74f01504, type: 2}
+    - {fileID: 11400000, guid: 7283743855a78674e8c8cdad4344916c, type: 2}
+    - {fileID: 11400000, guid: b6993c127f122bd4b86262ab2be659c4, type: 2}
+    - {fileID: 11400000, guid: 37fc2d6bd5b745b4ab07322a6815b860, type: 2}
+    - {fileID: 11400000, guid: dfa4b5fddf59f02499363c30fe89b8f8, type: 2}
+    IsImmediate: 0
   Stackable: 0
   Burnable: 0
   Power: 0

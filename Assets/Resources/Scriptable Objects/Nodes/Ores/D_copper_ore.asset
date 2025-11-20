@@ -12,19 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6fb8310d4201904b8ca8fcb39d8d651, type: 3}
   m_Name: D_copper_ore
   m_EditorClassIdentifier: 
-  ID: 
-  Action: 
+  ID: copper_ore
+  Action: mine
   Health: 100
-  Durability: 5
+  Durability: 0
   Capacity: 5
-  DropTable: {fileID: 0}
+  DropTable: {fileID: 11400000, guid: 155742dc7901a67478b8935d019afcb4, type: 2}
   SkillType: 0
-  WeaponType: 0
+  WeaponType: 3
   Requirement: 1
   Experience: 1
-  DamageStatistic: 0
-  SpeedStatistic: 0
+  DamageStatistic: 10
+  SpeedStatistic: 9
   OnHit:
-    ParticleSystem: {fileID: 0}
-    RelativePosition: {x: 0, y: 0, z: 0}
-    Sound: {fileID: 0}
+    ParticleSystem: {fileID: 1012558301860995777, guid: 9614f92314ef4db4699e10082cd877c9,
+      type: 3}
+    RelativePosition: {x: 0, y: 1, z: 1}
+    Sound: {fileID: 8300000, guid: 5319ed8706fc0b44eb7b7745d52fddf9, type: 3}

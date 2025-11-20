@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73e65da5e1cbb0742963b7ea76472fe8, type: 3}
-  m_Name: mining
+  m_Name: Mining
   m_EditorClassIdentifier: 
   SkillType: 0
   Color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0}

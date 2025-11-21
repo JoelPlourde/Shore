@@ -3,6 +3,7 @@
     "drop": "Drop",
     "cancel": "Cancel",
     "examine": "Examine",
+    "attack": "Attack",
     "pick_up": "Pick up",
     "pick": "Pick",
     "mine": "Mine",
@@ -262,6 +263,12 @@
         "poppy_seed": {
             "name": "Poppy Seed",
             "description": "A poppy seed."
+        }
+    },
+    "monsters": {
+        "crab": {
+            "name": "Crab",
+            "description": "A small crab scuttling along the shore."
         }
     },
     "nodes": {

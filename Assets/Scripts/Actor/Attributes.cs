@@ -14,6 +14,7 @@ public class Attributes {
 	public float HungerRate = 0.05f;            // Value per 5 seconds
 	public float Food = 20f;
 	public float Temperature = 20f;
+	public float AttackRange = 1f;
 
 	public event Action<float> OnUpdateHealthEvent;
 	public event Action<float> OnUpdateFoodEvent;

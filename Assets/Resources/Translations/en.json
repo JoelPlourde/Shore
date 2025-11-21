@@ -59,6 +59,22 @@
             "name": "Bristlethorn",
             "description": "Not every rose has its thorn."
         },
+        "wolf_tooth": {
+            "name": "Wolf Tooth",
+            "description": "Proof that wolves do floss."
+        },
+        "spindleweed": {
+            "name": "Spindleweed",
+            "description": "A plant with strong fibers."
+        },
+        "spindleweed_thread": {
+            "name": "Spindleweed Thread",
+            "description": "Thread made from spindleweed fibers."
+        },
+        "spindleweed_fabric": {
+            "name": "Spindleweed Fabric",
+            "description": "Fabric made from spindleweed fibers."
+        },
         "stone": {
             "name": "Stone",
             "description": "A stone found on the ground."

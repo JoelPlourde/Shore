@@ -7,13 +7,14 @@ using SaveSystem;
 
 namespace ItemSystem {
     [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Collider))]
     public class InteractableItem : InteractableBehavior, IInteractable, IWorldSaveable {
 
         [UniqueIdentifier]
         public string UUID;
 
 		[Tooltip("The radius at which the player should stopped at.")]
-		public float InteractionRadius = 1f;
+		public float InteractionRadius = 0.5f;
 
         [SerializeField]
         public ItemData ItemData;

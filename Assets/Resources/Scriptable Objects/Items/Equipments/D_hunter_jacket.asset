@@ -12,22 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 656fd23eb31f3ac4aa3b80ee64427820, type: 3}
   m_Name: D_hunter_jacket
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
-  Prefab: {fileID: 0}
-  Tooltip: '<color=#BFBFBF><size=20>Equip</size></color> <size=22>Hunter Jacket</size>
-
-    <size=16>Chestpiece</size>
-
-    <size=16><color=#1DFF00>+1
-    Armor</color></size>'
+  Sprite: {fileID: 21300000, guid: b5b96816fcf02c944a1f366c3295252a, type: 3}
+  Prefab: {fileID: 527707208915744766, guid: 96ad92b9927c15a498e6133002ad4942, type: 3}
   ItemType: 1
   ItemEffects:
   - ItemEffectType: 0
+    effectName: 
     Magnitude: 0
     Duration: 0
     StatusEffectData: {fileID: 0}
+    RecipeDatas: []
+    IsImmediate: 0
   Stackable: 0
-  EquipmentPrefab: {fileID: 527707208915744766, guid: baf9626bcbc4a2246b20922f5c5a7041,
+  Burnable: 0
+  Power: 0
+  EquipmentPrefab: {fileID: 527707208915744766, guid: 96ad92b9927c15a498e6133002ad4942,
     type: 3}
   SlotType: 1
   WeaponType: 0

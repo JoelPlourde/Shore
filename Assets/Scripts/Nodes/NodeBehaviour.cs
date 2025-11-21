@@ -9,7 +9,7 @@ namespace NodeSystem {
 	public class NodeBehaviour : InteractableBehavior, IInteractable {
 
 		[Tooltip("The radius at which the player should stopped at.")]
-		public float InteractionRadius;
+		public float InteractionRadius = 0.5f;
 
 		[SerializeField]
 		public NodeData NodeData;

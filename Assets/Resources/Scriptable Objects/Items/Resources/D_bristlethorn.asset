@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: D_bristlethorn
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 156645e45259bdd4d8064b3083b60750, type: 3}
-  Prefab: {fileID: 5504130387162340707, guid: e6952f9e9c6d6344d91debde822af970, type: 3}
+  Prefab: {fileID: 2246169868359780949, guid: 9c8b721de94e04040a619e37eb966f0d, type: 3}
   ItemType: 0
   ItemEffects: []
   Stackable: 0

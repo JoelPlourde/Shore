@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7d26e20cfda80046b9311ea6298a385, type: 3}
-  m_Name: D_stone
+  m_Name: D_carving_knife
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 7429735f3684c514c8683a7fcebadd1b, type: 3}
-  Prefab: {fileID: 7259319235019696210, guid: a1a01590956afce4096816b63e38e833, type: 3}
+  Sprite: {fileID: 21300000, guid: ac35317c6816f9f4cb5252e100a6d442, type: 3}
+  Prefab: {fileID: 5793132749265060805, guid: fdfabe239c2bb5c45abcccb3e1b955e2, type: 3}
   ItemType: 0
   ItemEffects: []
   Stackable: 0

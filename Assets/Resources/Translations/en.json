@@ -55,6 +55,10 @@
         }
     },
     "items": {
+        "carving_knife": {
+            "name": "Carving Knife",
+            "description": "A hunter's knife used for carving."
+        },
         "bristlethorn": {
             "name": "Bristlethorn",
             "description": "Not every rose has its thorn."
@@ -66,6 +70,10 @@
         "spindleweed": {
             "name": "Spindleweed",
             "description": "A plant with strong fibers."
+        },
+        "spindleweed_seed": {
+            "name": "Spindleweed Seed",
+            "description": "A seed of spindleweed."
         },
         "spindleweed_thread": {
             "name": "Spindleweed Thread",

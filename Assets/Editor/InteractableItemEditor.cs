@@ -51,6 +51,15 @@ namespace ItemSystem
                     AssetDatabase.Refresh();
                 }
             }
+
+            Collider collider = item.gameObject.GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.excludeLayers = LayerMask.GetMask("Default");
+                EditorUtility.SetDirty(item);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+            }
         }
     }
 }

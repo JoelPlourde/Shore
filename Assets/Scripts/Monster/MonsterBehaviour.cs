@@ -4,13 +4,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using PointerSystem;
+using TaskSystem;
 using UI;
+using DropSystem;
+using ItemSystem;
 
 namespace MonsterSystem
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Creature))]
     public class MonsterBehaviour : InteractableBehavior, IInteractable
     {
         private const float ACTION_JITTER = 0.25f;
@@ -20,6 +24,7 @@ namespace MonsterSystem
 
         private Animator _animator;
         private NavMeshAgent _navMeshAgent;
+        private Creature _creature;
         private DelayedAction _action;
         private Vector3 _spawnPosition;
 
@@ -36,8 +41,12 @@ namespace MonsterSystem
 
             _animator = GetComponent<Animator>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
+            _creature = GetComponent<Creature>();  
             _navMeshAgent.speed = MonsterData.WalkingSpeed;
             _navMeshAgent.autoBraking = false;
+
+            // Initialize the creature with the MonsterData
+            _creature.Initialize(MonsterData, OnDeathCallback);
 
             // Add some jitter to the time between actions
             TimerManager.Instance.Enqueue(BuildNewAction(MonsterData.TimeBetweenActions));
@@ -56,36 +65,62 @@ namespace MonsterSystem
         /// Callback to create the Attack task if the user has selected the 'Attack' option
         /// </summary>
         private void AttackCallback() {
-            /*
-			InteractArguments interactArguments = new InteractArguments(transform.position, this);
+			AttackArguments attackArguments = new AttackArguments(_creature);
 			if (Squad.FirstSelected(out Actor actor)) {
-				actor.TaskScheduler.CreateTask<Interact>(interactArguments);
+				actor.TaskScheduler.CreateTask<Attack>(attackArguments);
 			}
-            */
 		}
+
+        /// <summary>
+        /// Callback invoked when the monster dies.
+        /// </summary>
+        private void OnDeathCallback()
+        {
+            // Remove the Collider
+            Collider collider = GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
+
+            if (MonsterData.Lootable && ReferenceEquals(MonsterData.DropTable, null) == false)
+            {
+                Drop drop = MonsterData.DropTable.GetRandomDrop();
+
+                Item item = drop.ToItem();
+                ItemManager.Instance.PlaceItemInWorld(item, transform.position, transform.rotation, false);
+
+                // TODO POOF effect
+
+                // Make the monster disappear after a delay
+            }
+        }
 
         private void CheckState()
         {
-            if (!this)
-            {
+            if (!this) {
+                return;
+            }
+
+            if (_creature.InCombat) {
+                if (_creature.Dead) {
+                    return;
+                }
+
+                // Re-enqueue the action
+                TimerManager.Instance.Enqueue(BuildNewAction(MonsterData.TimeBetweenActions));
                 return;
             }
 
             // Calculate the next state
-            MoveState();
+            Wander();
 
             // Re-enqueue the action
             TimerManager.Instance.Enqueue(BuildNewAction(MonsterData.TimeBetweenActions));
         }
 
-        private void MoveState()
+        private void Wander()
         {
-            if (_navMeshAgent.isPathStale)
-            {
-                OnEnd();
-                return;
-            }
-
             // Calculate a random point to move to within a certain radius
             Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * MonsterData.WanderingRadius;
 
@@ -98,20 +133,8 @@ namespace MonsterSystem
 
             // Set the destination to the random point
             _navMeshAgent.destination = navHit.position;
-            _navMeshAgent.isStopped = false;
-            _animator.SetBool("Move", true);
-
-            // Create a Target at destination:
-            CreateTargetAtDestination();
-        }
-
-        private void OnEnd()
-        {
-            if (_navMeshAgent.isActiveAndEnabled)
-            {   
-                _animator.SetBool("Move", false);
-                _navMeshAgent.isStopped = true;
-            }
+            MoveArguments moveArguments = new MoveArguments(navHit.position);
+            _creature.TaskScheduler.CreateTask<Move>(moveArguments);
         }
 
         private DelayedAction BuildNewAction(float seconds)
@@ -119,18 +142,6 @@ namespace MonsterSystem
             float time = seconds + UnityEngine.Random.Range(-seconds * ACTION_JITTER, seconds * ACTION_JITTER);
 
             return new DelayedAction(CheckState, time);
-        }
-
-        private void CreateTargetAtDestination()
-        {
-            GameObject targetObject = new GameObject("MonsterTarget - " + gameObject.name);
-            MonsterTarget monsterTarget = targetObject.AddComponent<MonsterTarget>();
-            SphereCollider sphereCollider = targetObject.AddComponent<SphereCollider>();
-            sphereCollider.isTrigger = true;
-            sphereCollider.radius = 1f;
-
-            monsterTarget.SubscribeToTriggerEvents(GetComponent<Collider>(), OnEnd);
-            targetObject.transform.position = _navMeshAgent.destination;
         }
 
         #region Mouse Event
@@ -152,12 +163,11 @@ namespace MonsterSystem
 
         public void OnInteractEnter(Actor actor)
         {
-            Debug.Log("Interacted with monster: " + gameObject.name);
+            AttackCallback();
         }
 
         public void OnInteractExit(Actor actor)
         {
-            Debug.Log("Stopped interacting with monster: " + gameObject.name);
         }
 
         public float GetInteractionRadius()
@@ -165,7 +175,7 @@ namespace MonsterSystem
             // Depends on what the monster is
             if (Squad.FirstSelected(out Actor actor))
             {
-                return actor.Attributes.AttackRange;
+                return _creature.AttackRange;
             } else
             {
                 return 1f;

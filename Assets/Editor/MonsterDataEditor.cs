@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using UnityEditor;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 namespace MonsterSystem
@@ -22,9 +23,11 @@ namespace MonsterSystem
 			}
 
 			// Show the MonsterData.ID as a label field
+            EditorGUILayout.LabelField("General Settings", EditorStyles.boldLabel);
 			EditorGUILayout.LabelField("ID", monsterData.ID.ToString(CultureInfo.InvariantCulture));
-
-            base.OnInspectorGUI();
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("WalkingSpeed"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("TimeBetweenActions"));
+            EditorGUILayout.IntSlider(serializedObject.FindProperty("ForwardOffset"), -180, 180);
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Wandering Settings", EditorStyles.boldLabel);
@@ -38,15 +41,26 @@ namespace MonsterSystem
                     monsterData.WanderingRadius = 5.0f;
                 }
             }
-            serializedObject.ApplyModifiedProperties();
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Combat Settings", EditorStyles.boldLabel);
             monsterData.Attackable = EditorGUILayout.Toggle("Attackable", monsterData.Attackable);
-
             if (monsterData.Attackable) {
-                EditorGUILayout.HelpBox("This Monster can be attacked by the player.", MessageType.Info);
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("Damage"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("Health"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("AttackRange"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("AttackSpeed"));
             }
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Loot Settings", EditorStyles.boldLabel);
+            monsterData.Lootable = EditorGUILayout.Toggle("Lootable", monsterData.Lootable);
+            if (monsterData.Lootable)
+            {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("DropTable"));
+            }
+
+            serializedObject.ApplyModifiedProperties();
         }
     }
 }

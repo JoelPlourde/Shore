@@ -6,9 +6,9 @@ using UnityEngine;
 namespace TaskSystem {
 	public class AttackArguments : ITaskArguments {
 
-		public Actor Target { get; private set; }
+		public Creature Target { get; private set; }
 
-		public AttackArguments(Actor target) {
+		public AttackArguments(Creature target) {
 			Target = target;
 		}
 

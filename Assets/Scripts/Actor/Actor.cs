@@ -18,6 +18,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(TaskScheduler))]
 [RequireComponent(typeof(StatusEffectScheduler))]
+[RequireComponent(typeof(Creature))]
 public class Actor : MonoBehaviour {
 
 	public FactionType FactionType;
@@ -27,6 +28,7 @@ public class Actor : MonoBehaviour {
 	public event Action<Actor> OnHarvestEvent;
 
 	public virtual void Awake() {
+		Creature = GetComponent<Creature>();
 		AudioPlayer = GetComponent<AudioPlayer>();
 		Animator = GetComponent<Animator>();
 		TaskScheduler = GetComponent<TaskScheduler>();
@@ -67,6 +69,7 @@ public class Actor : MonoBehaviour {
 		StatusEffectScheduler.Initialize(Guid);
 		Attributes.Initialize(this, actorDto.AttributesDto);
 		Status.Initialize(actorDto.StatusDto);
+		Creature.Initialize(actorDto.CreatureDto);
 
 		Inventory.Initialize(actorDto.InventoryDto);
 		Armory.Initialize(this, actorDto.ArmoryDto);
@@ -137,6 +140,7 @@ public class Actor : MonoBehaviour {
 
 	public Attributes Attributes { get; private set; } = new Attributes();
 	public Statistics Statistics { get; private set; } = new Statistics();
+	public Creature Creature { get; private set; }
 	public Status Status { get; private set; } = new Status();
 	public Face Face { get; private set; } = new Face();
 	public Body Body { get; private set; } = new Body();

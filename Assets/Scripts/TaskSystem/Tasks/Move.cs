@@ -23,17 +23,17 @@ namespace TaskSystem {
 			}
 
 			// Start the NavMeshAgent.
-			actor.NavMeshAgent.SetDestination(moveArguments.Position);
-			actor.NavMeshAgent.isStopped = false;
+			creature.NavMeshAgent.SetDestination(moveArguments.Position);
+			creature.NavMeshAgent.isStopped = false;
 
 			float angle = Vector3.Angle(transform.forward, (moveArguments.Position - transform.position));
 			if (angle > 160) {
-				actor.Animator.SetTrigger("Turn");
+				creature.Animator.SetTrigger("Turn");
 			}
 
 			// Send the animation.
-			actor.Animator.SetFloat("Speed", actor.NavMeshAgent.speed);
-			actor.Animator.SetBool("Move", true);
+			creature.Animator.SetFloat("Speed", creature.NavMeshAgent.speed);
+			creature.Animator.SetBool("Move", true);
 		}
 
 		public override void Combine(ITaskArguments taskArguments) {
@@ -44,8 +44,8 @@ namespace TaskSystem {
 		public override void OnEnd() {
 			base.OnEnd();
 			trigger?.Destroy();
-			actor.NavMeshAgent.isStopped = true;
-			actor.Animator.SetBool("Move", false);
+			creature.NavMeshAgent.isStopped = true;
+			creature.Animator.SetBool("Move", false);
 		}
 
 		public void OnDestroy() {

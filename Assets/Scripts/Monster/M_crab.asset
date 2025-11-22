@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d4819ac9fdd6047a9fead7ac3d1df9, type: 3}
   m_Name: M_crab
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 0}
   WalkingSpeed: 1
-  TimeBetweenActions: 20
+  TimeBetweenActions: 3
+  ForwardOffset: -90
   Wanders: 1
   WanderingRadius: 15
   Attackable: 1
+  Size: 1
+  Health: 10
+  Damage: 1
+  AttackRange: 1
+  AttackSpeed: 1
+  Lootable: 1
+  DropTable: {fileID: 11400000, guid: c592dc2e4271bfc418dd26ef1718e61f, type: 2}

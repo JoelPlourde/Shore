@@ -25,13 +25,13 @@ namespace TaskSystem {
 			navMeshAgent.SetDestination(fleeArguments.Direction);
 			navMeshAgent.isStopped = false;
 
-			actor.Animator.SetBool("Move", true);
+			creature.Animator.SetBool("Move", true);
 		}
 
 		public override void OnEnd() {
 			base.OnEnd();
 			navMeshAgent.isStopped = true;
-			actor.Animator.SetBool("Move", false);
+			creature.Animator.SetBool("Move", false);
 		}
 	}
 }

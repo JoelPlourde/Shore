@@ -5,6 +5,7 @@ using SaveSystem;
 using MonsterSystem;
 using UnityEngine.AI;
 using TaskSystem;
+using UI;
 
 [RequireComponent(typeof(TaskScheduler))]
 [RequireComponent(typeof(NavMeshAgent))]
@@ -194,6 +195,8 @@ public class Creature : MonoBehaviour
         Health -= damage;
 
         OnUpdateHealthEvent?.Invoke(Health / MaxHealth);
+
+        HitsplatHandler.Instance.ShowHitsplat(transform, (int) damage);
 
         if (Dead)
         {

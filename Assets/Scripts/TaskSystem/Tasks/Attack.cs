@@ -116,12 +116,21 @@ namespace TaskSystem {
 				return;
 			}
 
-			attackArguments.Target.SufferDamage(creature.Damage, creature);
+			// attackArguments.Target.SufferDamage(creature.Damage, creature);
 			creature.Animator.SetTrigger("Attack");
 
 			// Set a cooldown before the next attack can occur.
 			TimerManager.Instance.Enqueue(new DelayedAction(ResetAttackCooldown, creature.AttackSpeed));
 		}
+
+		/// <summary>
+        /// Callback invoked by an animation event when the attack hits.
+        /// </summary>
+		private void OnHit()
+        {
+			attackArguments.Target.SufferDamage(creature.Damage, creature);
+            Debug.Log(creature.name + " hit " + attackArguments.Target.name + " for " + creature.Damage + " damage.");
+        }
 
 		private void LookAtTarget() {
 			// Rotate to face the target offset by the MonsterData forward vector.

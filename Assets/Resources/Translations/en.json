@@ -16,6 +16,14 @@
     "experience": "Experience",
     "required": "Required",
     "skills": {
+        "magic": {
+            "name": "Magic",
+            "description": "The art of harnessing the raw power of the Weave to cast spells."
+        },
+        "archery": {
+            "name": "Archery",
+            "description": "The art of mastering ranged combat using bows and crossbows."
+        },
         "fighting": {
             "name": "Fighting",
             "description": "The art of mastering physical close-combat using strength, technique, and weapon prowess."
@@ -289,6 +297,12 @@
         "crab": {
             "name": "Crab",
             "description": "A small crab scuttling along the shore."
+        }
+    },
+    "abilities": {
+        "slam": {
+            "name": "Slam",
+            "description": "A powerful slam attack dealing melee damage to a single target."
         }
     },
     "nodes": {

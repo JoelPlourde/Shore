@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73e65da5e1cbb0742963b7ea76472fe8, type: 3}
-  m_Name: Cooking
+  m_Name: Archery
   m_EditorClassIdentifier: 
-  SkillType: 3
-  Color: {r: 1, g: 0.029075107, b: 0, a: 0}
-  Icon: {fileID: 21300000, guid: c6511563376d46e479e5221a335d23e4, type: 3}
+  SkillType: 9
+  Color: {r: 0.048608176, g: 0.2830189, b: 0, a: 0}
+  Icon: {fileID: 21300000, guid: 763b2b1116fd7034ea86a9fc7c74056b, type: 3}
   Competencies: []
   Abilities: []

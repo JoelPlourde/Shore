@@ -33,6 +33,7 @@ namespace Gameplay {
 			_text.text = message;
 			_text.fontSize = Mathf.Clamp((int)(-CameraSystem.CameraController.Instance.Distance + CameraSystem.CameraController.Instance.MaxZoom), MIN_FONT_SIZE, MAX_FONT_SIZE);
 
+			gameObject.SetActive(true);
 			_rectTransform.position = Camera.main.WorldToScreenPoint(_actor.transform.position + new Vector3(0, 2f, 0));
 
             // Animate the Hitsplat to fly diagonally upwards
@@ -41,8 +42,6 @@ namespace Gameplay {
 			LeanTween.alphaText(_rectTransform, 0f, time).setOnComplete(() => {
 				Disable();
 			});
-
-			gameObject.SetActive(true);
 		}
 
 		/// <summary>

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 656fd23eb31f3ac4aa3b80ee64427820, type: 3}
-  m_Name: D_wooden_shield
+  m_Name: D_spindleweed_hat
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 3d8fb5f8962a4c24e9436f14c6bd770b, type: 3}
-  Prefab: {fileID: 1818152998852001573, guid: 06ed8cc5d07553a4ca8667d9167d01a9, type: 3}
+  Sprite: {fileID: 21300000, guid: 9b0460d9ede7dd54e995e4676171703a, type: 3}
+  Prefab: {fileID: 916203089482820438, guid: 9d50e1813cdde9b4abc5829ae5031489, type: 3}
   ItemType: 1
   ItemEffects:
   - ItemEffectType: 0
@@ -24,17 +24,16 @@ MonoBehaviour:
     RecipeDatas: []
     IsImmediate: 0
   Stackable: 0
-  Burnable: 1
+  Burnable: 0
   Power: 0
-  EquipmentPrefab: {fileID: 8328065753591031187, guid: ad2d5c623e7947c42a959b249a0a9775,
-    type: 3}
-  SlotType: 6
+  EquipmentPrefab: {fileID: 0}
+  SlotType: 0
   WeaponType: 0
-  DamageCategoryType: 1
-  HideBodyPart: 0
+  DamageCategoryType: 3
+  HideBodyPart: 1
   HideArms: 0
-  HideHair: 0
+  HideHair: 1
   EquipmentStats:
     Statistics:
     - StatisticType: 1
-      Value: 2
+      Value: 1

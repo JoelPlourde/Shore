@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillType: 7
   Color: {r: 0.38431373, g: 0, b: 0, a: 0}
-  Icon: {fileID: 21300000, guid: c6511563376d46e479e5221a335d23e4, type: 3}
+  Icon: {fileID: 21300000, guid: 7f0888aaab58cd446a3546132b5eb404, type: 3}
   Competencies: []
+  Abilities:
+  - {fileID: 11400000, guid: 9790baa162b6ea24aa88098db369a574, type: 2}

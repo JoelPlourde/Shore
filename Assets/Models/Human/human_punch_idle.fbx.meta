@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6bf617375901c8d46badeecf0ea39fb4
+guid: 908b4cd47b647f6498f19a87b807b152
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -32,12 +32,12 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: human_punch_idle
-      takeName: mixamo.com
-      internalID: -203655887218126122
+      takeName: Armature|Armature|mixamo.com|Layer0.001
+      internalID: 6165553400957861818
       firstFrame: 0
       lastFrame: 79
       wrapMode: 0
-      orientationOffsetY: -29.5
+      orientationOffsetY: -30
       level: 0
       cycleOffset: 0
       loop: 0
@@ -46,7 +46,7 @@ ModelImporter:
       loopBlend: 1
       loopBlendOrientation: 1
       loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0

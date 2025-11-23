@@ -7,5 +7,6 @@
 		FARMING = 4,
 		FISHING = 5,
 		RUNECARVING = 6,
+		FIGHTING = 7
 	}
 }

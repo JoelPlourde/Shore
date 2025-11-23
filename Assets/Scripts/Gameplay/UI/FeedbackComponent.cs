@@ -1,12 +1,16 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Gameplay {
-	[RequireComponent(typeof(Text))]
+	[RequireComponent(typeof(TextMeshProUGUI))]
 	public class FeedbackComponent : MonoBehaviour {
 
+		private readonly int MIN_FONT_SIZE = 40;
+		private readonly int MAX_FONT_SIZE = 65;
+
 		private RectTransform _rectTransform;
-		private Text _text;
+		private TextMeshProUGUI _text;
 
 		private Actor _actor;
 
@@ -18,7 +22,7 @@ namespace Gameplay {
 		public void Enable(Actor actor, string message, float time = 1f) {
 
 			if (ReferenceEquals(_text, null)) {
-				_text = GetComponent<Text>();
+				_text = GetComponent<TextMeshProUGUI>();
 			}
 
 			if (ReferenceEquals(_rectTransform, null)) {
@@ -27,11 +31,13 @@ namespace Gameplay {
 
 			_actor = actor;
 			_text.text = message;
-			_text.fontSize = Mathf.Clamp((int)(-CameraSystem.CameraController.Instance.Distance + CameraSystem.CameraController.Instance.MaxZoom), 10, 35);
+			_text.fontSize = Mathf.Clamp((int)(-CameraSystem.CameraController.Instance.Distance + CameraSystem.CameraController.Instance.MaxZoom), MIN_FONT_SIZE, MAX_FONT_SIZE);
 
 			_rectTransform.position = Camera.main.WorldToScreenPoint(_actor.transform.position + new Vector3(0, 2f, 0));
 
-			LeanTween.moveLocalY(gameObject, _rectTransform.localPosition.y + 25f, 0.25f).setEaseOutElastic();
+            // Animate the Hitsplat to fly diagonally upwards
+            LeanTween.moveY(gameObject, _rectTransform.localPosition.y + 25f, 0.25f).setEase(LeanTweenType.easeOutCubic);
+
 			LeanTween.alphaText(_rectTransform, 0f, time).setOnComplete(() => {
 				Disable();
 			});

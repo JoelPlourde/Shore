@@ -7,10 +7,10 @@ namespace SaveSystem {
 	public class LevelDto {
 
 		[SerializeField]
-		public int Value;
+		public int Value = 1;
 
 		[SerializeField]
-		public float Experience;
+		public float Experience = 0f;
 
 		public LevelDto() {}
 

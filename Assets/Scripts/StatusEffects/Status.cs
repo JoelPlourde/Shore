@@ -1,4 +1,5 @@
 ﻿using System;
+using MonsterSystem;
 
 namespace StatusEffectSystem {
 	public class Status {
@@ -45,6 +46,9 @@ namespace StatusEffectSystem {
 
 		public Actor Actor { get; private set; }
 		public StatusEffectData StatusEffectData { get; private set; }
+		public DamageCategoryType DamageCategoryType {
+			get { return StatusEffectData.DamageCategoryType; }
+		}
 		public float Magnitude { get; private set; }
 		public int MaxDuration { get; private set; }
 		public int Duration { get; private set; }

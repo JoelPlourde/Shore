@@ -52,6 +52,7 @@ namespace MonsterSystem
             monsterData.Attackable = EditorGUILayout.Toggle("Attackable", monsterData.Attackable);
             if (monsterData.Attackable) {
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("Damage"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("DamageCategoryType"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("Health"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("AttackRange"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("AttackSpeed"));
@@ -66,6 +67,10 @@ namespace MonsterSystem
             }
 
             serializedObject.ApplyModifiedProperties();
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Experience Settings", EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Experience"));
         }
     }
 }

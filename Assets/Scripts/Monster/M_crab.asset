@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WalkingSpeed: 1
   TimeBetweenActions: 3
-  ForwardOffset: -90
+  ForwardOffset: 90
   Wanders: 1
   WanderingRadius: 15
   Attackable: 1
@@ -22,7 +22,9 @@ MonoBehaviour:
   Height: 1
   Health: 10
   Damage: 1
+  DamageCategoryType: 1
   AttackRange: 1
   AttackSpeed: 1
   Lootable: 1
   DropTable: {fileID: 11400000, guid: c592dc2e4271bfc418dd26ef1718e61f, type: 2}
+  Experience: 10

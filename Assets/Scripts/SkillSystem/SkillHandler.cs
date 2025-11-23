@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace SkillSystem {
@@ -9,7 +10,7 @@ namespace SkillSystem {
 			public static SkillHandler Instance;
 
 			private Image _icon;
-			private Text _title;
+			private TextMeshProUGUI _title;
 			private Button _exit;
 			private Canvas _canvas;
 
@@ -21,7 +22,7 @@ namespace SkillSystem {
 
 				_canvas = GetComponent<Canvas>();
 				_icon = transform.Find("Icon/Image").GetComponent<Image>();
-				_title = transform.Find("Title").GetComponent<Text>();
+				_title = transform.Find("Title").GetComponent<TextMeshProUGUI>();
 				_exit = transform.Find("Exit").GetComponent<Button>();
 				_compentencyHandler = transform.Find("Scroll View/Viewport/CompetencyHandler").GetComponent<CompetencyHandler>();
 				_scrollBar = transform.Find("Scroll View/Scrollbar Vertical").GetComponent<Scrollbar>();

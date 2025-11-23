@@ -36,6 +36,10 @@ public class Creature : MonoBehaviour
     [Tooltip("The forward direction of the creature.")]
     public int ForwardOffset = 0;
 
+    [HideInInspector]
+    [Tooltip("The damage category type of the creature.")]
+    public DamageCategoryType DamageCategoryType = DamageCategoryType.TYPELESS;
+
     // A flag indicating whether the creature is currently in combat
     private bool _inCombat = false;
 
@@ -58,6 +62,14 @@ public class Creature : MonoBehaviour
     public event Action OnDeathEvent;
 
     private FloatingHealthBar _floatingHealthBar;
+
+    // Accumulated damage by category
+    private Dictionary<DamageCategoryType, float> _accumulatedDamage = new Dictionary<DamageCategoryType, float>()
+    {
+        { DamageCategoryType.MELEE, 0f },
+        { DamageCategoryType.RANGED, 0f },
+        { DamageCategoryType.MAGIC, 0f }
+    };
 
     private void Start()
     {
@@ -91,6 +103,7 @@ public class Creature : MonoBehaviour
         MaxHealth = monsterData.Health;
         Health = monsterData.Health;
         Damage = monsterData.Damage;
+        DamageCategoryType = monsterData.DamageCategoryType;
         AttackRange = monsterData.AttackRange;
         AttackSpeed = monsterData.AttackSpeed;
         Size = monsterData.Size;
@@ -122,6 +135,11 @@ public class Creature : MonoBehaviour
             target.TaskScheduler.CreateTask<Attack>(new AttackArguments(this));
         }
         _animator.SetBool("Combat", true);
+
+        // Reset the Accumulated Damage
+        _accumulatedDamage[DamageCategoryType.MELEE] = 0f;
+        _accumulatedDamage[DamageCategoryType.RANGED] = 0f;
+        _accumulatedDamage[DamageCategoryType.MAGIC] = 0f;
 
         // Show floating health bar
         if (ReferenceEquals(_floatingHealthBar, null))
@@ -220,7 +238,7 @@ public class Creature : MonoBehaviour
     /// Suffer X amount of damage. If health is empty, call the virtual OnDeath event.
     /// </summary>
     /// <param name="damage">Amount of damage to suffer.</param>
-    public void SufferDamage(float damage)
+    public void SufferDamage(DamageCategoryType damageCategory, float damage)
     {
         if (!ReferenceEquals(_actor, null))
         {
@@ -235,6 +253,9 @@ public class Creature : MonoBehaviour
             {
                 damage = 0;
             }
+        } else
+        {
+            _accumulatedDamage[damageCategory] += damage;
         }
 
         // Compare the damage to current health, only deduct up to current health
@@ -262,9 +283,9 @@ public class Creature : MonoBehaviour
     /// </summary>
     /// <param name="damage"></param>
     /// <param name="attacker"></param>
-    public void SufferDamage(float damage, Creature attacker)
+    public void SufferDamage(DamageCategoryType damageCategory, float damage, Creature attacker)
     {
-        SufferDamage(damage);
+        SufferDamage(damageCategory, damage);
 
         EnterCombat(attacker);
     }
@@ -321,6 +342,7 @@ public class Creature : MonoBehaviour
     public bool InCombat { get => _inCombat; }
     public float TimeoutDuration { get => _timeoutDuration; }
     public List<Creature> CombatTargets { get => _combatTargets; }
+    public Dictionary<DamageCategoryType, float> AccumulatedDamage { get => _accumulatedDamage; }
 
     public TaskScheduler TaskScheduler { get => _taskScheduler; }
     public Animator Animator { get => _animator; }

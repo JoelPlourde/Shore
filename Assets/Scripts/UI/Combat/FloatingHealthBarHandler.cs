@@ -62,10 +62,17 @@ namespace UI
         {
             foreach (var healthBar in _activeHealthBars)
             {
-                if (ReferenceEquals(healthBar.Target, null))
+                if (ReferenceEquals(healthBar, null))
                 {
+                    HideHealthBar(healthBar);
                     continue;
                 }
+
+                if (healthBar.Target == null || ReferenceEquals(healthBar.Target, null)) {
+                    HideHealthBar(healthBar);
+                    continue;
+                }
+                
 
                 // Update position
                 healthBar.transform.position = CalculatePosition(healthBar.Target.position, healthBar.HeightOffset);

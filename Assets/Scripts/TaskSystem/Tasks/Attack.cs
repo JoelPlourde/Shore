@@ -128,28 +128,16 @@ namespace TaskSystem {
         {
 			float calculatedDamage = Mathf.Round(creature.Damage * UnityEngine.Random.Range(1 - Constant.DAMAGE_JITTER_FACTOR, 1 + Constant.DAMAGE_JITTER_FACTOR));
 
-			attackArguments.Target.SufferDamage(calculatedDamage, creature);
+			attackArguments.Target.SufferDamage(creature.DamageCategoryType, calculatedDamage, creature);
         }
 
-		private void LookAtTarget() {
-			// Rotate to face the target offset by the MonsterData forward vector.
-			Vector3 directionToTarget = attackArguments.Target.transform.position - transform.position;
-			directionToTarget.y = 0f;
-			directionToTarget.Normalize();
-
-			// Determine left/right
-			float signedAngle = Vector3.SignedAngle(transform.forward, directionToTarget, Vector3.up);
-
-			// Apply offset based on side
-			float offset = creature.ForwardOffset;
-			float signedOffset = offset * Mathf.Sign(signedAngle);
-
-			// Final rotation
-			Quaternion lookRot = Quaternion.LookRotation(directionToTarget, Vector3.up);
-			Quaternion finalRot = lookRot * Quaternion.Euler(0f, signedOffset, 0f);
-
+		private void LookAtTarget()
+        {
+			Vector3 dir = attackArguments.Target.transform.position - transform.position;
+			Quaternion lookRot = Quaternion.LookRotation(dir);
+			Quaternion finalRot = lookRot * Quaternion.Euler(0f, creature.ForwardOffset, 0f);
 			LeanTween.rotate(gameObject, finalRot.eulerAngles, 0.2f).setEase(LeanTweenType.easeOutQuad);
-		}
+        }
 
 		private void ResetAttackCooldown() {
 			// Allow the creature to attack again.

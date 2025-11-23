@@ -16,9 +16,13 @@
     "experience": "Experience",
     "required": "Required",
     "skills": {
+        "fighting": {
+            "name": "Fighting",
+            "description": "The art of mastering physical close-combat using strength, technique, and weapon prowess."
+        },
         "runecarving": {
-            "name": "Runecarving",
-            "description": "The art of carving runes into stones."
+            "name": "Runeweaving",
+            "description": "The art of channeling raw power from the Weave into carved runes that unleash magical effects."
         },
         "mining": {
             "name": "Mining",

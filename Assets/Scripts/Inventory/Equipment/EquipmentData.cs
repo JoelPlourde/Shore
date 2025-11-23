@@ -1,4 +1,5 @@
 ﻿using System;
+using MonsterSystem;
 using UnityEngine;
 
 namespace ItemSystem {
@@ -18,6 +19,10 @@ namespace ItemSystem {
 			[SerializeField]
 			[HideInInspector]
 			public WeaponType WeaponType;
+
+			[SerializeField]
+			[Tooltip("The damage category type of the equipment (if applicable).")]
+			public DamageCategoryType DamageCategoryType = DamageCategoryType.MELEE;
 
 			[SerializeField]
 			[Tooltip("If true, the body part will be hidden to avoid clipping when this object is equipped.")]

@@ -36,7 +36,7 @@ namespace StatusEffectSystem {
 		protected virtual void Routine() {
 			foreach (Status status in Statuses) {
 				if (!status.Actor.Dead) {
-					status.Actor.Creature.SufferDamage(status.Magnitude);
+					status.Actor.Creature.SufferDamage(status.DamageCategoryType,status.Magnitude);
 				}
 			}
 		}

@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8282381895890361831}
   m_Layer: 0
-  m_Name: P_iron_lantern
+  m_Name: E_iron_lantern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

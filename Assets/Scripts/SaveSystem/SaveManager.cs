@@ -60,6 +60,7 @@ namespace SaveSystem {
 		/// <returns>Whether the operation was successful.</returns>
 		public bool LoadRecentPlayerSaveFile() {
 			string path = Application.persistentDataPath;
+			UnityEngine.Debug.Log("Looking for save files in: " + path);
 			DirectoryInfo directory = new DirectoryInfo(path);
 			FileInfo[] files = directory.GetFiles("*.json");
 

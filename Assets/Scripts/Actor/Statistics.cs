@@ -51,8 +51,9 @@ public class Statistics {
 	/// <param name="increment">If true, increase the value. Else decrease.</param>
 	public void UpdateStatistic(StatisticType statisticType, int value, bool increment) {
 		if (_currentStatistics.ContainsKey(statisticType)) {
-			_currentStatistics[statisticType] += (increment) ? value : -value;
-			OnUpdateStatisticEvent?.Invoke(statisticType, _currentStatistics[statisticType]);
+			int offsetValue = increment ? value : -value;
+			_currentStatistics[statisticType] += offsetValue;
+			OnUpdateStatisticEvent?.Invoke(statisticType, offsetValue);
 		} else {
 			throw new UnityException("The StatisticType key does not exist, please define it in the Statistics class dictionary.");
 		}

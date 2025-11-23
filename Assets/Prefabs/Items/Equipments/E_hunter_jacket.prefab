@@ -136,7 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3533517225392801261}
   m_Layer: 0
-  m_Name: P_hunter_jacket
+  m_Name: E_hunter_jacket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

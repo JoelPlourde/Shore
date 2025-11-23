@@ -56,6 +56,14 @@
         }
     },
     "items": {
+        "wooden_shield": {
+            "name": "Wooden Shield",
+            "description": "A weathered wooden planks shield."
+        },
+        "driftwood": {
+            "name": "Driftwood",
+            "description": "A piece of driftwood found on the shore."
+        },
         "crab_shell": {
             "name": "Crab Shell",
             "description": "A hard shell from a crab."

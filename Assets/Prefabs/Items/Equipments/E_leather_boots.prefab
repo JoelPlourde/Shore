@@ -249,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5426337009101307281}
   m_Layer: 0
-  m_Name: P_leather_boots
+  m_Name: E_leather_boots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

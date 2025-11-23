@@ -117,6 +117,10 @@ namespace SaveSystem {
 					saveable.Load(save);
 				}
 			}
+
+			// Select the first actor in the squad.
+			Squad.FirstSelected(out Actor actor);
+			Squad.SelectActor(actor);
 		}
 
 		/// <summary>

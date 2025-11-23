@@ -69,7 +69,7 @@ public class Actor : MonoBehaviour {
 		StatusEffectScheduler.Initialize(Guid);
 		Attributes.Initialize(this, actorDto.AttributesDto);
 		Status.Initialize(actorDto.StatusDto);
-		Creature.Initialize(actorDto.CreatureDto);
+		Creature.Initialize(this, actorDto.CreatureDto);
 
 		Inventory.Initialize(actorDto.InventoryDto);
 		Armory.Initialize(this, actorDto.ArmoryDto);

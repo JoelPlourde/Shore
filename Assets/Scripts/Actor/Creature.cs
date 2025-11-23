@@ -6,6 +6,7 @@ using MonsterSystem;
 using UnityEngine.AI;
 using TaskSystem;
 using UI;
+using ItemSystem.EquipmentSystem;
 
 [RequireComponent(typeof(TaskScheduler))]
 [RequireComponent(typeof(NavMeshAgent))]
@@ -65,11 +66,18 @@ public class Creature : MonoBehaviour
     }
 
     #region Initialization
-    public void Initialize(CreatureDto creatureDto)
+    public void Initialize(Actor actor, CreatureDto creatureDto)
     {
         MaxHealth = creatureDto.MaxHealth;
         Health = creatureDto.Health;
-        Damage = creatureDto.Damage;
+
+        actor.Statistics.OnUpdateStatisticEvent += (statisticType, value) =>
+        {
+            if (statisticType == StatisticType.STRENGTH)
+            {
+                Damage += value;
+            }
+        };
     }
 
     /// <summary>
@@ -212,6 +220,12 @@ public class Creature : MonoBehaviour
     /// <param name="damage">Amount of damage to suffer.</param>
     public void SufferDamage(float damage)
     {
+        // Compare the damage to current health, only deduct up to current health
+        if (damage > Health)
+        {
+            damage = Health;
+        }
+
         Health -= damage;
 
         OnUpdateHealthEvent?.Invoke(Health / MaxHealth);

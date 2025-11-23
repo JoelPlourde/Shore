@@ -19,6 +19,11 @@ namespace SkillSystem {
 				if (ReferenceEquals(TextComponent, null)) {
 					throw new UnityException("Please verify that this component has an TextComponent as his children.");
 				}
+
+				ExperienceComponent = transform.GetComponentInChildren<SkillExperienceComponent>();
+				if (ReferenceEquals(ExperienceComponent, null)) {
+					throw new UnityException("Please verify that this component has an ExperienceComponent as his children.");
+				}
 			}
 
 			public void Initialize(SkillData skillData, Level level, UnityAction callback) {
@@ -26,6 +31,7 @@ namespace SkillSystem {
 					GetComponent<Button>().onClick.AddListener(callback);
 					IconComponent.Initialize(skillData);
 					TextComponent.Initialize(level);
+					ExperienceComponent.Initialize(skillData, level);
 					_initialized = true;
 				}
 				TextComponent.Refresh(level);
@@ -37,6 +43,7 @@ namespace SkillSystem {
 
 			public SkillIconComponent IconComponent { get; private set; }
 			public SkillTextComponent TextComponent { get; private set; }
+			public SkillExperienceComponent ExperienceComponent { get; set; }
 		}
 	}
 }

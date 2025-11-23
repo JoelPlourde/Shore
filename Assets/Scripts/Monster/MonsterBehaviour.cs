@@ -8,6 +8,7 @@ using TaskSystem;
 using UI;
 using DropSystem;
 using ItemSystem;
+using SkillSystem;
 
 namespace MonsterSystem
 {
@@ -97,6 +98,34 @@ namespace MonsterSystem
                 // TODO POOF effect
 
                 // Make the monster disappear after a delay
+
+                LeanTween.delayedCall(2f, () =>
+                {
+                    Destroy(gameObject);
+                });
+            }
+
+            if (Squad.FirstSelected(out Actor actor))
+            {
+                // Calculate the total damage dealt to the monster across all damage categories
+                float totalDamage = 0f;
+                foreach (var totalEntry in _creature.AccumulatedDamage)
+                {
+                    totalDamage += totalEntry.Value;
+                }
+
+                // Iterate over the Accumulated Damage and award experience based on damage dealt as a proportion of total damage
+                foreach (var damageEntry in _creature.AccumulatedDamage)
+                {
+                    DamageCategoryType damageCategory = damageEntry.Key;
+                    float damageDealt = damageEntry.Value;
+
+                    if (damageDealt > 0f && totalDamage > 0f)
+                    {
+                        float experienceGained = Mathf.Round((damageDealt / totalDamage) * MonsterData.Experience);
+                        actor.Skills.GainExperience(damageCategory, experienceGained);
+                    }
+                }
             }
         }
 

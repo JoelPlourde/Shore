@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using SkillSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,8 +21,10 @@ namespace Gameplay {
 			}
 		}
 
-		public void DisplayExperienceGain(Actor actor, int experience) {
-			DisplayMessage(actor, "<color=#35fc03>+" + experience + "</color>");
+		public void DisplayExperienceGain(Actor actor, SkillType skillType, int experience) {
+			SkillData skillData = SkillManager.Instance.GetSkillData(skillType);
+			string colorHex = ColorUtility.ToHtmlStringRGB(skillData.Color);
+			DisplayMessage(actor, "<color=#" + colorHex + ">+" + experience + "</color>");
 		}
 
 		public void DisplayError(Actor actor, string error) {

@@ -9,7 +9,7 @@ namespace SkillSystem {
 
 		public Level() {
 			Value = 1;
-			Experience = 1f;
+			Experience = 0f;
 		}
 
 		public void Initialize(LevelDto levelDto) {

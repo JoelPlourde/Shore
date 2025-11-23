@@ -56,6 +56,7 @@ namespace SkillSystem {
 			/// <param name="level">The update level information.</param>
 			private void OnExperienceGain(SkillType skillType, Level level) {
 				_skillComponents[(int)skillType].TextComponent.OnGainExperience(level);
+				_skillComponents[(int)skillType].ExperienceComponent.OnUpdateExperience(level.Experience);
 			}
 
 			public Canvas Canvas { get; set; }

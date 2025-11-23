@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MonsterSystem;
 using UnityEngine;
 
 namespace StatusEffectSystem {
@@ -38,5 +39,9 @@ namespace StatusEffectSystem {
 		[SerializeField]
 		[Tooltip("Determine what is the effect of the status.")]
 		public List<StatusEffectType> statusEffectTypes;
+
+		[SerializeField]
+		[Tooltip("The damage category type of the status effect (if applicable).")]
+		public DamageCategoryType DamageCategoryType = DamageCategoryType.TYPELESS;
 	}
 }

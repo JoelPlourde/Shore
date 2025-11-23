@@ -1,4 +1,5 @@
 ﻿using Gameplay;
+using MonsterSystem;
 using SaveSystem;
 using System;
 using System.Collections.Generic;
@@ -44,13 +45,24 @@ namespace SkillSystem {
 			}
 		}
 
+		public void GainExperience(DamageCategoryType damageCategoryType, float experience) {
+			if (damageCategoryType == DamageCategoryType.TYPELESS)
+			{
+				return;
+			}
+
+			SkillType skillType = GetSkillTypeFromDamageCategoryType(damageCategoryType);
+			GainExperience(skillType, experience);
+		}
+
 		/// <summary>
 		/// Gain experience in a respective skill.
 		/// </summary>
 		/// <param name="skillType">The skill</param>
 		/// <param name="experience">The amount of experience</param>
 		public void GainExperience(SkillType skillType, float experience) {
-			FeedbackManager.Instance.DisplayExperienceGain(_actor, (int) experience);
+			
+			FeedbackManager.Instance.DisplayExperienceGain(_actor, skillType, (int) experience);
 
 			if (_skills[skillType].IncreaseExperience(experience) >= ExperienceTable.GetExperienceRequiredAt(GetLevel(skillType).Value + 1)) {
 				_skills[skillType].IncreaseLevel();
@@ -58,6 +70,21 @@ namespace SkillSystem {
 			}
 			OnExperienceGain?.Invoke(skillType, _skills[skillType]);
 		}
+
+		private SkillType GetSkillTypeFromDamageCategoryType(DamageCategoryType damageCategoryType)
+        {
+            switch (damageCategoryType)
+			{
+				case DamageCategoryType.MELEE:
+					return SkillType.FIGHTING;
+				case DamageCategoryType.MAGIC:
+					throw new NotImplementedException("Magic skill type is not implemented yet.");
+				case DamageCategoryType.RANGED:
+					throw new NotImplementedException("Ranged skill type is not implemented yet.");
+				default:
+					throw new NotImplementedException("Unknown DamageCategoryType: " + damageCategoryType);
+			}
+        }
 
 		public IReadOnlyDictionary<SkillType, Level> GetSkillLevels => _skills;
 	}

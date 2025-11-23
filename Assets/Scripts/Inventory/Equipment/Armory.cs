@@ -63,6 +63,8 @@ namespace ItemSystem {
 						_actor.Animator.SetInteger("Weapon Type", (int) _currentWeaponType);
 
 						_actor.Emotion.PlayEmote(EmoteSystem.EmoteType.SHEATHE);
+
+						_actor.Creature.DamageCategoryType = equipment.EquipmentData.DamageCategoryType;
 					}
 
 					if (equipment.EquipmentData.SlotType == SlotType.SHIELD) {

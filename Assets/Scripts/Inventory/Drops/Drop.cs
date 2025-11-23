@@ -35,7 +35,6 @@ namespace DropSystem {
 		}
 
 		public Item ToItem() {
-			Debug.Log("Creating item from drop: " + ItemData.name + " x" + Amount);
 			return new Item(ItemData, Amount);
 		}
 	}

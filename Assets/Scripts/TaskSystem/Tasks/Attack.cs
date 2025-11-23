@@ -126,7 +126,9 @@ namespace TaskSystem {
         /// </summary>
 		private void OnHit()
         {
-			attackArguments.Target.SufferDamage(creature.Damage, creature);
+			float calculatedDamage = Mathf.Round(creature.Damage * UnityEngine.Random.Range(1 - Constant.DAMAGE_JITTER_FACTOR, 1 + Constant.DAMAGE_JITTER_FACTOR));
+
+			attackArguments.Target.SufferDamage(calculatedDamage, creature);
         }
 
 		private void LookAtTarget() {
@@ -158,11 +160,10 @@ namespace TaskSystem {
 		}
 
 		public override void OnEnd() {
-			// Huh ?!?!
-			// CancelInvoke(nameof(MoveRoutine));
+			CancelInvoke(nameof(MoveRoutine));
 
-			//_trigger?.Destroy();
-			//_trigger = null;
+			_trigger?.Destroy();
+			_trigger = null;
 			
 			if (navMeshAgent.isActiveAndEnabled) {
 				navMeshAgent.isStopped = true;

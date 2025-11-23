@@ -12,6 +12,12 @@ namespace UI
 
         public static HitsplatHandler Instance;
 
+        public Sprite _damageSprite;
+        public Sprite _blockSprite;
+        public Sprite _criticalSprite;
+
+        private Sprite[] _hitsplatSprites;
+
         // Template hitsplat for instantiation
         private Hitsplat _templateHitsplat;
 
@@ -21,6 +27,13 @@ namespace UI
         private void Awake()
         {
             Instance = this;
+
+            _hitsplatSprites = new Sprite[3]
+            {
+                _damageSprite,
+                _blockSprite,
+                _criticalSprite
+            };
 
             // Get the first object of type Hitsplat in children as the template
             _templateHitsplat = GetComponentInChildren<Hitsplat>(true);
@@ -43,7 +56,7 @@ namespace UI
         /// </summary>
         /// <param name="object"></param>
         /// <param name="damage"></param>
-        public void ShowHitsplat(Transform @object, int damage, float heightOffset = 2.0f)
+        public void ShowHitsplat(Transform @object, HitsplatType type, int damage, float heightOffset = 2.0f)
         {
             heightOffset -= 0.5f; // Adjust for better positioning
 
@@ -54,7 +67,7 @@ namespace UI
             // Activating the hitsplat before setting its position to ensure proper rendering
             hitsplat.gameObject.SetActive(true);
             hitsplat.transform.position = position;
-            hitsplat.ShowDamage(damage);
+            hitsplat.ShowDamage(_hitsplatSprites[(int)type], damage);
 
             LeanTween.delayedCall(DELAYED_CALL_TIMEOUT, () =>
             {

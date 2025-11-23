@@ -55,6 +55,8 @@ public class Creature : MonoBehaviour
     public event Action<float> OnUpdateHealthEvent;
     public event Action OnDeathEvent;
 
+    private FloatingHealthBar _floatingHealthBar;
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
@@ -82,6 +84,7 @@ public class Creature : MonoBehaviour
         AttackRange = monsterData.AttackRange;
         AttackSpeed = monsterData.AttackSpeed;
         Size = monsterData.Size;
+        Height = monsterData.Height;
         ForwardOffset = monsterData.ForwardOffset;
         if (OnDeathCallback != null)
         {
@@ -104,11 +107,21 @@ public class Creature : MonoBehaviour
             target.EnterCombat(this); // Ensure mutual combat engagement
 
             target.TaskScheduler.CancelTask();
-            
+
             // Create an Attack task if not already attacking
-		    target.TaskScheduler.CreateTask<Attack>(new AttackArguments(this));
+            target.TaskScheduler.CreateTask<Attack>(new AttackArguments(this));
         }
         _animator.SetBool("Combat", true);
+
+        // Show floating health bar
+        if (ReferenceEquals(_floatingHealthBar, null))
+        {
+            // Initialize floating health bar
+            _floatingHealthBar = FloatingHealthBarHandler.Instance.InitializeHealthBar(transform, Health / MaxHealth, Height);
+
+            // Subscribe to health update events to refresh the health bar
+            OnUpdateHealthEvent += _floatingHealthBar.Refresh;
+        }
 
         // Register the target if not already present
         if (!_combatTargets.Contains(target) && target != this)
@@ -142,6 +155,13 @@ public class Creature : MonoBehaviour
                 // Still have other targets, do not exit combat
                 return;
             }
+        }
+
+        if (!ReferenceEquals(_floatingHealthBar, null))
+        {
+            FloatingHealthBarHandler.Instance.HideHealthBar(_floatingHealthBar);
+            OnUpdateHealthEvent -= _floatingHealthBar.Refresh;
+            _floatingHealthBar = null;
         }
 
         Debug.Log(gameObject.name + " is exiting combat.");
@@ -196,7 +216,7 @@ public class Creature : MonoBehaviour
 
         OnUpdateHealthEvent?.Invoke(Health / MaxHealth);
 
-        HitsplatHandler.Instance.ShowHitsplat(transform, (int) damage);
+        HitsplatHandler.Instance.ShowHitsplat(transform, (int)damage, Height / 2f);
 
         if (Dead)
         {
@@ -242,12 +262,29 @@ public class Creature : MonoBehaviour
         Animator.SetBool("Death", true);
         NavMeshAgent.isStopped = true;
 
+        if (!ReferenceEquals(_floatingHealthBar, null))
+        {
+            FloatingHealthBarHandler.Instance.HideHealthBar(_floatingHealthBar);
+            _floatingHealthBar = null;
+        }
+
+        // Find the Rigidbody component and disable it
+        Rigidbody rigidbody = GetComponent<Rigidbody>();
+        if (!ReferenceEquals(rigidbody, null))
+        {
+            rigidbody.isKinematic = true;
+        }
+
+        // Disable the NavMeshAgent
+        NavMeshAgent.enabled = false;
+
         OnDeathEvent?.Invoke();
     }
     #endregion
 
     public bool Dead { get => Health <= 0; }
     public float Size { get; private set; } = 1.0f;
+    public float Height { get; private set; } = 2.0f;
     public bool InCombat { get => _inCombat; }
     public float TimeoutDuration { get => _timeoutDuration; }
     public List<Creature> CombatTargets { get => _combatTargets; }

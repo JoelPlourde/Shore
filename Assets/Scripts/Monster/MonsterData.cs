@@ -43,6 +43,10 @@ namespace MonsterSystem
         public float Size = 1.0f;
 
         [SerializeField]
+        [Tooltip("The height of the monster for spawning and placement purposes.")]
+        public float Height = 2.0f;
+
+        [SerializeField]
         [Tooltip("The health of the monster.")]
         public float Health = 100.0f;
 

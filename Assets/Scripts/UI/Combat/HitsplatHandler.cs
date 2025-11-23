@@ -3,63 +3,64 @@ using UnityEngine;
 
 namespace UI
 {
+    /// <summary>
+    /// Handles the display and management of hitsplats in the UI.
+    /// </summary>
     public class HitsplatHandler : MonoBehaviour
     {
+        private static readonly float DELAYED_CALL_TIMEOUT = 1.5f;
+
         public static HitsplatHandler Instance;
 
-        private int index;
-        private Hitsplat[] _queuedHitsplats;
+        // Template hitsplat for instantiation
+        private Hitsplat _templateHitsplat;
 
-        public GameObject crab;
-        public GameObject player;
+        // Pool of hitsplats
+        private Queue<Hitsplat> _hitsplatPool = new Queue<Hitsplat>();
 
         private void Awake()
         {
             Instance = this;
 
             // Get the first object of type Hitsplat in children as the template
-            _queuedHitsplats = GetComponentsInChildren<Hitsplat>(true);
-            index = _queuedHitsplats.Length - 1;
+            _templateHitsplat = GetComponentInChildren<Hitsplat>(true);
+            _templateHitsplat.gameObject.SetActive(false);
 
-            // For each queued hitsplat, deactivate it and set its transform to default
-            foreach (var hitsplat in _queuedHitsplats)
+            // Pre-instantiate a pool of hitsplats
+            for (int i = 0; i < 10; i++)
             {
-                hitsplat.gameObject.SetActive(false);
+                Hitsplat hitsplat = Instantiate(_templateHitsplat, transform);
                 hitsplat.transform.localPosition = Vector3.zero;
                 hitsplat.transform.localRotation = Quaternion.identity;
                 hitsplat.transform.localScale = Vector3.one;
+                hitsplat.gameObject.SetActive(false);
+                _hitsplatPool.Enqueue(hitsplat);
             }
         }
 
-        public void ShowHitsplat(Transform @object, int damage)
-        {
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(@object.position);
-            Vector3 randomPosition = screenPosition + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
-            ShowHitsplat(randomPosition, damage);
-        }
-
         /// <summary>
-        /// Show a hitsplat at the given position with the given damage.
+        /// Show a hitsplat for the given object with the specified damage.
         /// </summary>
-        /// <param name="position"></param>
+        /// <param name="object"></param>
         /// <param name="damage"></param>
-        private void ShowHitsplat(Vector3 position, int damage)
+        public void ShowHitsplat(Transform @object, int damage, float heightOffset = 2.0f)
         {
-            Hitsplat hitsplat = _queuedHitsplats[index];
-            index = (index - 1 + _queuedHitsplats.Length) % _queuedHitsplats.Length;
+            heightOffset -= 0.5f; // Adjust for better positioning
+
+            Vector3 position = Camera.main.WorldToScreenPoint(@object.position + new Vector3(0, heightOffset, 0));
+
+            Hitsplat hitsplat = _hitsplatPool.Dequeue();
             
-            hitsplat.GetComponent<RectTransform>().position = position;
+            // Activating the hitsplat before setting its position to ensure proper rendering
             hitsplat.gameObject.SetActive(true);
+            hitsplat.transform.position = position;
             hitsplat.ShowDamage(damage);
 
-            // Return the hitsplat to the pool after a delay
-            StartCoroutine(ReturnHitsplatToPoolAfterDelay(hitsplat, 1.5f));
-        }
-
-        private System.Collections.IEnumerator ReturnHitsplatToPoolAfterDelay(Hitsplat hitsplat, float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            hitsplat.gameObject.SetActive(false);
+            LeanTween.delayedCall(DELAYED_CALL_TIMEOUT, () =>
+            {
+                hitsplat.gameObject.SetActive(false);
+                _hitsplatPool.Enqueue(hitsplat);
+            });
         }
     }
 }

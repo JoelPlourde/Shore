@@ -27,7 +27,12 @@ namespace MonsterSystem
 			EditorGUILayout.LabelField("ID", monsterData.ID.ToString(CultureInfo.InvariantCulture));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("WalkingSpeed"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("TimeBetweenActions"));
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Physical Attributes", EditorStyles.boldLabel);
             EditorGUILayout.IntSlider(serializedObject.FindProperty("ForwardOffset"), -180, 180);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Size"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Height"));
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Wandering Settings", EditorStyles.boldLabel);

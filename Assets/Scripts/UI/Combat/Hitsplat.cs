@@ -5,7 +5,7 @@ using UnityEngine.UI;
 namespace UI {
     public class Hitsplat : MonoBehaviour
     {
-        private static readonly float HITSPLIT_DIMENSION = 100f;
+        private static readonly float HITSPLIT_DIMENSION = 75f;
         private static readonly float MOVE_Y_DISTANCE = 20f;
 
         private static readonly float FADE_SPEED = 1f;

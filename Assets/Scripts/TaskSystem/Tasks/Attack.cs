@@ -40,7 +40,6 @@ namespace TaskSystem {
 		}
 
 		private void Routine() {
-			Debug.Log(creature.name + " is executing Attack task against " + attackArguments.Target.name + ".");
 			if (!this) {
 				return;
 			}
@@ -52,7 +51,6 @@ namespace TaskSystem {
 
 			if (CheckIfCloseToTarget()) {
 				CancelInvoke(nameof(MoveRoutine));
-
 				AttackState();
 			} else {
 				MoveState();
@@ -129,7 +127,6 @@ namespace TaskSystem {
 		private void OnHit()
         {
 			attackArguments.Target.SufferDamage(creature.Damage, creature);
-            Debug.Log(creature.name + " hit " + attackArguments.Target.name + " for " + creature.Damage + " damage.");
         }
 
 		private void LookAtTarget() {
@@ -155,8 +152,6 @@ namespace TaskSystem {
 		private void ResetAttackCooldown() {
 			// Allow the creature to attack again.
 			_canAttack = true;
-
-			Debug.Log(creature.name + " attack cooldown reset.");
 
 			// Continue the attack sequence if still in range.
 			Routine();

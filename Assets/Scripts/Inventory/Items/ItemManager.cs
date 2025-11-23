@@ -32,7 +32,7 @@ namespace ItemSystem {
 
 				// Get the closest point on the NavMesh to the desired position.
 
-				UnityEngine.AI.NavMesh.SamplePosition(position, out UnityEngine.AI.NavMeshHit hit, 1.0f, UnityEngine.AI.NavMesh.AllAreas);
+				UnityEngine.AI.NavMesh.SamplePosition(position, out UnityEngine.AI.NavMeshHit hit, 0.25f, UnityEngine.AI.NavMesh.AllAreas);
 				position = hit.position;
 
 				// Add some jitter to the position to avoid stacking items.

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -6,11 +7,11 @@ namespace UI {
 	namespace Portrait {
 		public class HealthBar : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 			private Slider _slider;
-			private Text _text;
+			private TextMeshProUGUI _text;
 
 			private void Awake() {
 				_slider = GetComponent<Slider>();
-				_text = GetComponentInChildren<Text>();
+				_text = GetComponentInChildren<TextMeshProUGUI>();
 				_text.gameObject.SetActive(false);
 			}
 
@@ -25,6 +26,9 @@ namespace UI {
 
 			public void UpdateHealth(float percentage) {
 				_slider.value = percentage;
+				if (_text.gameObject.activeSelf) {
+					_text.text = (_slider.value * 100f) + "%";
+				}
 			}
 
 			public void OnPointerEnter(PointerEventData eventData) {

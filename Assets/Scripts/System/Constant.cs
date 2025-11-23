@@ -41,4 +41,8 @@
 	public static readonly float DEFAULT_HEALTH_REGENERATION = 1.00f;
 	public static readonly float DEFAULT_HUNGER_RATE = 0.05f;
 	public static readonly float DEFAULT_FOOD = 5f;
+
+	// Combat
+	public static readonly float ARMOR_DAMAGE_REDUCTION_FACTOR = 0.5f; // Each point of armor reduces damage by 50%
+	public static readonly float DAMAGE_JITTER_FACTOR = 0.2f; // Damage can vary by ±20%
 }

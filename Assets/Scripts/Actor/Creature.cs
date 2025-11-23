@@ -48,6 +48,7 @@ public class Creature : MonoBehaviour
     // List of current combat targets
     private List<Creature> _combatTargets = new List<Creature>();
 
+    private Actor _actor;
     private Animator _animator;
     private NavMeshAgent _navMeshAgent;
     private TaskScheduler _taskScheduler;
@@ -70,6 +71,7 @@ public class Creature : MonoBehaviour
     {
         MaxHealth = creatureDto.MaxHealth;
         Health = creatureDto.Health;
+        _actor = actor;
 
         actor.Statistics.OnUpdateStatisticEvent += (statisticType, value) =>
         {
@@ -220,6 +222,21 @@ public class Creature : MonoBehaviour
     /// <param name="damage">Amount of damage to suffer.</param>
     public void SufferDamage(float damage)
     {
+        if (!ReferenceEquals(_actor, null))
+        {
+            int armor = _actor.Statistics.GetStatistic(StatisticType.ARMOR);
+
+            // Rounded to the nearest whole number
+            float damageReduction = Mathf.Round(armor * Constant.ARMOR_DAMAGE_REDUCTION_FACTOR);
+
+            damage -= damageReduction;
+
+            if (damage < 0)
+            {
+                damage = 0;
+            }
+        }
+
         // Compare the damage to current health, only deduct up to current health
         if (damage > Health)
         {
@@ -230,7 +247,9 @@ public class Creature : MonoBehaviour
 
         OnUpdateHealthEvent?.Invoke(Health / MaxHealth);
 
-        HitsplatHandler.Instance.ShowHitsplat(transform, (int)damage, Height / 2f);
+        HitsplatType hitsplatType = (damage > 0) ? HitsplatType.DAMAGE : HitsplatType.BLOCK;
+
+        HitsplatHandler.Instance.ShowHitsplat(transform, hitsplatType, (int)damage, Height / 2f);
 
         if (Dead)
         {

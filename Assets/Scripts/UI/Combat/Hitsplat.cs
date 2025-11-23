@@ -43,7 +43,7 @@ namespace UI {
             _hitsplatText.alignment = TextAlignmentOptions.Center;
             _hitsplatText.autoSizeTextContainer = true;
             _hitsplatText.enableAutoSizing = true;
-            _hitsplatText.fontSizeMax = 72;
+            _hitsplatText.fontSizeMax = 52;
             _hitsplatText.fontSize = 24;
             _hitsplatText.color = Color.white;
 
@@ -57,11 +57,12 @@ namespace UI {
         /// Show damage on the hitsplat.
         /// </summary>
         /// <param name="damage"></param>
-        public void ShowDamage(int damage)
+        public void ShowDamage(Sprite sprite, int damage)
         {
             _hitsplatText.text = damage.ToString();
             _hitsplatText.enabled = true;
             _backgroundImage.enabled = true;
+            _backgroundImage.sprite = sprite;
 
             // Animate the Hitsplat to fly diagonally upwards
             LeanTween.moveY(gameObject, transform.position.y + MOVE_Y_DISTANCE, MOVE_SPEED).setEase(LeanTweenType.easeOutCubic);

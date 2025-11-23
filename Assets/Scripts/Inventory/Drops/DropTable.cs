@@ -34,6 +34,17 @@ namespace DropSystem {
 			return Drops[Drops.Length - 1];
 		}
 
+		public void GetRandomDrops(ref System.Collections.Generic.List<Drop> drops) {
+			// Check if there are any guaranteed drops first
+			foreach (Drop drop in Drops) {
+				if (drop.Guaranteed) {
+					drops.Add(drop);
+				}
+			}
+			// Then get a random drop
+			drops.Add(GetRandomDrop());
+		}
+
 		public string ID { get; set; }
 	}
 }

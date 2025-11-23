@@ -18,6 +18,10 @@ namespace DropSystem {
 		[SerializeField]
 		public Quantity Quantity;
 
+		[Tooltip("Whether or not this drop is guaranteed.")]
+		[SerializeField]
+		public bool Guaranteed = false;
+
 		private int _amount = 0;
 
 		/// <summary>
@@ -31,6 +35,7 @@ namespace DropSystem {
 		}
 
 		public Item ToItem() {
+			Debug.Log("Creating item from drop: " + ItemData.name + " x" + Amount);
 			return new Item(ItemData, Amount);
 		}
 	}

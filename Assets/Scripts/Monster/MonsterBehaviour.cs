@@ -85,10 +85,14 @@ namespace MonsterSystem
 
             if (MonsterData.Lootable && ReferenceEquals(MonsterData.DropTable, null) == false)
             {
-                Drop drop = MonsterData.DropTable.GetRandomDrop();
+                List<Drop> drops = new List<Drop>();
+                MonsterData.DropTable.GetRandomDrops(ref drops);
 
-                Item item = drop.ToItem();
-                ItemManager.Instance.PlaceItemInWorld(item, transform.position, transform.rotation, false);
+                foreach (Drop drop in drops)
+                {
+                    Item item = drop.ToItem();
+                    ItemManager.Instance.PlaceItemInWorld(item, transform.position, transform.rotation, false);
+                }
 
                 // TODO POOF effect
 

@@ -56,6 +56,14 @@
         }
     },
     "items": {
+        "crab_shell": {
+            "name": "Crab Shell",
+            "description": "A hard shell from a crab."
+        },
+        "crab_meat": {
+            "name": "Crab Meat",
+            "description": "Meat from a crab."
+        },
         "carving_knife": {
             "name": "Carving Knife",
             "description": "A hunter's knife used for carving."

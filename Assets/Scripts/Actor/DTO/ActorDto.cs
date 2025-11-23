@@ -22,6 +22,9 @@ namespace SaveSystem {
 		public FactionType FactionType;
 
 		[SerializeField]
+		public CreatureDto CreatureDto;
+
+		[SerializeField]
 		public AttributesDto AttributesDto;
 
 		[SerializeField]
@@ -45,6 +48,7 @@ namespace SaveSystem {
 			Guid = System.Guid.NewGuid().ToString();
 			Playable = true;
 			FactionType = FactionType.FACTIONLESS;
+			CreatureDto = new CreatureDto();
 			AttributesDto = new AttributesDto();
 			StatusDto = new StatusDto();
 			FeaturesDto = new FeaturesDto();
@@ -59,6 +63,7 @@ namespace SaveSystem {
 			Guid = actor.Guid.ToString();
 			Playable = actor.Playable;
 			FactionType = actor.FactionType;
+			CreatureDto = new CreatureDto(actor.Creature);
 			AttributesDto = new AttributesDto(actor.Attributes);
 			StatusDto = new StatusDto(actor.Status);
 			FeaturesDto = new FeaturesDto(actor.Body, actor.Face);

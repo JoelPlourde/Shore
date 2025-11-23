@@ -8,7 +8,7 @@ namespace StatusEffectSystem {
 		protected override void Routine() {
 			foreach (Status status in Statuses) {
 				if (!status.Actor.Dead) {
-					status.Actor.Attributes.IncreaseHealth(status.Magnitude);
+					status.Actor.Creature.IncreaseHealth(status.Magnitude);
 				}
 			}
 		}

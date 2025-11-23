@@ -18,6 +18,11 @@ namespace TaskSystem {
 			Radius = radius;
 		}
 
+		public MoveArguments(Transform transform, float radius) {
+			Position = transform.position;
+			Radius = radius;
+		}
+
 		public TaskType GetTaskType() {
 			return TaskType.MOVE;
 		}

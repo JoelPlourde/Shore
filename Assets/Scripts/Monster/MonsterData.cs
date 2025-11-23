@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DropSystem;
 
 namespace MonsterSystem
 {
@@ -9,10 +10,6 @@ namespace MonsterSystem
     [CreateAssetMenu(fileName = "MonsterData", menuName = "ScriptableObjects/Monster Data")]
     public class MonsterData : ScriptableObject
     {
-        [SerializeField]
-        [Tooltip("Prefab of this item as it appears in the world.")]
-        public GameObject Prefab;
-
         [SerializeField]
         [Tooltip("The speed at which the NPC walks.")]
         public float WalkingSpeed = 1.0f;
@@ -23,8 +20,13 @@ namespace MonsterSystem
 
         [SerializeField]
         [HideInInspector]
+        [Tooltip("The forward direction of the NPC.")]
+        public int ForwardOffset = 0;
+
+        [SerializeField]
+        [HideInInspector]
         [Tooltip("Determine whether or not the NPC wanders around.")]
-        public Boolean Wanders = true;
+        public bool Wanders = true;
 
         [SerializeField]
         [HideInInspector]
@@ -34,7 +36,39 @@ namespace MonsterSystem
         [SerializeField]
         [HideInInspector]
         [Tooltip("Determine whether or not the NPC can be attacked.")]
-        public Boolean Attackable = false;
+        public bool Attackable = false;
+
+        [SerializeField]
+        [Tooltip("The size of the monster for spawning and placement purposes.")]
+        public float Size = 1.0f;
+
+        [SerializeField]
+        [Tooltip("The height of the monster for spawning and placement purposes.")]
+        public float Height = 2.0f;
+
+        [SerializeField]
+        [Tooltip("The health of the monster.")]
+        public float Health = 100.0f;
+
+        [SerializeField]
+        [Tooltip("The damage the monster can inflict.")]
+        public float Damage = 1.0f;
+
+        [SerializeField]
+        [Tooltip("The attack range of the monster.")]
+        public float AttackRange = 1.0f;
+
+        [SerializeField]
+        [Tooltip("The attack speed of the monster.")]
+        public float AttackSpeed = 1.0f;
+
+        [SerializeField]
+        [Tooltip("Determine whether or not the monster can be looted.")]
+        public bool Lootable = true;
+
+        [SerializeField]
+        [Tooltip("The drop table associated with this monster.")]
+        public DropTable DropTable;
 
         public string ID { get; set; }
     }

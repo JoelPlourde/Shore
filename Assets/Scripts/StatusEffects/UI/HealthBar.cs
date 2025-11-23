@@ -15,12 +15,12 @@ namespace UI {
 			}
 
 			public void Initialize(Actor actor) {
-				UpdateHealth(actor.Attributes.Health / actor.Attributes.MaxHealth);
-				actor.Attributes.OnUpdateHealthEvent += UpdateHealth;
+				UpdateHealth(actor.Creature.Health / actor.Creature.MaxHealth);
+				actor.Creature.OnUpdateHealthEvent += UpdateHealth;
 			}
 
 			public void OnDelete(Actor actor) {
-				actor.Attributes.OnUpdateHealthEvent -= UpdateHealth;
+				actor.Creature.OnUpdateHealthEvent -= UpdateHealth;
 			}
 
 			public void UpdateHealth(float percentage) {

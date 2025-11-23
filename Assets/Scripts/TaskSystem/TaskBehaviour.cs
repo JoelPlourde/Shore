@@ -6,7 +6,8 @@ using UnityEngine;
 namespace TaskSystem {
 	public abstract class TaskBehaviour : MonoBehaviour {
 
-		public Actor actor;
+		protected Actor actor;
+		protected Creature creature;
 
 		public TaskPriority TaskPriority { get; private set; }
 		public ITaskArguments TaskArguments { get; private set; }
@@ -16,6 +17,7 @@ namespace TaskSystem {
 
 		private void Awake() {
 			actor = GetComponent<Actor>();
+			creature = GetComponent<Creature>();
 		}
 
 		public virtual void Initialize(ITaskArguments taskArguments, TaskPriority taskPriority) {

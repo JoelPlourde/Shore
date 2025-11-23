@@ -6,15 +6,11 @@ using UnityEngine;
 
 [Serializable]
 public class Attributes {
-	public float MaxHealth = 100f;
-	public float Health = 100f;
 	public float HealthRegeneration = 1f;		// Value per 5 seconds
 	public float Speed = 1f;
-	public float Damage = 2f;
 	public float HungerRate = 0.05f;            // Value per 5 seconds
 	public float Food = 20f;
 	public float Temperature = 20f;
-	public float AttackRange = 1f;
 
 	public event Action<float> OnUpdateHealthEvent;
 	public event Action<float> OnUpdateFoodEvent;
@@ -25,11 +21,8 @@ public class Attributes {
 	private LTDescr _temperatureLerp;
 
 	public void Initialize(Actor actor, AttributesDto attributesDto) {
-		MaxHealth = attributesDto.MaxHealth;
-		Health = attributesDto.Health;
 		HealthRegeneration = attributesDto.HealthRegeneration;
 		Speed = attributesDto.Speed;
-		Damage = attributesDto.Damage;
 		HungerRate = attributesDto.HungerRate;
 		Food = attributesDto.Food;
 		Temperature = attributesDto.Temperature;
@@ -37,38 +30,6 @@ public class Attributes {
 		_actor = actor;
 		StatusEffectScheduler.Instance(_actor.Guid).AddStatusEffect(new StatusEffectSystem.Status(_actor, 1f, StatusEffectManager.GetStatusEffectData(Constant.HUNGRY)));
 	}
-
-	#region Health
-	/// <summary>
-	/// Suffer X amount of damage. If health is empty, call the virtual OnDeath event.
-	/// </summary>
-	/// <param name="damage">Amount of damage to suffer.</param>
-	public void SufferDamage(float damage) {
-		Health -= damage;
-
-		OnUpdateHealthEvent?.Invoke(Health / MaxHealth);
-
-		if (Health <= 0) {
-			StatusEffectScheduler.Instance(_actor.Guid).AddStatusEffect(new StatusEffectSystem.Status(_actor, 1f, StatusEffectManager.GetStatusEffectData(Constant.DEATH)));
-		}
-	}
-
-	/// <summary>
-	/// Increase the health value by X. The health value is capped at maximum health of the actor.
-	/// </summary>
-	/// <param name="value">Amount of health to increase.</param>
-	public void IncreaseHealth(float value) {
-		if (!_actor.Dead) {
-			Health += value;
-
-			if (Health > MaxHealth) {
-				Health = MaxHealth;
-			}
-
-			OnUpdateHealthEvent?.Invoke(Health / MaxHealth);
-		}
-	}
-	#endregion
 
 	#region Speed
 	/// <summary>

@@ -30,9 +30,20 @@ namespace ItemSystem {
 		public bool PlaceItemInWorld(Item item, Vector3 position, Quaternion rotation, bool withOffset = true) {
 			for (int i = 0; i < item.Amount; i++) {
 
+				// Get the closest point on the NavMesh to the desired position.
+
+				UnityEngine.AI.NavMesh.SamplePosition(position, out UnityEngine.AI.NavMeshHit hit, 0.25f, UnityEngine.AI.NavMesh.AllAreas);
+				position = hit.position;
+
+				// Add some jitter to the position to avoid stacking items.
+				position.x += UnityEngine.Random.Range(-0.25f, 0.25f);
+				position.z += UnityEngine.Random.Range(-0.25f, 0.25f);
+
+				/*
 				if (withOffset) {
 					position.y += 0.25f;
 				}
+				*/
 
 				GameObject @object = Instantiate(item.ItemData.Prefab, position, rotation);
 				@object.GetComponent<InteractableItem>().RegenerateUUID();

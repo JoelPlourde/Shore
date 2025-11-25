@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using AbilitySystem;
 using SkillSystem;
+using TMPro;
 using UI.AbilitySystem;
 using UnityEngine;
 using UnityEngine.UI;

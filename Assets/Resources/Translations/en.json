@@ -15,6 +15,7 @@
     "inventory": "Inventory",
     "experience": "Experience",
     "required": "Required",
+    "abilities": "Abilities",
     "skills": {
         "magic": {
             "name": "Magic",
@@ -300,6 +301,7 @@
         }
     },
     "abilities": {
+        "title": "Abilities",
         "slam": {
             "name": "Slam",
             "description": "A powerful slam attack dealing melee damage to a single target."

@@ -21,6 +21,8 @@ namespace UI
 
         private Actor _currentActor;
 
+        private Button _exit;
+
         private void Awake()
         {
             Instance = this;
@@ -35,6 +37,15 @@ namespace UI
             foreach (AbilityBannerComponent bannerComponent in bannerComponents)
             {
                 _abilityBannerComponents[bannerComponent.skillType] = bannerComponent;
+            }
+
+			_exit = transform.Find("Exit").GetComponent<Button>();
+            _exit.onClick.AddListener(Close);
+        }
+
+        private void OnDestroy() {
+            if (!ReferenceEquals(_exit, null)) {
+                _exit.onClick.RemoveAllListeners();
             }
         }
 
@@ -82,8 +93,15 @@ namespace UI
 
         public void Close(Actor actor)
         {
-            Canvas.enabled = false;
+            Close();
         }
+
+        public void Close() {
+            // Reset the current skill banner position
+            _abilityBannerComponents[_currentSkillType].SendBackward();
+            
+			Canvas.enabled = false;
+		}
 
         public Canvas Canvas { get; set; }
     }

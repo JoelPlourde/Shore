@@ -20,7 +20,7 @@ namespace ItemSystem {
 				Image = transform.Find("Item").GetComponent<Image>();
 				Amount = GetComponentInChildren<Text>();
 
-				Image.rectTransform.sizeDelta = new Vector2(45, 45);
+				Image.rectTransform.sizeDelta = new Vector2(55, 55);
 			}
 
 			public void Initialize(IContainer container, bool readOnly, int id) {

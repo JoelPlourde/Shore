@@ -20,14 +20,14 @@ namespace ItemSystem {
 				Instance = this;
 
 				GridLayoutGroup gridLayoutGroup = GetComponent<GridLayoutGroup>();
-				gridLayoutGroup.cellSize = new Vector2(50, 50);
+				gridLayoutGroup.cellSize = new Vector2(65, 65);
 				gridLayoutGroup.spacing = new Vector2(5, 5);
-				gridLayoutGroup.padding.left = 10;
-				gridLayoutGroup.padding.top = 10;
+				gridLayoutGroup.padding.left = 15;
+				gridLayoutGroup.padding.top = 15;
 		
 				RectTransform rectTransform = GetComponent<RectTransform>();
 				rectTransform.pivot = new Vector2(1, 0);
-				rectTransform.sizeDelta = new Vector2(230, 285);
+				rectTransform.sizeDelta = new Vector2(305, 380);
 
 				for (int i = 0; i < Inventory.MAX_STACK; i++) {
 					GameObject slotHandlerObj = Instantiate(SlotTemplate, transform);

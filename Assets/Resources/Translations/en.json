@@ -15,6 +15,7 @@
     "inventory": "Inventory",
     "experience": "Experience",
     "required": "Required",
+    "passive": "Passive",
     "skills": {
         "magic": {
             "name": "Magic",

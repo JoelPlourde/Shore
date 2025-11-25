@@ -52,6 +52,12 @@ namespace UI
             #region Drag & Drop Handlers
             public void OnBeginDrag(PointerEventData eventData)
             {
+                if (_ability.AbilityData.Passive)
+                {
+                    // Cannot drag passive abilities
+                    return;
+                }
+
                 if (_readOnly)
                 {
                     // Create a copy of the Ability component to be dragged
@@ -69,6 +75,11 @@ namespace UI
 
             public void OnEndDrag(PointerEventData eventData)
             {
+                if (ReferenceEquals(_draggedAbility, null))
+                {
+                    return;
+                }
+
                 // Raycast to check if dropped over a valid target but only on the Layer: AbilitySlot
                 PointerEventData pointerData = new PointerEventData(EventSystem.current)
                 {
@@ -110,6 +121,10 @@ namespace UI
 
             public void OnDrag(PointerEventData eventData)
             {
+                if (ReferenceEquals(_draggedAbility, null))
+                {
+                    return;
+                }
                 _draggedAbility.transform.position = eventData.position;
             }
             #endregion

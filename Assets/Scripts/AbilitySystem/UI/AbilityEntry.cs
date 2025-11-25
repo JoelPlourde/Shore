@@ -29,8 +29,13 @@ namespace UI
                 _abilitySlotHandler.Initialize(abilityData, true);
 
                 _title.text = I18N.GetValue("abilities." + abilityData.name + ".name");
-                _subTitle.enabled = false; // Disable subtitle for now
-                // _subTitle.text = LocalizationManager.Instance.GetLocalizedText("abilities." + abilityData.name + ".description");
+                _subTitle.enabled = false;
+
+                if (abilityData.Passive)
+                {
+                    _subTitle.text = I18N.GetValue("passive");
+                    _subTitle.enabled = true;
+                }
             }
         }
     }

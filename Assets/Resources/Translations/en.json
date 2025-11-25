@@ -15,7 +15,6 @@
     "inventory": "Inventory",
     "experience": "Experience",
     "required": "Required",
-    "abilities": "Abilities",
     "skills": {
         "magic": {
             "name": "Magic",
@@ -308,6 +307,10 @@
         }
     },
     "nodes": {
+        "bristlethorn_node": {
+            "name": "Bristlethorn Bush",
+            "description": "A bush bearing bristlethorns."
+        },
         "stone_node": {
             "name": "Rock",
             "description": "A rock containing stones."

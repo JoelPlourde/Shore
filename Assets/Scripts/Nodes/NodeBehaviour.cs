@@ -136,6 +136,14 @@ namespace NodeSystem {
 			return OutlineType.INTERACTABLE;
 		}
 
+		protected override string GetActionLabel() {
+			return I18N.GetValue(NodeData.Action);
+		}
+
+		protected override string GetEntityLabel() {
+			return I18N.GetValue("nodes." + NodeData.ID + ".name");
+		}
+
 		public void OnDrawGizmosSelected() {
 			Gizmos.color = Color.blue;
 			Gizmos.DrawWireSphere(transform.position, InteractionRadius);

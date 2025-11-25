@@ -25,5 +25,9 @@ namespace AbilitySystem
         [SerializeField]
         [Tooltip("Indicates whether this ability is passive.")]
         public bool Passive;
+
+        [SerializeField]
+        [Tooltip("The cooldown time for this ability in seconds.")]
+        public float Cooldown;
     }
 }

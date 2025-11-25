@@ -63,6 +63,8 @@ public class Creature : MonoBehaviour
 
     private FloatingHealthBar _floatingHealthBar;
 
+    private Abilities _abilities = new Abilities();
+
     // Accumulated damage by category
     private Dictionary<DamageCategoryType, float> _accumulatedDamage = new Dictionary<DamageCategoryType, float>()
     {
@@ -84,6 +86,9 @@ public class Creature : MonoBehaviour
         MaxHealth = creatureDto.MaxHealth;
         Health = creatureDto.Health;
         _actor = actor;
+
+        // TODO, pass the list of Abilities from the Ability Bar
+        _abilities.Initialize(this);
 
         actor.Statistics.OnUpdateStatisticEvent += (statisticType, value) =>
         {
@@ -109,6 +114,7 @@ public class Creature : MonoBehaviour
         Size = monsterData.Size;
         Height = monsterData.Height;
         ForwardOffset = monsterData.ForwardOffset;
+        _abilities.Initialize(this);
         if (OnDeathCallback != null)
         {
             OnDeathEvent += OnDeathCallback;
@@ -347,4 +353,6 @@ public class Creature : MonoBehaviour
     public TaskScheduler TaskScheduler { get => _taskScheduler; }
     public Animator Animator { get => _animator; }
     public NavMeshAgent NavMeshAgent { get => _navMeshAgent; }
+
+    public Abilities Abilities { get => _abilities; }
 }

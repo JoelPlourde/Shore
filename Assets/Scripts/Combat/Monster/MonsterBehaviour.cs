@@ -188,6 +188,16 @@ namespace CombatSystem
             return OutlineType.ENEMY;
         }
 
+        protected override string GetActionLabel()
+        {
+            return I18N.GetValue("attack");
+        }
+
+        protected override string GetEntityLabel()
+        {
+            return I18N.GetValue("monsters." + MonsterData.ID + ".name");
+        }
+
         // Override the GetDefaultAction from IInteractable
         public string GetDefaultAction()
         {

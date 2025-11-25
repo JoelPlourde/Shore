@@ -13,8 +13,6 @@ namespace TaskSystem {
 		NavMeshAgent navMeshAgent;
 		AttackArguments attackArguments;
 
-		private bool _canAttack = true;
-
 		private Trigger _trigger;
 
 		public override void Combine(ITaskArguments taskArguments) {
@@ -94,10 +92,10 @@ namespace TaskSystem {
 		private void AttackState() {
 			creature.Animator.SetBool("Move", false);
 			navMeshAgent.isStopped = true;
-			if (_canAttack) {
-				_canAttack = false;
-				AttackNow();
-			}
+			if (!creature.Abilities.GlobalCooldown)
+            {
+                AttackNow();
+            }
 		}
 
 		private void AttackNow() {
@@ -114,10 +112,7 @@ namespace TaskSystem {
 				return;
 			}
 
-			creature.Animator.SetTrigger("Attack");
-
-			// Set a cooldown before the next attack can occur.
-			TimerManager.Instance.Enqueue(new DelayedAction(ResetAttackCooldown, creature.AttackSpeed));
+			creature.Abilities.TriggerNextAbility(Routine);
 		}
 
 		/// <summary>
@@ -137,14 +132,6 @@ namespace TaskSystem {
 			Quaternion finalRot = lookRot * Quaternion.Euler(0f, creature.ForwardOffset, 0f);
 			LeanTween.rotate(gameObject, finalRot.eulerAngles, 0.2f).setEase(LeanTweenType.easeOutQuad);
         }
-
-		private void ResetAttackCooldown() {
-			// Allow the creature to attack again.
-			_canAttack = true;
-
-			// Continue the attack sequence if still in range.
-			Routine();
-		}
 
 		public override void OnEnd() {
 			CancelInvoke(nameof(MoveRoutine));

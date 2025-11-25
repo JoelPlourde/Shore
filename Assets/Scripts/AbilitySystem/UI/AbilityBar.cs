@@ -46,6 +46,7 @@ namespace UI
             /// <param name="abilityData"></param>
             public void HandleAbilityAssigned(int slotIndex, AbilityData abilityData)
             {
+                // TODO: With the current selected actor, switch the ability assigned to the slot index
                 _assignedAbilities[slotIndex] = abilityData;
             }
 

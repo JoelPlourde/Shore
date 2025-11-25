@@ -114,7 +114,6 @@ namespace TaskSystem {
 				return;
 			}
 
-			// attackArguments.Target.SufferDamage(creature.Damage, creature);
 			creature.Animator.SetTrigger("Attack");
 
 			// Set a cooldown before the next attack can occur.

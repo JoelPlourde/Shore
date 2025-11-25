@@ -1,4 +1,5 @@
 using AbilitySystem;
+using SkillSystem;
 using TMPro;
 using UnityEditor.EditorTools;
 using UnityEngine;
@@ -34,8 +35,11 @@ namespace UI
                     _icon = _ability.transform.Find("Icon").GetComponent<Image>();
                 }
 
+                SkillData skillData = SkillManager.Instance.GetSkillData(abilityData.SkillType);
+
                 _abilityData = abilityData;
                 _ability.sprite = _abilityData.Background;
+                _ability.color = new Color(skillData.Color.r, skillData.Color.g, skillData.Color.b, 1f);
                 _icon.sprite = _abilityData.Sprite;
             }
 

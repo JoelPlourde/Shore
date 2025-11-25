@@ -7,6 +7,7 @@ using UnityEngine.AI;
 using TaskSystem;
 using UI;
 using ItemSystem.EquipmentSystem;
+using UI.AbilitySystem;
 
 [RequireComponent(typeof(TaskScheduler))]
 [RequireComponent(typeof(NavMeshAgent))]
@@ -63,7 +64,7 @@ public class Creature : MonoBehaviour
 
     private FloatingHealthBar _floatingHealthBar;
 
-    private Abilities _abilities = new Abilities();
+    private AbilityStateMachine _abilityStateMachine = new AbilityStateMachine();
 
     // Accumulated damage by category
     private Dictionary<DamageCategoryType, float> _accumulatedDamage = new Dictionary<DamageCategoryType, float>()
@@ -88,7 +89,9 @@ public class Creature : MonoBehaviour
         _actor = actor;
 
         // TODO, pass the list of Abilities from the Ability Bar
-        _abilities.Initialize(this);
+        _abilityStateMachine.Initialize(this);
+
+        AbilityBar.Instance.Subscribe(actor);
 
         actor.Statistics.OnUpdateStatisticEvent += (statisticType, value) =>
         {
@@ -114,7 +117,7 @@ public class Creature : MonoBehaviour
         Size = monsterData.Size;
         Height = monsterData.Height;
         ForwardOffset = monsterData.ForwardOffset;
-        _abilities.Initialize(this);
+        _abilityStateMachine.Initialize(this);
         if (OnDeathCallback != null)
         {
             OnDeathEvent += OnDeathCallback;
@@ -354,5 +357,5 @@ public class Creature : MonoBehaviour
     public Animator Animator { get => _animator; }
     public NavMeshAgent NavMeshAgent { get => _navMeshAgent; }
 
-    public Abilities Abilities { get => _abilities; }
+    public AbilityStateMachine AbilityStateMachine { get => _abilityStateMachine; }
 }

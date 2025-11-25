@@ -13,7 +13,7 @@ namespace CombatSystem
     /// 
     /// Between ability, there is a "global" cooldown to prevent spamming abilities.
     /// </summary>
-    public class Abilities
+    public class AbilityStateMachine
     {
         private List<Ability> _abilities;
 
@@ -22,6 +22,9 @@ namespace CombatSystem
         private float _globalCooldownDuration = 1.0f;
         
         private bool _globalCooldown = false;
+
+        // Event triggered when an ability is used. Parameters: slot index, cooldown duration
+        public Action<int, float, float> OnAbilityTriggered;
 
         public void Initialize(Creature creature)
         {
@@ -45,8 +48,9 @@ namespace CombatSystem
             bool abilityFound = false;
 
             // Iterate through abilities and find an ability that is not on cooldown
-            foreach (var ability in _abilities)
+            for (int i = 0; i < _abilities.Count; i++)
             {
+                Ability ability = _abilities[i];
                 if (ability.OnCooldown)
                 {
                     continue;
@@ -65,6 +69,7 @@ namespace CombatSystem
                 });
 
                 // TODO: Update the UI
+                OnAbilityTriggered?.Invoke(i, ability.AbilityData.Cooldown, _globalCooldownDuration);
 
                 abilityFound = true;
 
@@ -80,7 +85,6 @@ namespace CombatSystem
             Debug.Log("Global Cooldown Triggered for " + _globalCooldownDuration + " seconds.");
 
             LeanTween.delayedCall(_globalCooldownDuration, () => {
-                Debug.Log("Global Cooldown Ended.");
                 _globalCooldown = false;
 
                 OnAbilityCompleted?.Invoke();

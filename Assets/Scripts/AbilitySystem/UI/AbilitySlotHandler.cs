@@ -19,10 +19,20 @@ namespace UI
             // The AbilityComponent being dragged.
             private AbilityComponent _draggedAbility;
 
+            private Slider _cooldownSlider;
+
+            private bool _isDisabled = false;
+
             public Action<int, AbilityData> OnAbilityAssigned; 
 
             private void Awake() {
                 _ability = transform.GetComponentInChildren<AbilityComponent>(true);
+
+                Transform cooldownSliderTransform = transform.Find("Cooldown");
+                if (!ReferenceEquals(cooldownSliderTransform, null))
+                {
+                    _cooldownSlider = cooldownSliderTransform.GetComponent<Slider>();
+                }
             }
 
             /// <summary>
@@ -30,9 +40,10 @@ namespace UI
             /// </summary>
             /// <param name="abilityData"></param>
             /// <param name="readOnly"></param>
-            public void Initialize(AbilityData abilityData, bool readOnly = true)
+            public void Initialize(AbilityData abilityData, bool readOnly = true, bool disabled = false)
             {
                 _readOnly = readOnly;
+                _isDisabled = disabled;
                 _ability.Initialize(abilityData);
             }
 
@@ -49,9 +60,24 @@ namespace UI
                 OnAbilityAssigned?.Invoke(transform.GetSiblingIndex(), _ability.AbilityData);
             }
 
+            /// <summary>
+            ///  Updates the cooldown UI for this ability slot.
+            /// </summary>
+            /// <param name="cooldownPercent"></param>
+            public void UpdateCooldown(float cooldownPercent)
+            {
+                _cooldownSlider.value = cooldownPercent;
+            }
+
             #region Drag & Drop Handlers
             public void OnBeginDrag(PointerEventData eventData)
             {
+                if (_isDisabled)
+                {
+                    // Cannot drag from a disabled slot
+                    return;
+                }
+
                 if (_ability.AbilityData.Passive)
                 {
                     // Cannot drag passive abilities
@@ -128,6 +154,11 @@ namespace UI
                 _draggedAbility.transform.position = eventData.position;
             }
             #endregion
+
+            public void SetAbilityAsFirstSibling()
+            {
+                transform.Find("Ability").SetAsFirstSibling();
+            }
 
             /// <summary>
             /// Indicates whether this slot is empty (has no Ability component).

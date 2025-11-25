@@ -20,7 +20,7 @@ namespace AbilitySystem
 
         [SerializeField]
         [Tooltip("The level required to unlock this ability.")]
-        public int SkillLevel;
+        public int RequiredLevel;
 
         [SerializeField]
         [Tooltip("Indicates whether this ability is passive.")]

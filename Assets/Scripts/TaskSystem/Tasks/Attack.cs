@@ -92,7 +92,7 @@ namespace TaskSystem {
 		private void AttackState() {
 			creature.Animator.SetBool("Move", false);
 			navMeshAgent.isStopped = true;
-			if (!creature.Abilities.GlobalCooldown)
+			if (!creature.AbilityStateMachine.GlobalCooldown)
             {
                 AttackNow();
             }
@@ -112,7 +112,7 @@ namespace TaskSystem {
 				return;
 			}
 
-			creature.Abilities.TriggerNextAbility(Routine);
+			creature.AbilityStateMachine.TriggerNextAbility(Routine);
 		}
 
 		/// <summary>

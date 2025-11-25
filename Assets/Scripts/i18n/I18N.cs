@@ -32,6 +32,16 @@ public static class I18N {
         }
     }
 
+    public static string GetValue(string key, params object[] args) {
+        key = key.ToLower();
+
+        if (_translations[LanguageKey.EN].ContainsKey(key)) {
+            return string.Format(_translations[LanguageKey.EN][key], args);
+        } else {
+            return key;
+        }
+    }
+
     public static Dictionary<string, string> FlattenJson(string json)
     {
         Dictionary<string, string> dict = new Dictionary<string, string>();

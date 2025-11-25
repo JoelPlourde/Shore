@@ -30,6 +30,48 @@ namespace UI
                 }
             }
 
+            // Subscribe to ability assignment events for the given actor
+            public void Subscribe(Actor actor)
+            {
+                actor.Creature.AbilityStateMachine.OnAbilityTriggered += TriggerGlobalCooldown;
+            }
+
+            public void Unsubscribe(Actor actor)
+            {
+                actor.Creature.AbilityStateMachine.OnAbilityTriggered -= TriggerGlobalCooldown;
+            }
+
+            public void TriggerGlobalCooldown(int slotIndex, float cooldownDuration, float globalCooldownDuration)
+            {
+                Debug.Log("Triggering global cooldown for ability slot: " + slotIndex);
+                Debug.Log(_abilitySlots.Length);
+
+                // For every ability slot, if the index DOES NOT match, trigger the cooldown UI
+                foreach (AbilitySlotHandler slot in _abilitySlots)
+                {
+                    if (slot.IsEmpty)
+                    {
+                        continue;
+                    }
+
+                    int index = slot.transform.GetSiblingIndex();
+                    if (index != slotIndex)
+                    {
+                        LeanTween.value(globalCooldownDuration, 0f, globalCooldownDuration).setOnUpdate(val =>
+                        {
+                            slot.UpdateCooldown(val);
+                        });
+                    }
+                    else
+                    {
+                        LeanTween.value(cooldownDuration, 0f, globalCooldownDuration).setOnUpdate(val =>
+                        {
+                            slot.UpdateCooldown(val);
+                        });
+                    }
+                }
+            }
+
             private void OnDestroy()
             {
                 // Unsubscribe from events to prevent memory leaks
@@ -48,6 +90,9 @@ namespace UI
             {
                 // TODO: With the current selected actor, switch the ability assigned to the slot index
                 _assignedAbilities[slotIndex] = abilityData;
+
+                // Or else, the cooldown will be shown below.
+                _abilitySlots[slotIndex].SetAbilityAsFirstSibling();
             }
 
             public void Update()

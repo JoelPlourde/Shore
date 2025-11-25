@@ -64,7 +64,7 @@ namespace UI
             {
                 AbilityData abilityData = skillData.Abilities[i];
                 _abilityEntries[i].gameObject.SetActive(true);
-                _abilityEntries[i].Initialize(abilityData);
+                _abilityEntries[i].Initialize(actor, abilityData);
             }
 
             // If there are more AbilityComponents than Abilities, disable the extra components

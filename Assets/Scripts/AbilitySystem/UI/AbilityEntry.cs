@@ -15,18 +15,32 @@ namespace UI
             private AbilitySlotHandler _abilitySlotHandler;
             private TextMeshProUGUI _title;
             private TextMeshProUGUI _subTitle;
+            private DisableOverlay _disabledOverlay;
 
             private void Awake()
             {
                 _abilitySlotHandler = GetComponentInChildren<AbilitySlotHandler>(true);
                 _title = transform.Find("Title").GetComponent<TextMeshProUGUI>();
                 _subTitle = transform.Find("SubTitle").GetComponent<TextMeshProUGUI>();
+                Transform disableOverlay = transform.Find("Disabled");
+                if (ReferenceEquals(disableOverlay, null))
+                {
+                    return;
+                }
+                _disabledOverlay = disableOverlay.GetComponent<DisableOverlay>();
             }
 
-            public void Initialize(AbilityData abilityData)
+            public void Initialize(Actor actor, AbilityData abilityData)
             {
+                bool hasRequirements = true;
+                if (!CheckIfActorHasSkillLevel(actor, abilityData, out string tooltip))
+                {
+                    hasRequirements = false;
+                    _disabledOverlay.Initialize(tooltip);
+                }
+
                 // Initialize the AbilitySlotHandler as a read-only slot
-                _abilitySlotHandler.Initialize(abilityData, true);
+                _abilitySlotHandler.Initialize(abilityData, true, !hasRequirements);
 
                 _title.text = I18N.GetValue("abilities." + abilityData.name + ".name");
                 _subTitle.enabled = false;
@@ -36,6 +50,26 @@ namespace UI
                     _subTitle.text = I18N.GetValue("passive");
                     _subTitle.enabled = true;
                 }
+            }
+
+            /// <summary>
+            /// Checks if the given actor meets the skill level requirements for the ability.
+            /// </summary>
+            /// <param name="actor"></param>
+            /// <param name="abilityData"></param>
+            /// <param name="tooltip"></param>
+            /// <returns></returns>
+            private bool CheckIfActorHasSkillLevel(Actor actor, AbilityData abilityData, out string tooltip)
+            {
+                bool hasRequirements = actor.Skills.GetLevel(abilityData.SkillType).Value >= abilityData.RequiredLevel;
+
+                tooltip = "";
+                if (!hasRequirements)
+                {
+                    tooltip = I18N.GetValue("required_level", abilityData.RequiredLevel);
+                }
+
+                return hasRequirements;
             }
         }
     }

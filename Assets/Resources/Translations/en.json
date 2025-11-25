@@ -16,6 +16,7 @@
     "experience": "Experience",
     "required": "Required",
     "passive": "Passive",
+    "required_level": "Required Level: {0}",
     "skills": {
         "magic": {
             "name": "Magic",

@@ -15,5 +15,6 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: cec96cfa5d4c2634492167e0c7357e54, type: 3}
   Background: {fileID: 21300000, guid: e81aaf73939ccd84895302c86638b789, type: 3}
   SkillType: 7
-  SkillLevel: 1
+  RequiredLevel: 10
   Passive: 0
+  Cooldown: 0

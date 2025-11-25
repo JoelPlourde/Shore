@@ -11,6 +11,10 @@ namespace AbilitySystem
         public Sprite Sprite;
 
         [SerializeField]
+        [Tooltip("The background image for the ability.")]
+        public Sprite Background;
+
+        [SerializeField]
         [Tooltip("The skill type associated with this ability.")]
         public SkillType SkillType;
 

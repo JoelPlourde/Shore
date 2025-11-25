@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MonsterSystem
+namespace CombatSystem
 {
     /// <summary>
     /// The category type of damage.

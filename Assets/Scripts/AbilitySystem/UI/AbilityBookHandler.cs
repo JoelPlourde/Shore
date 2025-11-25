@@ -9,13 +9,13 @@ namespace UI
 {
     [RequireComponent(typeof(GraphicRaycaster))]
     [RequireComponent(typeof(Canvas))]
-    public class AbilityHandler : MonoBehaviour, IMenu
+    public class AbilityBookHandler : MonoBehaviour, IMenu
     {
-        public static AbilityHandler Instance;
+        public static AbilityBookHandler Instance;
 
         private Dictionary<SkillType, AbilityBannerComponent> _abilityBannerComponents;
 
-        private AbilityComponent[] _abilityComponents;
+        private AbilityEntry[] _abilityEntries;
 
         private SkillType _currentSkillType = SkillType.FIGHTING;
 
@@ -28,7 +28,7 @@ namespace UI
             Canvas = GetComponent<Canvas>();
 
             // Underneath the "Content" GameObject, there are AbilityComponent
-            _abilityComponents = GetComponentsInChildren<AbilityComponent>(true);
+            _abilityEntries = GetComponentsInChildren<AbilityEntry>(true);
 
             _abilityBannerComponents = new Dictionary<SkillType, AbilityBannerComponent>();
             AbilityBannerComponent[] bannerComponents = transform.Find("Banners").GetComponentsInChildren<AbilityBannerComponent>(true);
@@ -51,18 +51,14 @@ namespace UI
             for (int i = 0; i < skillData.Abilities.Length; i++)
             {
                 AbilityData abilityData = skillData.Abilities[i];
-                AbilityComponent abilityComponent = _abilityComponents[i];
-
-                // Update the AbilityComponent with the AbilityData
-                abilityComponent.UpdateAbility(abilityData);
-
-                _abilityComponents[i].gameObject.SetActive(true);
+                _abilityEntries[i].gameObject.SetActive(true);
+                _abilityEntries[i].Initialize(abilityData);
             }
 
             // If there are more AbilityComponents than Abilities, disable the extra components
-            for (int i = skillData.Abilities.Length; i < _abilityComponents.Length; i++)
+            for (int i = skillData.Abilities.Length; i < _abilityEntries.Length; i++)
             {
-                _abilityComponents[i].gameObject.SetActive(false);
+                _abilityEntries[i].gameObject.SetActive(false);
             }
 
             Canvas.enabled = true;

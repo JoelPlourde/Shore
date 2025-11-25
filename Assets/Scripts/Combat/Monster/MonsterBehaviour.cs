@@ -10,7 +10,7 @@ using DropSystem;
 using ItemSystem;
 using SkillSystem;
 
-namespace MonsterSystem
+namespace CombatSystem
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(NavMeshAgent))]

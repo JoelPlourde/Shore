@@ -1,5 +1,6 @@
 using AbilitySystem;
 using TMPro;
+using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,28 +10,38 @@ namespace UI
     {
         public class AbilityComponent: MonoBehaviour
         {
+            [SerializeField]
+            private AbilityData _abilityData;
+
+            private Image _ability;
             private Image _icon;
-            private TextMeshProUGUI _title;
-            private TextMeshProUGUI _subTitle;
 
             private void Awake()
             {
-                _icon = transform.Find("Icon").GetComponent<Image>();
-                _title = transform.Find("Title").GetComponent<TextMeshProUGUI>();
-                _subTitle = transform.Find("SubTitle").GetComponent<TextMeshProUGUI>();
-
-                _subTitle.enabled = false; // Disable subtitle for now
-
-                gameObject.SetActive(false);
+                _ability = transform.GetComponent<Image>();
+                _icon = _ability.transform.Find("Icon").GetComponent<Image>();
             }
 
-            public void UpdateAbility(AbilityData abilityData)
+            public void Initialize(AbilityData abilityData)
             {
-                _icon.sprite = abilityData.Sprite;
-                _title.text = I18N.GetValue("abilities." + abilityData.name + ".name");
+                if (ReferenceEquals(_ability, null))
+                {
+                    _ability = transform.GetComponent<Image>();
+                }
 
-                // Do nothing for now.
-                // _subTitle.text = LocalizationManager.Instance.GetLocalizedText("abilities." + abilityData.name + ".description");
+                if (ReferenceEquals(_icon, null))
+                {
+                    _icon = _ability.transform.Find("Icon").GetComponent<Image>();
+                }
+
+                _abilityData = abilityData;
+                _ability.sprite = _abilityData.Background;
+                _icon.sprite = _abilityData.Sprite;
+            }
+
+            public AbilityData AbilityData
+            {
+                get { return _abilityData; }
             }
         }
     }

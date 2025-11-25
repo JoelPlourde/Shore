@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using DropSystem;
 using SkillSystem;
 
-namespace MonsterSystem
+namespace CombatSystem
 {
     [Serializable]
     [CreateAssetMenu(fileName = "MonsterData", menuName = "ScriptableObjects/Monster Data")]

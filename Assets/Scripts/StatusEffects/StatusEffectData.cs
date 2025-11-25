@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using MonsterSystem;
+using CombatSystem;
 using UnityEngine;
 
 namespace StatusEffectSystem {

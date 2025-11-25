@@ -26,7 +26,7 @@ namespace UI {
 			UserInputs.Instance.Subscribe(_menuButtons[(int) MenuType.EXPERIENCE].GetKeyCode(), delegate { OnClick((int) MenuType.EXPERIENCE); });
 
 			_interfaceStatus = new Dictionary<MenuType, IMenu>() {
-				{ MenuType.ABILITIES, AbilityHandler.Instance },
+				{ MenuType.ABILITIES, AbilityBookHandler.Instance },
 				{ MenuType.INVENTORY, InventoryHandler.Instance},
 				{ MenuType.EQUIPMENT, EquipmentHandler.Instance },
 				{ MenuType.EXPERIENCE, ExperienceHandler.Instance }

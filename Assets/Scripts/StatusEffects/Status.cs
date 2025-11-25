@@ -1,5 +1,5 @@
 ﻿using System;
-using MonsterSystem;
+using CombatSystem;
 
 namespace StatusEffectSystem {
 	public class Status {

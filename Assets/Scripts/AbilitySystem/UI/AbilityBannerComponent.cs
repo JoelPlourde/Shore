@@ -14,8 +14,6 @@ namespace UI
             [Tooltip("The skill type this banner represents.")]
             public SkillType skillType;
 
-            private float _anchoredPositionY;
-
             private RectTransform _rectTransform;
 
             private void Start()
@@ -33,7 +31,7 @@ namespace UI
                 // Get the Button and add a listener to it
                 GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    AbilityHandler.Instance.SwitchSkill(skillType);
+                    AbilityBookHandler.Instance.SwitchSkill(skillType);
                 });
             }
 

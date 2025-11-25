@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.AI;
-using MonsterSystem;
+using CombatSystem;
 
 namespace TaskSystem {
 

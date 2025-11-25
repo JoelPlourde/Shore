@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
-namespace MonsterSystem
+namespace CombatSystem
 {
     [CustomEditor(typeof(MonsterData))]
     public class MonsterDataEditor : Editor {

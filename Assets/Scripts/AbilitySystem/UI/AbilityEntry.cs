@@ -37,12 +37,14 @@ namespace UI
                 {
                     hasRequirements = false;
                     _disabledOverlay.Initialize(tooltip);
+                } else {
+                    _disabledOverlay.gameObject.SetActive(false);
                 }
 
                 // Initialize the AbilitySlotHandler as a read-only slot
                 _abilitySlotHandler.Initialize(abilityData, true, !hasRequirements);
 
-                _title.text = I18N.GetValue("abilities." + abilityData.name + ".name");
+                _title.text = I18N.GetValue("abilities." + abilityData.ID + ".name");
                 _subTitle.enabled = false;
 
                 if (abilityData.Passive)

@@ -112,7 +112,7 @@ namespace TaskSystem {
 				return;
 			}
 
-			creature.AbilityStateMachine.TriggerNextAbility(Routine);
+			creature.AbilityStateMachine.TriggerBasicAttack(Routine);
 		}
 
 		/// <summary>

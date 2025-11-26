@@ -7,6 +7,7 @@ namespace Tools {
     public static class ConventionTools {
 
         private static readonly string DATA_PREFIX = "D_";
+        private static readonly string ABILITY_PREFIX = "A_";
         private static readonly string PREFAB_PREFIX = "P_";
         private static readonly string SPRITE_PREFIX = "S_";
 
@@ -24,6 +25,7 @@ namespace Tools {
         private static readonly string RECIPE_DIRECTORY = "Assets/Resources/Scriptable Objects/Recipes";
         private static readonly string NODE_DIRECTORY = "Assets/Resources/Scriptable Objects/Nodes";
         private static readonly string DROP_TABLE_DIRECTORY = "Assets/Resources/Scriptable Objects/Drop Tables";
+        private static readonly string ABILITIES_DIRECTORY = "Assets/Resources/Scriptable Objects/Abilities";
 
         // Prefab Directories:
         private static readonly string ITEM_PREFAB_DIRECTORY = "Assets/Prefabs/Items";
@@ -54,6 +56,12 @@ namespace Tools {
         public static void RenameScriptableObjectDropTables() {
             RenameFiles(DROP_TABLE_DIRECTORY, ASSET_EXTENSION, DATA_PREFIX, DROP_TABLE_SUFFIX);
             Debug.Log("Rename Drop Tables complete!");
+        }
+
+        [MenuItem("Tools/Naming Convention/Scriptable Objects/Rename Abilities", false, 1)]
+        public static void RenameAbilityItems() {
+            RenameFiles(ABILITIES_DIRECTORY, ASSET_EXTENSION, ABILITY_PREFIX);
+            Debug.Log("Rename Abilities complete!");
         }
         #endregion
 

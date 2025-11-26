@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4770d8b11d370924c859c343c0a67449, type: 3}
-  m_Name: Slam
+  m_Script: {fileID: 11500000, guid: 951a2fcf55c3ef747a0a16ef14f1e195, type: 3}
+  m_Name: A_slam
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: cec96cfa5d4c2634492167e0c7357e54, type: 3}
+  Sprite: {fileID: 21300000, guid: d0b9f246b6916a8469b443e6e243d0dc, type: 3}
   Background: {fileID: 21300000, guid: e81aaf73939ccd84895302c86638b789, type: 3}
   SkillType: 7
-  RequiredLevel: 10
+  RequiredLevel: 1
   Passive: 0
-  Cooldown: 0
+  Cooldown: 5
+  AbilityBehaviour: {fileID: 11400000, guid: 6c9b4866c481d4241af08c764d5f69da, type: 2}

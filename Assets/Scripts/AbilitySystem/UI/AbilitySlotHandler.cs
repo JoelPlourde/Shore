@@ -32,6 +32,9 @@ namespace UI
                 if (!ReferenceEquals(cooldownSliderTransform, null))
                 {
                     _cooldownSlider = cooldownSliderTransform.GetComponent<Slider>();
+
+                    Image cooldownFill = cooldownSliderTransform.Find("Fill Area/Fill").GetComponent<Image>();
+                    cooldownFill.color = new Color(0f, 0f, 0f, 0.75f);
                 }
             }
 
@@ -181,6 +184,8 @@ namespace UI
             public AbilityComponent AbilityComponent {
                 get { return _ability; }
             }
+
+            public LTDescr CooldownTween { get; set; }
         }
     }
 }

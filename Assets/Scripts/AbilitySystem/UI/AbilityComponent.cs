@@ -47,8 +47,8 @@ namespace UI
 
             public void OnPointerEnter(PointerEventData eventData)
             {
-                string abilityName = I18N.GetValue("abilities." + _abilityData.name + ".name");
-                string abilityDescription = I18N.GetValue("abilities." + _abilityData.name + ".description");
+                string abilityName = I18N.GetValue("abilities." + _abilityData.ID + ".name");
+                string abilityDescription = I18N.GetValue("abilities." + _abilityData.ID + ".description");
                 string tooltip = FormatTooltip(abilityName, abilityDescription);
 
                 Tooltip.Instance.ShowTooltip(tooltip, Constant.TOOLTIP_DELAY);

@@ -17,6 +17,8 @@ namespace UI
 
             private Dictionary<int, AbilityData> _assignedAbilities = new Dictionary<int, AbilityData>();
 
+            private Actor _currentActor;
+
             private void Awake()
             {
                 Instance = this;
@@ -28,24 +30,35 @@ namespace UI
                 {
                     slot.OnAbilityAssigned += HandleAbilityAssigned;
                 }
+
+                UserInputs.Instance.Subscribe(KeyCode.Alpha1, () => TriggerAbility(0));
+                UserInputs.Instance.Subscribe(KeyCode.Alpha2, () => TriggerAbility(1));
+                UserInputs.Instance.Subscribe(KeyCode.Alpha3, () => TriggerAbility(2));
+                UserInputs.Instance.Subscribe(KeyCode.Alpha4, () => TriggerAbility(3));
+                UserInputs.Instance.Subscribe(KeyCode.Alpha5, () => TriggerAbility(4));
             }
 
             // Subscribe to ability assignment events for the given actor
             public void Subscribe(Actor actor)
             {
                 actor.Creature.AbilityStateMachine.OnAbilityTriggered += TriggerGlobalCooldown;
+                _currentActor = actor;
             }
 
             public void Unsubscribe(Actor actor)
             {
                 actor.Creature.AbilityStateMachine.OnAbilityTriggered -= TriggerGlobalCooldown;
+                _currentActor = null;
             }
 
+            /// <summary>
+            /// Triggers the global cooldown UI for all ability slots.
+            /// </summary>
+            /// <param name="slotIndex"></param>
+            /// <param name="cooldownDuration"></param>
+            /// <param name="globalCooldownDuration"></param>
             public void TriggerGlobalCooldown(int slotIndex, float cooldownDuration, float globalCooldownDuration)
             {
-                Debug.Log("Triggering global cooldown for ability slot: " + slotIndex);
-                Debug.Log(_abilitySlots.Length);
-
                 // For every ability slot, if the index DOES NOT match, trigger the cooldown UI
                 foreach (AbilitySlotHandler slot in _abilitySlots)
                 {
@@ -57,16 +70,23 @@ namespace UI
                     int index = slot.transform.GetSiblingIndex();
                     if (index != slotIndex)
                     {
-                        LeanTween.value(globalCooldownDuration, 0f, globalCooldownDuration).setOnUpdate(val =>
+                        if (slot.CooldownTween != null)
                         {
+                            Debug.Log("Cooldown already in progress for slot index: " + index);
+                            continue;
+                        }
+
+                        LeanTween.value(1f, 0f, globalCooldownDuration).setOnUpdate(val => {
                             slot.UpdateCooldown(val);
                         });
                     }
                     else
                     {
-                        LeanTween.value(cooldownDuration, 0f, globalCooldownDuration).setOnUpdate(val =>
-                        {
+                        slot.CooldownTween = LeanTween.value(1f, 0f, cooldownDuration)
+                        .setOnUpdate(val => {
                             slot.UpdateCooldown(val);
+                        }).setOnComplete(() => {
+                            slot.CooldownTween = null;
                         });
                     }
                 }
@@ -79,6 +99,12 @@ namespace UI
                 {
                     slot.OnAbilityAssigned -= HandleAbilityAssigned;
                 }
+
+                UserInputs.Instance.Unsubscribe(KeyCode.Alpha1);
+                UserInputs.Instance.Unsubscribe(KeyCode.Alpha2);
+                UserInputs.Instance.Unsubscribe(KeyCode.Alpha3);
+                UserInputs.Instance.Unsubscribe(KeyCode.Alpha4);
+                UserInputs.Instance.Unsubscribe(KeyCode.Alpha5);
             }
 
             /// <summary>
@@ -88,39 +114,15 @@ namespace UI
             /// <param name="abilityData"></param>
             public void HandleAbilityAssigned(int slotIndex, AbilityData abilityData)
             {
-                // TODO: With the current selected actor, switch the ability assigned to the slot index
+                if (_currentActor != null)
+                {
+                    _currentActor.Creature.AbilityStateMachine.AssignAbilityToSlot(slotIndex, abilityData);
+                }
+
                 _assignedAbilities[slotIndex] = abilityData;
 
                 // Or else, the cooldown will be shown below.
                 _abilitySlots[slotIndex].SetAbilityAsFirstSibling();
-            }
-
-            public void Update()
-            {
-                if (Input.GetKeyUp(KeyCode.Alpha1))
-                {
-                    TriggerAbility(0);
-                }
-
-                if (Input.GetKeyUp(KeyCode.Alpha2))
-                {
-                    TriggerAbility(1);
-                }
-                
-                if (Input.GetKeyUp(KeyCode.Alpha3))
-                {
-                    TriggerAbility(2);
-                }
-                
-                if (Input.GetKeyUp(KeyCode.Alpha4))
-                {
-                    TriggerAbility(3);
-                }
-                
-                if (Input.GetKeyUp(KeyCode.Alpha5))
-                {
-                    TriggerAbility(4);
-                }
             }
 
             /// <summary>
@@ -131,13 +133,7 @@ namespace UI
             {
                 if (_assignedAbilities.ContainsKey(slotIndex))
                 {
-                    AbilityData abilityData = _assignedAbilities[slotIndex];
-                    Debug.Log("Using ability: " + abilityData.name + " from slot index: " + slotIndex);
-                    // Here you would add the logic to actually use the ability
-                }
-                else
-                {
-                    Debug.Log("No ability assigned to slot index: " + slotIndex);
+                    _currentActor.Creature.AbilityStateMachine.TriggerAbility(slotIndex);
                 }
             }
         }

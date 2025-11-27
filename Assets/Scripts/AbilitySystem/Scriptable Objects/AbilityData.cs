@@ -28,6 +28,10 @@ namespace AbilitySystem
         public WeaponDamageType RequiredWeaponDamageType;
 
         [SerializeField]
+        [Tooltip("Indicates whether this ability requires a shield to be equipped.")]
+        public bool RequiresShield;
+
+        [SerializeField]
         [Tooltip("Indicates whether this ability is passive.")]
         public bool Passive;
 

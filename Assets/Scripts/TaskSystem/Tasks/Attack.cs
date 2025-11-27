@@ -34,7 +34,8 @@ namespace TaskSystem {
 
 			navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
 
-			Routine();
+			// Start the routine to handle the attack logic.
+			InvokeRepeating(nameof(Routine), 0f, creature.AttackSpeed);
 		}
 
 		private void Routine() {
@@ -112,7 +113,7 @@ namespace TaskSystem {
 				return;
 			}
 
-			creature.AbilityStateMachine.TriggerBasicAttack(Routine);
+			creature.AbilityStateMachine.TriggerBasicAttack();
 		}
 
 		/// <summary>
@@ -134,6 +135,7 @@ namespace TaskSystem {
         }
 
 		public override void OnEnd() {
+			CancelInvoke(nameof(Routine));
 			CancelInvoke(nameof(MoveRoutine));
 
 			_trigger?.Destroy();

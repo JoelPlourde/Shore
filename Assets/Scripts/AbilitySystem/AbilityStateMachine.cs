@@ -46,8 +46,7 @@ namespace CombatSystem
         /// <summary>
         /// Triggers a basic attack if not on cooldown.
         /// </summary>
-        /// <param name="OnBasicAttackCompleted">Callback invoked when the basic attack is completed.</param>
-        public void TriggerBasicAttack(Action OnBasicAttackCompleted) {
+        public void TriggerBasicAttack() {
             if (_basicAttackCooldown)
             {
                 return;
@@ -63,8 +62,6 @@ namespace CombatSystem
             LeanTween.delayedCall(_creature.AttackSpeed, () =>
             {
                 _basicAttackCooldown = false;
-
-                OnBasicAttackCompleted?.Invoke();
             });
         }
 

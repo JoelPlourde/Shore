@@ -12,7 +12,7 @@ namespace AbilitySystem
         public Sprite Sprite;
 
         [SerializeField]
-        [Tooltip("The background image for the ability.")]
+        [Tooltip("(Optional) The background image for the ability.")]
         public Sprite Background;
 
         [SerializeField]

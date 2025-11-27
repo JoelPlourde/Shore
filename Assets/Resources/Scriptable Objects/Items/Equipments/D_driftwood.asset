@@ -30,6 +30,8 @@ MonoBehaviour:
     type: 3}
   SlotType: 5
   WeaponType: 1
+  WeaponSubType: 1
+  DamageCategoryType: 1
   HideBodyPart: 0
   HideArms: 0
   HideHair: 0

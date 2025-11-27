@@ -1,3 +1,4 @@
+using ItemSystem.EquipmentSystem;
 using SkillSystem;
 using UnityEngine;
 
@@ -21,6 +22,10 @@ namespace AbilitySystem
         [SerializeField]
         [Tooltip("The level required to unlock this ability.")]
         public int RequiredLevel;
+
+        [SerializeField]
+        [Tooltip("The weapon damage type required to use this ability.")]
+        public WeaponDamageType RequiredWeaponDamageType;
 
         [SerializeField]
         [Tooltip("Indicates whether this ability is passive.")]

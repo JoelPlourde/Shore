@@ -16,6 +16,7 @@ MonoBehaviour:
   Background: {fileID: 21300000, guid: e81aaf73939ccd84895302c86638b789, type: 3}
   SkillType: 7
   RequiredLevel: 1
+  RequiredWeaponDamageType: 1
   Passive: 0
   Cooldown: 5
   AbilityBehaviour: {fileID: 11400000, guid: 6c9b4866c481d4241af08c764d5f69da, type: 2}

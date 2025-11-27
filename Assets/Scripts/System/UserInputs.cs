@@ -97,8 +97,6 @@ public class UserInputs : MonoBehaviour, IUpdatable {
 	public void Unsubscribe(KeyCode keyCode) {
 		if (_keyCodeActions.TryGetValue(keyCode, out Action existingAction)) {
 			_keyCodeActions[keyCode] -= existingAction;
-		} else {
-			throw new UnityException("No action were registered to the following key code: " + keyCode);
 		}
 	}
 

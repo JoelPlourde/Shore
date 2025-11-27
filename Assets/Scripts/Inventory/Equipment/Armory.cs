@@ -17,6 +17,8 @@ namespace ItemSystem {
 			private WeaponType _currentWeaponType;
 			private WeaponType _currentShieldType;
 
+			private WeaponDamageType _currentWeaponDamageType;
+
 			private void Awake() {
 				foreach (SlotType slotType in (SlotType[])Enum.GetValues(typeof(SlotType))) {
 					Equipments.Add(slotType, new Attachment());
@@ -58,6 +60,7 @@ namespace ItemSystem {
 						// TODO If two-hand, remove the shield, if any. TEST THIS
 
 						_currentWeaponType = equipment.EquipmentData.WeaponType;
+						_currentWeaponDamageType = equipment.EquipmentData.WeaponDamageType;
 
 						_actor.Animator.SetBool("Weapon", true);
 						_actor.Animator.SetInteger("Weapon Type", (int) _currentWeaponType);
@@ -115,6 +118,15 @@ namespace ItemSystem {
 			/// <returns>True if the weapon type corresponds, else false.</returns>
 			public bool HasWeaponEquipped(WeaponType weaponType) {
 				return _currentWeaponType == weaponType;
+			}
+
+			/// <summary>
+            /// Check if the Weapon SubType is equipped.
+            /// </summary>
+            /// <param name="weaponDamageType"></param>
+            /// <returns></returns>
+			public bool HasWeaponDamageTypeEquipped(WeaponDamageType weaponDamageType) {
+				return _currentWeaponDamageType == weaponDamageType;
 			}
 
 			/// <summary>

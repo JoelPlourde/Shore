@@ -16,7 +16,14 @@
     "experience": "Experience",
     "required": "Required",
     "passive": "Passive",
-    "required_level": "Required Level: {0}",
+    "required_level": "Required Level: <color=#FF0000>{0}</color>",
+    "required_weapon_damage_type": "Requires a <color=#FFD700>{0}</color> weapon",
+    "weapon_damage_types": {
+        "any": "Any",
+        "bludgeoning": "Bludgeoning",
+        "slashing": "Slashing",
+        "piercing": "Piercing"
+    },
     "skills": {
         "magic": {
             "name": "Magic",

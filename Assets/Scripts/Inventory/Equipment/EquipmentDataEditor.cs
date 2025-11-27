@@ -30,6 +30,7 @@ namespace ItemSystem {
 					EditorGUILayout.Space();
 					EditorGUILayout.LabelField("Weapon-Specific Properties", EditorStyles.boldLabel);
 					equipmentData.WeaponType = (WeaponType)EditorGUILayout.EnumPopup("Weapon Type", equipmentData.WeaponType);
+					equipmentData.WeaponDamageType = (WeaponDamageType)EditorGUILayout.EnumPopup("Weapon Damage Type", equipmentData.WeaponDamageType);
 				} else {
 					equipmentData.WeaponType = WeaponType.NONE;
 				}

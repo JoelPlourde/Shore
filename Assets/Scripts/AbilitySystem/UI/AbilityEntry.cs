@@ -1,4 +1,5 @@
 using AbilitySystem;
+using ItemSystem.EquipmentSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,7 +38,11 @@ namespace UI
                 {
                     hasRequirements = false;
                     _disabledOverlay.Initialize(tooltip);
-                } else {
+                } else if (!CheckIfActorHasWeaponDamageType(actor, abilityData, out tooltip)) {
+                    hasRequirements = false;
+                    _disabledOverlay.Initialize(tooltip);
+                } else
+                {
                     _disabledOverlay.gameObject.SetActive(false);
                 }
 
@@ -71,6 +76,32 @@ namespace UI
                     tooltip = I18N.GetValue("required_level", abilityData.RequiredLevel);
                 }
 
+                return hasRequirements;
+            }
+
+            /// <summary>
+            /// Checks if the given actor has the required weapon sub-type equipped for the ability.
+            /// </summary>
+            /// <param name="actor"></param>
+            /// <param name="abilityData"></param>
+            /// <param name="tooltip"></param>
+            /// <returns></returns>
+            private bool CheckIfActorHasWeaponDamageType(Actor actor, AbilityData abilityData, out string tooltip)
+            {
+                if (abilityData.RequiredWeaponDamageType == WeaponDamageType.ANY)
+                {
+                    tooltip = "";
+                    return true;
+                }
+
+                bool hasRequirements = actor.Armory.HasWeaponDamageTypeEquipped(abilityData.RequiredWeaponDamageType);
+
+                tooltip = "";
+                if (!hasRequirements)
+                {
+                    string weaponDamageType = I18N.GetValue("weapon_damage_types." + abilityData.RequiredWeaponDamageType.ToString().ToLower());
+                    tooltip = I18N.GetValue("required_weapon_damage_type", weaponDamageType);
+                }
                 return hasRequirements;
             }
         }

@@ -19,6 +19,10 @@ namespace ItemSystem {
 			[SerializeField]
 			[HideInInspector]
 			public WeaponType WeaponType;
+			
+			[SerializeField]
+			[HideInInspector]
+			public WeaponDamageType WeaponDamageType;
 
 			[SerializeField]
 			[Tooltip("The damage category type of the equipment (if applicable).")]

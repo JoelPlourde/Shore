@@ -77,6 +77,10 @@
         }
     },
     "items": {
+        "iron_mace": {
+            "name": "Iron Mace",
+            "description": "A sturdy mace made of iron."
+        },
         "wooden_shield": {
             "name": "Wooden Shield",
             "description": "A weathered wooden planks shield."

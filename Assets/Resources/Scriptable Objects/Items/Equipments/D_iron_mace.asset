@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656fd23eb31f3ac4aa3b80ee64427820, type: 3}
+  m_Name: D_iron_mace
+  m_EditorClassIdentifier: 
+  Sprite: {fileID: 21300000, guid: 663a713dae22a8c4b9bd791821fbe108, type: 3}
+  Prefab: {fileID: 4478964034018848402, guid: b1cb720342f46b349bf44faa501553af, type: 3}
+  ItemType: 1
+  ItemEffects:
+  - ItemEffectType: 0
+    effectName: 
+    Magnitude: 0
+    Duration: 0
+    StatusEffectData: {fileID: 0}
+    RecipeDatas: []
+    IsImmediate: 0
+  Stackable: 0
+  Burnable: 0
+  Power: 0
+  EquipmentPrefab: {fileID: 2690581182865890585, guid: b0f9c3c958eda944e8edfe5396241843,
+    type: 3}
+  SlotType: 5
+  WeaponType: 1
+  WeaponDamageType: 1
+  DamageCategoryType: 1
+  HideBodyPart: 0
+  HideArms: 0
+  HideHair: 0
+  EquipmentStats:
+    Statistics:
+    - StatisticType: 3
+      Value: 5

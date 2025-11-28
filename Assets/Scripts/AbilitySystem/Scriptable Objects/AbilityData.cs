@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace AbilitySystem
 {
-    [CreateAssetMenu(fileName = "AbilityData", menuName = "ScriptableObjects/Ability Data")]
     public class AbilityData : ScriptableObject
     {
         [SerializeField]
@@ -39,10 +38,22 @@ namespace AbilitySystem
         [Tooltip("The cooldown time for this ability in seconds.")]
         public float Cooldown;
 
-        [SerializeField]
-        [Tooltip("The behaviour script that defines the ability's actions.")]
-        public AbilityBehaviour AbilityBehaviour;
+        public string ID
+        {
+            get
+            {
+                return GetID();
+            }
+        }
 
-        public string ID { get; set; }
+        public virtual void Execute(Creature creature, Creature target)
+        {
+        
+        }
+
+        public virtual string GetID()
+        {
+            return "";
+        }
     }
 }

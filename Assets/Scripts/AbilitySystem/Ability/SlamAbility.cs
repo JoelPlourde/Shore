@@ -3,7 +3,7 @@ using UnityEngine;
 namespace AbilitySystem
 {
     [CreateAssetMenu(fileName = "SlamAbility", menuName = "ScriptableObjects/Abilities/Slam Ability")]
-    public class SlamAbility : AbilityBehaviour
+    public class SlamAbility : AbilityData
     {
         public override void Execute(Creature creature, Creature target)
         {
@@ -23,6 +23,11 @@ namespace AbilitySystem
         {
             // Implementation of what happens when the slam hits
             Debug.Log("Slam hit!");
+        }
+
+        public override string GetID()
+        {
+            return "slam";
         }
     }
 }

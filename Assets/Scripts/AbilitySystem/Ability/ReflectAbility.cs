@@ -4,7 +4,7 @@ using UnityEngine;
 namespace AbilitySystem
 {
     [CreateAssetMenu(fileName = "ReflectAbility", menuName = "ScriptableObjects/Abilities/Reflect Ability")]
-    public class ReflectAbility : AbilityBehaviour
+    public class ReflectAbility : AbilityData
     {
         public override void Execute(Creature creature, Creature target)
         {
@@ -27,6 +27,11 @@ namespace AbilitySystem
                 10, // 10 seconds duration
                 StatusEffectManager.GetStatusEffectData(Constant.REFLECT))
             );
+        }
+
+        public override string GetID()
+        {
+            return "reflect";
         }
     }
 }

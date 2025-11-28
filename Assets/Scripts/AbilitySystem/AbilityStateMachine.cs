@@ -114,7 +114,7 @@ namespace CombatSystem
             OnAbilityTriggered?.Invoke(index, _abilities[index].AbilityData.Cooldown, _globalCooldownDuration);
 
             // Finally trigger the Ability
-             _abilities[index].AbilityData.AbilityBehaviour.Execute(_creature, target);
+             _abilities[index].AbilityData.Execute(_creature, target);
         }
 
         public void AssignAbilityToSlot(int slotIndex, AbilityData abilityData)

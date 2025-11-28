@@ -48,6 +48,7 @@ namespace UI
                 _readOnly = readOnly;
                 _isDisabled = disabled;
                 _ability.Initialize(abilityData);
+                _ability.gameObject.SetActive(true);
             }
 
             /// <summary>

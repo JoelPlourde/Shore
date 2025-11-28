@@ -91,10 +91,8 @@ public class Creature : MonoBehaviour
         _actor = actor;
 
         // TODO, pass the list of Abilities from the Ability Bar
-        _abilityStateMachine.Initialize(this);
-
-        AbilityBar.Instance.Subscribe(actor);
-
+        _abilityStateMachine.Initialize(this, creatureDto);
+        
         actor.Statistics.OnUpdateStatisticEvent += (statisticType, value) =>
         {
             if (statisticType == StatisticType.STRENGTH)

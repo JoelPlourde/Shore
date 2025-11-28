@@ -15,8 +15,6 @@ namespace UI
 
             private AbilitySlotHandler[] _abilitySlots;
 
-            private Dictionary<int, AbilityData> _assignedAbilities = new Dictionary<int, AbilityData>();
-
             private Actor _currentActor;
 
             private void Awake()
@@ -36,6 +34,26 @@ namespace UI
                 UserInputs.Instance.Subscribe(KeyCode.Alpha3, () => TriggerAbility(2));
                 UserInputs.Instance.Subscribe(KeyCode.Alpha4, () => TriggerAbility(3));
                 UserInputs.Instance.Subscribe(KeyCode.Alpha5, () => TriggerAbility(4));
+            }
+
+            /// <summary>
+            /// Initializes the Ability Bar for the given actor.
+            /// </summary>
+            /// <param name="actor"></param>
+            public void Initialize(Actor actor)
+            {
+                _currentActor = actor;
+                Subscribe(actor);
+
+                List<Ability> abilities = actor.Creature.AbilityStateMachine.GetAbilities();
+                for (int i = 0; i < _abilitySlots.Length; i++)
+                {
+                    Ability ability = abilities[i];
+                    if (ability != null)
+                    {
+                        _abilitySlots[i].Initialize(ability.AbilityData, readOnly: false, disabled: false);
+                    }
+                }
             }
 
             // Subscribe to ability assignment events for the given actor
@@ -119,8 +137,6 @@ namespace UI
                     _currentActor.Creature.AbilityStateMachine.AssignAbilityToSlot(slotIndex, abilityData);
                 }
 
-                _assignedAbilities[slotIndex] = abilityData;
-
                 // Or else, the cooldown will be shown below.
                 _abilitySlots[slotIndex].SetAbilityAsFirstSibling();
             }
@@ -131,10 +147,7 @@ namespace UI
             /// <param name="slotIndex"></param>
             public void TriggerAbility(int slotIndex)
             {
-                if (_assignedAbilities.ContainsKey(slotIndex))
-                {
-                    _currentActor.Creature.AbilityStateMachine.TriggerAbility(slotIndex);
-                }
+                _currentActor.Creature.AbilityStateMachine.TriggerAbility(slotIndex);
             }
         }
     }

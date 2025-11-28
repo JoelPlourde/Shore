@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AbilitySystem;
+using SaveSystem;
+using UI.AbilitySystem;
 using UnityEngine;
 
 namespace CombatSystem
@@ -28,6 +30,7 @@ namespace CombatSystem
         // Event triggered when an ability is used. Parameters: slot index, cooldown duration
         public Action<int, float, float> OnAbilityTriggered;
 
+        // For monsters/NPCs to use abilities automatically
         public void Initialize(Creature creature)
         {
             _creature = creature;
@@ -39,8 +42,39 @@ namespace CombatSystem
                 null,
                 null
             };
-            Debug.Log("Ability State Machine initialized for creature: " + creature.name);
             _globalCooldownDuration = Mathf.Min(1f, creature.AttackSpeed / 2f);
+        }
+
+        // For loading saved creatures with abilities
+        public void Initialize(Creature creature, CreatureDto creatureDto)
+        {
+            Initialize(creature);
+            
+            for (int i = 0; i < creatureDto.AbilityDtos.Count; i++)
+            {
+                var abilityDto = creatureDto.AbilityDtos[i];
+                if (abilityDto == null || string.IsNullOrEmpty(abilityDto.ID))
+                {
+                    continue;
+                }
+
+                try
+                {
+                    AbilityData abilityData = AbilityManager.Instance.GetAbilityData(abilityDto.ID);
+                    Debug.Log("Loading ability for creature: " + abilityData.ID);
+                    AssignAbilityToSlot(i, abilityData);
+                }
+                catch (UnityException ex)
+                {
+                    Debug.LogError("Error loading ability for creature: " + ex.Message);
+                }
+            }
+
+            // If the creature is selected, update the Ability Bar UI
+            //if (creature.GetComponent<Actor>().Selected)
+            //{
+                AbilityBar.Instance.Initialize(creature.GetComponent<Actor>());
+            //}
         }
 
         /// <summary>
@@ -126,11 +160,10 @@ namespace CombatSystem
         {
             get => _globalCooldown;
         }
-    }
 
-    public class Ability
-    {
-        public bool OnCooldown = false;
-        public AbilityData AbilityData;
+        public List<Ability> GetAbilities()
+        {
+            return _abilities;
+        }
     }
 }

@@ -21,6 +21,7 @@
 	public static readonly string STARVING = "Starving";
 	public static readonly string HUNGRY = "Hungry";
 	public static readonly string DEATH = "Dead";
+	public static readonly string REFLECT = "reflect";
 
 	public static readonly float DEFAULT_TEMPERATURE = 20f;
 

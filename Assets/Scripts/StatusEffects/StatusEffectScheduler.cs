@@ -101,6 +101,10 @@ namespace StatusEffectSystem {
 			OnRemoveStatusEffectEvent?.Invoke(name);
 		}
 
+		public bool CheckIfHasStatusEffect(string name) {
+			return _currentStatuses.Contains(name.ToLower());
+		}
+
 		private int _findStatusEffectIndexByKey(string name) {
 			return _statuses.FindIndex(x => x.StatusEffectData.Name == name);
 		}

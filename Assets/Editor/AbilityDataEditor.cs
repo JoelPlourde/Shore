@@ -12,7 +12,7 @@ namespace AbilitySystem
         public override void OnInspectorGUI() {
 			AbilityData abilityData = (AbilityData) target;
 
-			if (abilityData.ID == null) {
+			if (string.IsNullOrEmpty(abilityData.ID)) {
 				abilityData.ID = abilityData.name
 					.Replace("A_", "")
                     .Replace("a_", "")

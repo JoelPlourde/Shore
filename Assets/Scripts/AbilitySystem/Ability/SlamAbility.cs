@@ -13,11 +13,16 @@ namespace AbilitySystem
                 return;
             }
 
-            
-
+            creature.Animator.SetTrigger("Slam");
 
             // Implementation of the slam ability
             Debug.Log($"{creature.name} slams {target.name}!");
+        }
+
+        public void OnHit()
+        {
+            // Implementation of what happens when the slam hits
+            Debug.Log("Slam hit!");
         }
     }
 }

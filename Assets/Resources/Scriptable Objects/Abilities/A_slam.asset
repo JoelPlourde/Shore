@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951a2fcf55c3ef747a0a16ef14f1e195, type: 3}
   m_Name: A_slam
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 0b81ed6383323e4438ed36d5b2f94b04, type: 3}
-  Background: {fileID: 21300000, guid: 4ce504a9bb2c33b4a859d74ec4e8da4d, type: 3}
+  Sprite: {fileID: 21300000, guid: c4e362cc97b7cdd4ca9b67f434999f3f, type: 3}
+  Background: {fileID: 0}
   SkillType: 7
   RequiredLevel: 1
   RequiredWeaponDamageType: 1

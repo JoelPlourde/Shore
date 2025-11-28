@@ -72,6 +72,12 @@ namespace CombatSystem
         public void TriggerAbility(int index)
         {
             Creature target = _creature.CombatTargets.FirstOrDefault();
+            if (ReferenceEquals(target, null) && ReferenceEquals(_creature, null))
+            {
+                Debug.Log("No target nor creature available for ability.");
+                return;
+            }
+
             if (_globalCooldown)
             {
                 Debug.Log("Global cooldown active. Cannot use ability.");

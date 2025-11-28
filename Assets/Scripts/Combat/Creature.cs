@@ -8,6 +8,8 @@ using TaskSystem;
 using UI;
 using ItemSystem.EquipmentSystem;
 using UI.AbilitySystem;
+using StatusEffectSystem;
+using System.Linq;
 
 [RequireComponent(typeof(TaskScheduler))]
 [RequireComponent(typeof(NavMeshAgent))]
@@ -251,6 +253,12 @@ public class Creature : MonoBehaviour
     {
         if (!ReferenceEquals(_actor, null))
         {
+            if (Reflect(damageCategory, damage))
+            {
+                // Damage was reflected, exit early
+                return;
+            }
+
             int armor = _actor.Statistics.GetStatistic(StatisticType.ARMOR);
 
             // Rounded to the nearest whole number
@@ -343,6 +351,29 @@ public class Creature : MonoBehaviour
 
         OnDeathEvent?.Invoke();
     }
+    #endregion
+
+    #region Abilities
+    public bool Reflect(DamageCategoryType damageCategory, float damage)
+    {
+        // Check if you have the "Reflect" status effect
+        if (StatusEffectScheduler.Instance(_actor.Guid).CheckIfHasStatusEffect(Constant.REFLECT))
+        {
+            // Find the attacker from combat targets
+            Creature attacker = _combatTargets.First();
+            if (!ReferenceEquals(attacker, null))
+            {
+                attacker.SufferDamage(damageCategory, damage);
+
+                // Remove the Reflect status effect after reflecting
+                StatusEffectScheduler.Instance(_actor.Guid).RemoveStatusEffect(Constant.REFLECT);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+
     #endregion
 
     public bool Dead { get => Health <= 0; }

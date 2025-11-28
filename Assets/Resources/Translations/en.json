@@ -314,6 +314,10 @@
     },
     "abilities": {
         "title": "Abilities",
+        "reflect": {
+            "name": "Reflect",
+            "description": "Reflect the next attack back to the attacker."
+        },
         "slam": {
             "name": "Slam",
             "description": "A powerful slam attack dealing melee damage to a single target."
@@ -345,6 +349,10 @@
         "carve": "Carve"
     },
     "status_effects": {
+        "reflect": {
+            "name": "Reflect",
+            "description": "You will reflect the next attack back to the attacker."
+        },
         "brain_freeze": {
             "name": "Brain Freeze",
             "description": "You have a brain freeze."

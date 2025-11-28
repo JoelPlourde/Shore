@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c77fec4bef6e4a4cb4d196ed73617a0, type: 3}
   m_Name: A_slam
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: c4e362cc97b7cdd4ca9b67f434999f3f, type: 3}
   Background: {fileID: 0}
-  SkillType: 0
-  RequiredLevel: 0
-  RequiredWeaponDamageType: 0
+  SkillType: 7
+  RequiredLevel: 1
+  RequiredWeaponDamageType: 1
   RequiresShield: 0
   Passive: 0
-  Cooldown: 0
+  Cooldown: 5

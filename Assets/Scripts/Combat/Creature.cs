@@ -92,7 +92,7 @@ public class Creature : MonoBehaviour
 
         // TODO, pass the list of Abilities from the Ability Bar
         _abilityStateMachine.Initialize(this, creatureDto);
-        
+
         actor.Statistics.OnUpdateStatisticEvent += (statisticType, value) =>
         {
             if (statisticType == StatisticType.STRENGTH)
@@ -124,6 +124,23 @@ public class Creature : MonoBehaviour
         }
     }
     #endregion
+
+    /// <summary>
+    /// Called by the Animator to set up IK (inverse kinematics) each frame.
+    /// </summary>
+    /// <param name="layerIndex"></param>
+    void OnAnimatorIK(int layerIndex)
+    {
+        if (!_animator) return;
+
+        if (_combatTargets.Count == 0) return;
+
+        Creature target = _combatTargets.First();
+        if (ReferenceEquals(target, null)) return;
+
+        _animator.SetLookAtWeight(0.5f);
+        _animator.SetLookAtPosition(target.transform.position);
+    }
 
     #region Combat Management
     /// <summary>
@@ -361,6 +378,8 @@ public class Creature : MonoBehaviour
             Creature attacker = _combatTargets.First();
             if (!ReferenceEquals(attacker, null))
             {
+                Animator.SetTrigger("Block");
+
                 attacker.SufferDamage(damageCategory, damage);
 
                 // Remove the Reflect status effect after reflecting

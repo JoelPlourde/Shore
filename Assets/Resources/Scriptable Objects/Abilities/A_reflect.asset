@@ -20,4 +20,3 @@ MonoBehaviour:
   RequiresShield: 1
   Passive: 0
   Cooldown: 10
-  AbilityBehaviour: {fileID: 0}

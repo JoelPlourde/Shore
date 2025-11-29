@@ -41,9 +41,16 @@ namespace UI
                 } else if (!CheckIfActorHasWeaponDamageType(actor, abilityData, out tooltip)) {
                     hasRequirements = false;
                     _disabledOverlay.Initialize(tooltip);
-                } else
-                {
+                } else if (!CheckIfActorHasShieldEquippedIfRequired(actor, abilityData, out tooltip)) {
+                    hasRequirements = false;
+                    _disabledOverlay.Initialize(tooltip);
+                } else {
                     _disabledOverlay.gameObject.SetActive(false);
+                }
+
+                if (!hasRequirements)
+                {
+                    _disabledOverlay.gameObject.SetActive(true);
                 }
 
                 // Initialize the AbilitySlotHandler as a read-only slot
@@ -102,6 +109,34 @@ namespace UI
                     string weaponDamageType = I18N.GetValue("weapon_damage_types." + abilityData.RequiredWeaponDamageType.ToString().ToLower());
                     tooltip = I18N.GetValue("required_weapon_damage_type", weaponDamageType);
                 }
+                return hasRequirements;
+            }
+
+            /// <summary>
+            /// Checks if the given actor has a shield equipped if the ability requires it.
+            /// </summary>
+            /// <param name="actor"></param>
+            /// <param name="abilityData"></param>
+            /// <param name="tooltip"></param>
+            /// <returns></returns>
+            private bool CheckIfActorHasShieldEquippedIfRequired(Actor actor, AbilityData abilityData, out string tooltip)
+            {
+                if (!abilityData.RequiresShield)
+                {
+                    tooltip = "";
+                    return true;
+                }
+
+                Debug.Log("Ability requires shield equipped. Checking actor's armory.");
+
+                bool hasRequirements = actor.Armory.HasShieldEquipped();
+
+                tooltip = "";
+                if (!hasRequirements)
+                {
+                    tooltip = I18N.GetValue("requires_shield_equipped");
+                }
+                Debug.Log("Has shield equipped: " + hasRequirements);
                 return hasRequirements;
             }
         }

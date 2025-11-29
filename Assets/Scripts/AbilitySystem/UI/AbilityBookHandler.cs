@@ -53,7 +53,6 @@ namespace UI
         public void Open(Actor actor)
         {
             _currentActor = actor;
-            Debug.Log("Opening Abilities Menu for Actor: " + actor.name);
 
             _abilityBannerComponents[_currentSkillType].BringForward();
 
@@ -78,8 +77,6 @@ namespace UI
 
         public void SwitchSkill(SkillType skillType)
         {
-            Debug.Log("Switching skill to: " + skillType);
-
             if (_currentSkillType == skillType)
             {
                 return;

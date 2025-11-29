@@ -18,6 +18,7 @@
     "passive": "Passive",
     "required_level": "Required Level: <color=#FF0000>{0}</color>",
     "required_weapon_damage_type": "Requires a <color=#FFD700>{0}</color> weapon",
+    "requires_shield_equipped": "Requires a shield to be equipped",
     "weapon_damage_types": {
         "any": "Any",
         "bludgeoning": "Bludgeoning",
@@ -77,6 +78,18 @@
         }
     },
     "items": {
+        "book": {
+            "name": "Book",
+            "description": "A book containing ... knowledge?"
+        },
+        "iron_shield": {
+            "name": "Iron Shield",
+            "description": "A sturdy shield made of iron."
+        },
+        "spindleweed_hat": {
+            "name": "Spindleweed Hat",
+            "description": "A hat made from spindleweed fabric."
+        },
         "iron_mace": {
             "name": "Iron Mace",
             "description": "A sturdy mace made of iron."

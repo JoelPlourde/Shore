@@ -29,7 +29,7 @@ MonoBehaviour:
   EquipmentPrefab: {fileID: 8278574240845136781, guid: f72382b29157a024f83f86f21693d7be,
     type: 3}
   SlotType: 6
-  WeaponType: 0
+  WeaponType: 11
   WeaponDamageType: 0
   DamageCategoryType: 1
   HideBodyPart: 0

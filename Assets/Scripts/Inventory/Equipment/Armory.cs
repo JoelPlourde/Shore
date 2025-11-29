@@ -130,6 +130,15 @@ namespace ItemSystem {
 			}
 
 			/// <summary>
+            /// Check if a shield is equipped.
+            /// </summary>
+            /// <returns></returns>
+			public bool HasShieldEquipped()
+            {
+				return _currentShieldType != WeaponType.NONE;
+            }
+
+			/// <summary>
 			/// Unequip method that detach the equipment from the body.
 			/// </summary>
 			/// <param name="attachment">The attachment</param>

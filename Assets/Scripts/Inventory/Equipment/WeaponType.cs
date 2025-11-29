@@ -11,7 +11,8 @@
 			BOW = 7,
 			CROSSBOW = 8,
 			STAFF = 9,
-			WAND = 10
+			WAND = 10,
+			SHIELD = 11
 		}
 	}
 }

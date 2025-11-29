@@ -20,3 +20,4 @@ MonoBehaviour:
   RequiresShield: 0
   Passive: 0
   Cooldown: 5
+  Immediate: 0

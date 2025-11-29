@@ -127,7 +127,7 @@ namespace CraftingSystem {
 			return _interactionRadius;
 		}
 
-		protected override OutlineType GetOutlineType() {
+		public override OutlineType GetOutlineType() {
 			return OutlineType.INTERACTABLE;
 		}
 

@@ -1,10 +1,11 @@
 Shader "Cg projector shader for adding light" {
    Properties {
       _ShadowTex ("Projected Image", 2D) = "white" {}
+      _Color ("Tint Color", Color) = (1,1,1,1)
    }
    SubShader {
       Pass {      
-         Blend One One 
+         Blend SrcAlpha OneMinusSrcAlpha
          ZWrite Off
          Offset -1, -1
 
@@ -15,6 +16,7 @@ Shader "Cg projector shader for adding light" {
  
          // User-specified properties
          uniform sampler2D _ShadowTex; 
+         float4 _Color;
  
          // Projector-specific uniforms
          uniform float4x4 unity_Projector; // transformation matrix 
@@ -40,7 +42,8 @@ Shader "Cg projector shader for adding light" {
  
  
          float4 frag(vertexOutput input) : COLOR {
-			 return tex2D(_ShadowTex, input.posProj.xy / input.posProj.w); 
+			  float4 tex = tex2D(_ShadowTex, input.posProj.xy / input.posProj.w); 
+            return tex * _Color;
          }
  
          ENDCG

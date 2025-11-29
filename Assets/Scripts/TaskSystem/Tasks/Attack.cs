@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using static TriggerManager;
 
 namespace TaskSystem {
 
@@ -64,7 +65,12 @@ namespace TaskSystem {
 
 			if (ReferenceEquals(_trigger, null))
             {
-                _trigger = TriggerManager.CreateTrigger(attackArguments.Target.transform, creature.AttackRange, OnTriggerEnterCondition, Routine);
+				TriggerOptions options = new TriggerOptions {
+					Radius = 1f,
+					Color = Color.red
+				};
+
+                _trigger = TriggerManager.CreateTrigger(attackArguments.Target.transform, creature.AttackRange, OnTriggerEnterCondition, Routine, options);
 				_trigger.name = name + "_AttackTrigger";
 			}
 

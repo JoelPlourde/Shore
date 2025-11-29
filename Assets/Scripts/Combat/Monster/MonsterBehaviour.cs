@@ -181,7 +181,7 @@ namespace CombatSystem
 		#endregion
 
         #region IInteractable Implementation
-        protected override OutlineType GetOutlineType() {
+        public override OutlineType GetOutlineType() {
             return OutlineType.ENEMY;
         }
 
@@ -203,11 +203,14 @@ namespace CombatSystem
 
         public void OnInteractEnter(Actor actor)
         {
+            Debug.Log("MonsterBehaviour OnInteractEnter called");
+
             AttackCallback();
         }
 
         public void OnInteractExit(Actor actor)
         {
+            Debug.Log("MonsterBehaviour OnInteractExit called");
         }
 
         public float GetInteractionRadius()

@@ -21,7 +21,7 @@ namespace QuestSystem {
 		public void Interact(MouseButton mouseButton, RaycastHit raycastHit) {
 			if (Squad.FirstSelected(out Actor actor)) {
 				_actor = actor;
-				_actor.TaskScheduler.CreateTask<Interact>(new InteractArguments(transform.position, this));
+				_actor.TaskScheduler.CreateTask<Interact>(new InteractArguments(transform, this));
 			}
 		}
 
@@ -44,7 +44,7 @@ namespace QuestSystem {
 			return 1f;
 		}
 
-		protected override OutlineType GetOutlineType() {
+		public override OutlineType GetOutlineType() {
 			return OutlineType.NPC;
 		}
 

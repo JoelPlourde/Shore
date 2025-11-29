@@ -38,7 +38,7 @@ public class InteractionManager : MonoBehaviour {
     /**
      * Get the Color for the given OutlineType.
      */
-    private Color getOutlineColor(OutlineType outlineType) {
+    private static Color getOutlineColor(OutlineType outlineType) {
         Color hexColor;
         switch (outlineType) {
             case OutlineType.INTERACTABLE:

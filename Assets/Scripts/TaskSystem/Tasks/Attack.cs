@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Jobs;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
-using MonsterSystem;
 
 namespace TaskSystem {
 
@@ -12,8 +7,6 @@ namespace TaskSystem {
 
 		NavMeshAgent navMeshAgent;
 		AttackArguments attackArguments;
-
-		private bool _canAttack = true;
 
 		private Trigger _trigger;
 
@@ -36,13 +29,19 @@ namespace TaskSystem {
 
 			navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
 
-			Routine();
+			// Start the routine to handle the attack logic.
+			InvokeRepeating(nameof(Routine), 0f, creature.AttackSpeed);
 		}
 
 		private void Routine() {
 			if (!this) {
 				return;
 			}
+
+			if (creature.Stunned)
+            {
+				return;
+            }
 
 			if (creature.Dead || attackArguments.Target.Dead) {
 				OnEnd();
@@ -94,10 +93,10 @@ namespace TaskSystem {
 		private void AttackState() {
 			creature.Animator.SetBool("Move", false);
 			navMeshAgent.isStopped = true;
-			if (_canAttack) {
-				_canAttack = false;
-				AttackNow();
-			}
+			if (!creature.AbilityStateMachine.GlobalCooldown)
+            {
+                AttackNow();
+            }
 		}
 
 		private void AttackNow() {
@@ -114,22 +113,8 @@ namespace TaskSystem {
 				return;
 			}
 
-			// attackArguments.Target.SufferDamage(creature.Damage, creature);
-			creature.Animator.SetTrigger("Attack");
-
-			// Set a cooldown before the next attack can occur.
-			TimerManager.Instance.Enqueue(new DelayedAction(ResetAttackCooldown, creature.AttackSpeed));
+			creature.AbilityStateMachine.TriggerBasicAttack();
 		}
-
-		/// <summary>
-        /// Callback invoked by an animation event when the attack hits.
-        /// </summary>
-		private void OnHit()
-        {
-			float calculatedDamage = Mathf.Round(creature.Damage * UnityEngine.Random.Range(1 - Constant.DAMAGE_JITTER_FACTOR, 1 + Constant.DAMAGE_JITTER_FACTOR));
-
-			attackArguments.Target.SufferDamage(creature.DamageCategoryType, calculatedDamage, creature);
-        }
 
 		private void LookAtTarget()
         {
@@ -139,15 +124,8 @@ namespace TaskSystem {
 			LeanTween.rotate(gameObject, finalRot.eulerAngles, 0.2f).setEase(LeanTweenType.easeOutQuad);
         }
 
-		private void ResetAttackCooldown() {
-			// Allow the creature to attack again.
-			_canAttack = true;
-
-			// Continue the attack sequence if still in range.
-			Routine();
-		}
-
 		public override void OnEnd() {
+			CancelInvoke(nameof(Routine));
 			CancelInvoke(nameof(MoveRoutine));
 
 			_trigger?.Destroy();

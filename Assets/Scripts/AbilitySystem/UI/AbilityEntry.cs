@@ -1,0 +1,144 @@
+using AbilitySystem;
+using ItemSystem.EquipmentSystem;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace UI
+{
+    namespace AbilitySystem
+    {
+        /// <summary>
+        /// Placeholder class for AbilityEntry.
+        /// </summary>
+        public class AbilityEntry : MonoBehaviour
+        {
+            private AbilitySlotHandler _abilitySlotHandler;
+            private TextMeshProUGUI _title;
+            private TextMeshProUGUI _subTitle;
+            private DisableOverlay _disabledOverlay;
+
+            private void Awake()
+            {
+                _abilitySlotHandler = GetComponentInChildren<AbilitySlotHandler>(true);
+                _title = transform.Find("Title").GetComponent<TextMeshProUGUI>();
+                _subTitle = transform.Find("SubTitle").GetComponent<TextMeshProUGUI>();
+                Transform disableOverlay = transform.Find("Disabled");
+                if (ReferenceEquals(disableOverlay, null))
+                {
+                    return;
+                }
+                _disabledOverlay = disableOverlay.GetComponent<DisableOverlay>();
+            }
+
+            public void Initialize(Actor actor, AbilityData abilityData)
+            {
+                bool hasRequirements = true;
+                if (!CheckIfActorHasSkillLevel(actor, abilityData, out string tooltip))
+                {
+                    hasRequirements = false;
+                    _disabledOverlay.Initialize(tooltip);
+                } else if (!CheckIfActorHasWeaponDamageType(actor, abilityData, out tooltip)) {
+                    hasRequirements = false;
+                    _disabledOverlay.Initialize(tooltip);
+                } else if (!CheckIfActorHasShieldEquippedIfRequired(actor, abilityData, out tooltip)) {
+                    hasRequirements = false;
+                    _disabledOverlay.Initialize(tooltip);
+                } else {
+                    _disabledOverlay.gameObject.SetActive(false);
+                }
+
+                if (!hasRequirements)
+                {
+                    _disabledOverlay.gameObject.SetActive(true);
+                }
+
+                // Initialize the AbilitySlotHandler as a read-only slot
+                _abilitySlotHandler.Initialize(abilityData, true, !hasRequirements);
+
+                _title.text = I18N.GetValue("abilities." + abilityData.ID + ".name");
+                _subTitle.enabled = false;
+
+                if (abilityData.Passive)
+                {
+                    _subTitle.text = I18N.GetValue("passive");
+                    _subTitle.enabled = true;
+                }
+            }
+
+            /// <summary>
+            /// Checks if the given actor meets the skill level requirements for the ability.
+            /// </summary>
+            /// <param name="actor"></param>
+            /// <param name="abilityData"></param>
+            /// <param name="tooltip"></param>
+            /// <returns></returns>
+            private bool CheckIfActorHasSkillLevel(Actor actor, AbilityData abilityData, out string tooltip)
+            {
+                bool hasRequirements = actor.Skills.GetLevel(abilityData.SkillType).Value >= abilityData.RequiredLevel;
+
+                tooltip = "";
+                if (!hasRequirements)
+                {
+                    tooltip = I18N.GetValue("required_level", abilityData.RequiredLevel);
+                }
+
+                return hasRequirements;
+            }
+
+            /// <summary>
+            /// Checks if the given actor has the required weapon sub-type equipped for the ability.
+            /// </summary>
+            /// <param name="actor"></param>
+            /// <param name="abilityData"></param>
+            /// <param name="tooltip"></param>
+            /// <returns></returns>
+            private bool CheckIfActorHasWeaponDamageType(Actor actor, AbilityData abilityData, out string tooltip)
+            {
+                if (abilityData.RequiredWeaponDamageType == WeaponDamageType.ANY)
+                {
+                    tooltip = "";
+                    return true;
+                }
+
+                bool hasRequirements = actor.Armory.HasWeaponDamageTypeEquipped(abilityData.RequiredWeaponDamageType);
+
+                tooltip = "";
+                if (!hasRequirements)
+                {
+                    string weaponDamageType = I18N.GetValue("weapon_damage_types." + abilityData.RequiredWeaponDamageType.ToString().ToLower());
+                    tooltip = I18N.GetValue("required_weapon_damage_type", weaponDamageType);
+                }
+                return hasRequirements;
+            }
+
+            /// <summary>
+            /// Checks if the given actor has a shield equipped if the ability requires it.
+            /// </summary>
+            /// <param name="actor"></param>
+            /// <param name="abilityData"></param>
+            /// <param name="tooltip"></param>
+            /// <returns></returns>
+            private bool CheckIfActorHasShieldEquippedIfRequired(Actor actor, AbilityData abilityData, out string tooltip)
+            {
+                if (!abilityData.RequiresShield)
+                {
+                    tooltip = "";
+                    return true;
+                }
+
+                Debug.Log("Ability requires shield equipped. Checking actor's armory.");
+
+                bool hasRequirements = actor.Armory.HasShieldEquipped();
+
+                tooltip = "";
+                if (!hasRequirements)
+                {
+                    tooltip = I18N.GetValue("requires_shield_equipped");
+                }
+                Debug.Log("Has shield equipped: " + hasRequirements);
+                return hasRequirements;
+            }
+        }
+    }
+}

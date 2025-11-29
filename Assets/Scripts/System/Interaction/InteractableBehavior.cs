@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using TaskSystem;
 using PointerSystem;
+using UI;
 
 public class InteractableBehavior : MonoBehaviour {
 
@@ -31,6 +32,9 @@ public class InteractableBehavior : MonoBehaviour {
     }
 
     public void OnMouseEnter() {
+        string tooltip = GetActionLabel() + " " + GetEntityLabel();
+        Tooltip.Instance.ShowTooltip(tooltip, 0f);
+
         PointerManager.Instance.SetPointer(GetPointerMode());
 
         if (ReferenceEquals(_renderer, null)) {
@@ -49,6 +53,8 @@ public class InteractableBehavior : MonoBehaviour {
     }
 
     public void OnMouseExit() {
+        Tooltip.Instance.HideTooltip();
+
         PointerManager.Instance.SetPointer(PointerMode.DEFAULT);
 
         List<Material> materials = new List<Material>(_renderer.materials);
@@ -65,5 +71,15 @@ public class InteractableBehavior : MonoBehaviour {
 
     protected virtual PointerMode GetPointerMode() {
         return PointerMode.DEFAULT;
+    }
+
+    protected virtual string GetActionLabel()
+    {
+        return I18N.GetValue("interact");
+    }
+
+    protected virtual string GetEntityLabel()
+    {
+        return I18N.GetValue("entity");
     }
 }

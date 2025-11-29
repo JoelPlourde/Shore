@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillType: 3
   Color: {r: 1, g: 0.029075107, b: 0, a: 0}
-  Title: Cooking
-  Description: oh what's cooking ?!
-  Icon: {fileID: 21300000, guid: 33102f6b07436584eb5f60edd8410bbd, type: 3}
+  Icon: {fileID: 21300000, guid: c6511563376d46e479e5221a335d23e4, type: 3}
   Competencies: []
+  Abilities: []

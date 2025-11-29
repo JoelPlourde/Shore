@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.EditorTools;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ namespace UI {
 		private static readonly Vector3 SCALE_DOWN = new Vector3(1.15f, 1.15f, 1.15f);
 
 		[SerializeField]
+		[Tooltip("The tooltip text to display when hovering over this button. Use I18N keys.")]
 		protected string _tooltip = "";
 
 		public void Initialize(string tooltip) {
@@ -49,7 +51,7 @@ namespace UI {
 		#endregion
 
 		public virtual string GetTooltip() {
-			return _tooltip;
+			return I18N.GetValue(_tooltip);
 		}
 	}
 }

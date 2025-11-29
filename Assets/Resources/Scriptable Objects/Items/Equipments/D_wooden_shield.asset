@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 656fd23eb31f3ac4aa3b80ee64427820, type: 3}
   m_Name: D_wooden_shield
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: e65c0e166075b824a99ea01031f30ea3, type: 3}
+  Sprite: {fileID: 21300000, guid: 3d8fb5f8962a4c24e9436f14c6bd770b, type: 3}
   Prefab: {fileID: 1818152998852001573, guid: 06ed8cc5d07553a4ca8667d9167d01a9, type: 3}
   ItemType: 1
   ItemEffects:
@@ -30,6 +30,7 @@ MonoBehaviour:
     type: 3}
   SlotType: 6
   WeaponType: 0
+  DamageCategoryType: 1
   HideBodyPart: 0
   HideArms: 0
   HideHair: 0

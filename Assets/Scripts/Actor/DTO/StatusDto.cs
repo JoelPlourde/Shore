@@ -32,7 +32,6 @@ namespace SaveSystem {
 			}
 
 			Dead = status.Dead;
-			Stunned = status.Stunned;
 			Fleeing = status.Fleeing;
 			Sheltered = status.Sheltered;
 		}

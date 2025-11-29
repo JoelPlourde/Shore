@@ -6,29 +6,14 @@ using UnityEngine;
 namespace StatusEffectSystem {
 	public class StatusEffectScheduler : MonoBehaviour {
 
-		private static readonly Dictionary<Guid, StatusEffectScheduler> _instances = new Dictionary<Guid, StatusEffectScheduler>();
-
 		public event Action<Status> OnAddStatusEffectEvent;
 		public event Action<string> OnRemoveStatusEffectEvent;
 		public event Action<List<Status>> OnUpdateStatusEffectsEvent;
 		public event Action<Status> OnUpdateStatusEffectEvent;
 
-		private Guid _guid;
 		private bool _started = false;
 		private readonly HashSet<string> _currentStatuses = new HashSet<string>();
 		private readonly List<Status> _statuses = new List<Status>();
-
-		public static StatusEffectScheduler Instance(Guid guid) {
-			if (_instances.TryGetValue(guid, out StatusEffectScheduler statusEffectScheduler)) {
-				return statusEffectScheduler;
-			}
-			throw new UnityException("This instance of StatusEffectScheduler does not exists by Guid: " + guid.ToString());
-		}
-
-		public void Initialize(Guid guid) {
-			_guid = guid;
-			_instances.Add(guid, this);
-		}
 
 		public void Routine() {
 			foreach (Status status in _statuses.ToList()) {
@@ -99,6 +84,10 @@ namespace StatusEffectSystem {
 			_statuses.RemoveAt(index);
 
 			OnRemoveStatusEffectEvent?.Invoke(name);
+		}
+
+		public bool CheckIfHasStatusEffect(string name) {
+			return _currentStatuses.Contains(name.ToLower());
 		}
 
 		private int _findStatusEffectIndexByKey(string name) {

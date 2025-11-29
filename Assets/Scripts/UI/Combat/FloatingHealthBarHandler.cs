@@ -60,8 +60,11 @@ namespace UI
 
         public void Routine()
         {
-            foreach (var healthBar in _activeHealthBars)
+            // Iterate through active health bars and update their positions in reverse
+            for (int i = _activeHealthBars.Count - 1; i >= 0; i--)
             {
+                FloatingHealthBar healthBar = _activeHealthBars[i];
+
                 if (ReferenceEquals(healthBar, null))
                 {
                     HideHealthBar(healthBar);
@@ -72,7 +75,6 @@ namespace UI
                     HideHealthBar(healthBar);
                     continue;
                 }
-                
 
                 // Update position
                 healthBar.transform.position = CalculatePosition(healthBar.Target.position, healthBar.HeightOffset);

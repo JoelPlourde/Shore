@@ -22,7 +22,6 @@ public class ActorEditor : Editor
 
         EditorGUILayout.LabelField("Status", EditorStyles.boldLabel);
         EditorGUILayout.LabelField("Dead: " + actor.Status.Dead.ToString());
-        EditorGUILayout.LabelField("Stunned: " + actor.Status.Stunned.ToString());
         EditorGUILayout.LabelField("Fleeing: " + actor.Status.Fleeing.ToString());
         EditorGUILayout.LabelField("Sheltered: " + actor.Status.Sheltered.ToString());
         EditorGUILayout.Space();

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using MonsterSystem;
+using CombatSystem;
 using UnityEngine;
 
 namespace StatusEffectSystem {
@@ -43,5 +43,9 @@ namespace StatusEffectSystem {
 		[SerializeField]
 		[Tooltip("The damage category type of the status effect (if applicable).")]
 		public DamageCategoryType DamageCategoryType = DamageCategoryType.TYPELESS;
+
+		[SerializeField]
+		[Tooltip("The particle effect prefab to instantiate when the status effect is applied.")]
+		public GameObject ParticleEffectPrefab;
 	}
 }

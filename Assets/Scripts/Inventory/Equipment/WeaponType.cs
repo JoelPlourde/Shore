@@ -7,7 +7,12 @@
 			PICKAXE = 3,
 			AXE = 4,
 			LANTERN = 5,
-			TORCH = 6
+			TORCH = 6,
+			BOW = 7,
+			CROSSBOW = 8,
+			STAFF = 9,
+			WAND = 10,
+			SHIELD = 11
 		}
 	}
 }

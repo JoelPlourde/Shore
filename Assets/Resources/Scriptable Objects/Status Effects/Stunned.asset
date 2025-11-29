@@ -19,5 +19,7 @@ MonoBehaviour:
   CanStack: 0
   Hidden: 0
   StatusEffectCategory: 1
-  Tooltip: You are stunned!
   statusEffectTypes: 01000000
+  DamageCategoryType: 0
+  ParticleEffectPrefab: {fileID: 3485587379981901995, guid: 089026d6375d1e640a0313f561792155,
+    type: 3}

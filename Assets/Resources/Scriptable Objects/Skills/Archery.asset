@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e65da5e1cbb0742963b7ea76472fe8, type: 3}
+  m_Name: Archery
+  m_EditorClassIdentifier: 
+  SkillType: 9
+  Color: {r: 0.048608176, g: 0.2830189, b: 0, a: 0}
+  Icon: {fileID: 21300000, guid: 763b2b1116fd7034ea86a9fc7c74056b, type: 3}
+  Competencies: []
+  Abilities: []

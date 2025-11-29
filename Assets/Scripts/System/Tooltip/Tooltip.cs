@@ -39,7 +39,7 @@ namespace UI {
 			_canvas.enabled = false;
 		}
 
-		public void ShowTooltip(string text, float delay) {
+		public void ShowTooltip(string text, float delay = 0f) {
 			transform.SetAsLastSibling();
 			_text.text = text;
 

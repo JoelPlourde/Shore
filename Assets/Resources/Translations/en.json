@@ -15,7 +15,25 @@
     "inventory": "Inventory",
     "experience": "Experience",
     "required": "Required",
+    "passive": "Passive",
+    "required_level": "Required Level: <color=#FF0000>{0}</color>",
+    "required_weapon_damage_type": "Requires a <color=#FFD700>{0}</color> weapon",
+    "requires_shield_equipped": "Requires a shield to be equipped",
+    "weapon_damage_types": {
+        "any": "Any",
+        "bludgeoning": "Bludgeoning",
+        "slashing": "Slashing",
+        "piercing": "Piercing"
+    },
     "skills": {
+        "magic": {
+            "name": "Magic",
+            "description": "The art of harnessing the raw power of the Weave to cast spells."
+        },
+        "archery": {
+            "name": "Archery",
+            "description": "The art of mastering ranged combat using bows and crossbows."
+        },
         "fighting": {
             "name": "Fighting",
             "description": "The art of mastering physical close-combat using strength, technique, and weapon prowess."
@@ -60,6 +78,22 @@
         }
     },
     "items": {
+        "book": {
+            "name": "Book",
+            "description": "A book containing ... knowledge?"
+        },
+        "iron_shield": {
+            "name": "Iron Shield",
+            "description": "A sturdy shield made of iron."
+        },
+        "spindleweed_hat": {
+            "name": "Spindleweed Hat",
+            "description": "A hat made from spindleweed fabric."
+        },
+        "iron_mace": {
+            "name": "Iron Mace",
+            "description": "A sturdy mace made of iron."
+        },
         "wooden_shield": {
             "name": "Wooden Shield",
             "description": "A weathered wooden planks shield."
@@ -291,7 +325,22 @@
             "description": "A small crab scuttling along the shore."
         }
     },
+    "abilities": {
+        "title": "Abilities",
+        "reflect": {
+            "name": "Reflect",
+            "description": "Reflect the next attack back to the attacker."
+        },
+        "slam": {
+            "name": "Slam",
+            "description": "A powerful slam attack dealing melee damage to a single target."
+        }
+    },
     "nodes": {
+        "bristlethorn_node": {
+            "name": "Bristlethorn Bush",
+            "description": "A bush bearing bristlethorns."
+        },
         "stone_node": {
             "name": "Rock",
             "description": "A rock containing stones."
@@ -313,6 +362,10 @@
         "carve": "Carve"
     },
     "status_effects": {
+        "reflect": {
+            "name": "Reflect",
+            "description": "You will reflect the next attack back to the attacker."
+        },
         "brain_freeze": {
             "name": "Brain Freeze",
             "description": "You have a brain freeze."

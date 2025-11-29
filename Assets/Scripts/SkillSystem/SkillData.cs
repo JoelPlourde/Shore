@@ -1,4 +1,5 @@
 ﻿using System;
+using AbilitySystem;
 using UnityEngine;
 
 namespace SkillSystem {
@@ -21,5 +22,9 @@ namespace SkillSystem {
 		[SerializeField]
 		[Tooltip("Competencies that the character unlocks by leveling up this skill.")]
 		public Competency[] Competencies;
+
+		[SerializeField]
+		[Tooltip("Abilities that are unlocked by leveling up this skill.")]
+		public AbilityData[] Abilities;
 	}
 }

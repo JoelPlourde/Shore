@@ -63,6 +63,14 @@ namespace ItemSystem {
             return "pick_up";
         }
 
+        protected override string GetActionLabel() {
+            return I18N.GetValue("pick_up");
+        }
+
+        protected override string GetEntityLabel() {
+            return I18N.GetValue("items." + ItemData.ID + ".name");
+        }
+
         protected override OutlineType GetOutlineType() {
             return OutlineType.ITEM;
         }

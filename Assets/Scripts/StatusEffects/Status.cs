@@ -4,6 +4,7 @@ using CombatSystem;
 namespace StatusEffectSystem {
 	public class Status {
 
+		// TODO Delete this, everything should point to the Creature
 		public Status(Actor actor, float magnitude, StatusEffectData statusEffectData) {
 			Guid = Guid.NewGuid();
 			Actor = actor;
@@ -11,9 +12,19 @@ namespace StatusEffectSystem {
 			StatusEffectData = statusEffectData;
 		}
 
+		// TODO Delete this, everything should point to the Creature
 		public Status(Actor actor, float magnitude, int duration, StatusEffectData statusEffectData) {
 			Guid = Guid.NewGuid();
 			Actor = actor;
+			Magnitude = magnitude;
+			Duration = duration;
+			MaxDuration = duration;
+			StatusEffectData = statusEffectData;
+		}
+
+		public Status(Creature creature, float magnitude, int duration, StatusEffectData statusEffectData) {
+			Guid = Guid.NewGuid();
+			Creature = creature;
 			Magnitude = magnitude;
 			Duration = duration;
 			MaxDuration = duration;
@@ -44,6 +55,7 @@ namespace StatusEffectSystem {
 			return Stack;
 		}
 
+		public Creature Creature { get; private set; }
 		public Actor Actor { get; private set; }
 		public StatusEffectData StatusEffectData { get; private set; }
 		public DamageCategoryType DamageCategoryType {

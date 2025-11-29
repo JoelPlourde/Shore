@@ -28,7 +28,7 @@ public class Attributes {
 		Temperature = attributesDto.Temperature;
 
 		_actor = actor;
-		StatusEffectScheduler.Instance(_actor.Guid).AddStatusEffect(new StatusEffectSystem.Status(_actor, 1f, StatusEffectManager.GetStatusEffectData(Constant.HUNGRY)));
+		_actor.Creature.StatusEffectScheduler.AddStatusEffect(new StatusEffectSystem.Status(_actor, 1f, StatusEffectManager.GetStatusEffectData(Constant.HUNGRY)));
 	}
 
 	#region Speed
@@ -89,7 +89,7 @@ public class Attributes {
 	public void IncreaseFood(float value) {
 		Food += value;
 
-		StatusEffectScheduler.Instance(_actor.Guid).RemoveStatusEffect(Constant.STARVING);
+		_actor.Creature.StatusEffectScheduler.RemoveStatusEffect(Constant.STARVING);
 
 		if (Food > Constant.ACTOR_BASE_FOOD) {
 			Food = Constant.ACTOR_BASE_FOOD;
@@ -107,7 +107,7 @@ public class Attributes {
 
 		if (Food <= 0) {
 			Food = 0;
-			StatusEffectScheduler.Instance(_actor.Guid).AddStatusEffect(new StatusEffectSystem.Status(_actor, 0.5f, StatusEffectManager.GetStatusEffectData(Constant.STARVING)));
+			_actor.Creature.StatusEffectScheduler.AddStatusEffect(new StatusEffectSystem.Status(_actor, 0.5f, StatusEffectManager.GetStatusEffectData(Constant.STARVING)));
 		}
 
 		OnUpdateFoodEvent?.Invoke(Food);
@@ -133,15 +133,15 @@ public class Attributes {
 
 		// TODO replace this by CONSTANT
 		if (adjustedTemperature > 25) {
-			StatusEffectScheduler.Instance(_actor.Guid).AddStatusEffect(new StatusEffectSystem.Status(_actor, 0.5f, StatusEffectManager.GetStatusEffectData("Hot")));
+			_actor.Creature.StatusEffectScheduler.AddStatusEffect(new StatusEffectSystem.Status(_actor, 0.5f, StatusEffectManager.GetStatusEffectData("Hot")));
 		} else {
-			StatusEffectScheduler.Instance(_actor.Guid).RemoveStatusEffect("Hot");
+			_actor.Creature.StatusEffectScheduler.RemoveStatusEffect("Hot");
 		}
 
 		if (adjustedTemperature < 0) {
-			StatusEffectScheduler.Instance(_actor.Guid).AddStatusEffect(new StatusEffectSystem.Status(_actor, 0.5f, StatusEffectManager.GetStatusEffectData("Cold")));
+			_actor.Creature.StatusEffectScheduler.AddStatusEffect(new StatusEffectSystem.Status(_actor, 0.5f, StatusEffectManager.GetStatusEffectData("Cold")));
 		} else {
-			StatusEffectScheduler.Instance(_actor.Guid).RemoveStatusEffect("Cold");
+			_actor.Creature.StatusEffectScheduler.RemoveStatusEffect("Cold");
 		}
 	}
 	#endregion

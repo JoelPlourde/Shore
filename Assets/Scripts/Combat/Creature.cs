@@ -7,10 +7,10 @@ using UnityEngine.AI;
 using TaskSystem;
 using UI;
 using ItemSystem.EquipmentSystem;
-using UI.AbilitySystem;
 using StatusEffectSystem;
 using System.Linq;
 
+[RequireComponent(typeof(StatusEffectScheduler))]
 [RequireComponent(typeof(TaskScheduler))]
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
@@ -59,6 +59,7 @@ public class Creature : MonoBehaviour
     private Animator _animator;
     private NavMeshAgent _navMeshAgent;
     private TaskScheduler _taskScheduler;
+    private StatusEffectScheduler _statusEffectScheduler;
 
     // Event triggered when health is updated
     public event Action<float> OnUpdateHealthEvent;
@@ -76,11 +77,12 @@ public class Creature : MonoBehaviour
         { DamageCategoryType.MAGIC, 0f }
     };
 
-    private void Start()
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _taskScheduler = GetComponent<TaskScheduler>();
+        _statusEffectScheduler = GetComponent<StatusEffectScheduler>();
     }
 
     #region Initialization
@@ -125,6 +127,7 @@ public class Creature : MonoBehaviour
     }
     #endregion
 
+    #region Animation Callbacks
     /// <summary>
     /// Called by the Animator to set up IK (inverse kinematics) each frame.
     /// </summary>
@@ -137,10 +140,31 @@ public class Creature : MonoBehaviour
 
         Creature target = _combatTargets.First();
         if (ReferenceEquals(target, null)) return;
+        if (target == null) return;
 
         _animator.SetLookAtWeight(0.5f);
         _animator.SetLookAtPosition(target.transform.position);
     }
+
+    /// <summary>
+    /// Callback invoked by an animation event when the hit animation is completed
+    /// </summary>
+    private void OnAnimationHit(string eventData)
+    {
+        Creature target = _combatTargets.FirstOrDefault();
+        if (ReferenceEquals(target, null)) return;
+
+        if (!string.IsNullOrEmpty(eventData))
+        {
+            _abilityStateMachine.ExecutePendingAbility(eventData);
+            return;
+        }
+
+        float calculatedDamage = Mathf.Round(Damage * UnityEngine.Random.Range(1 - Constant.DAMAGE_JITTER_FACTOR, 1 + Constant.DAMAGE_JITTER_FACTOR));
+
+        target.SufferDamage(DamageCategoryType, calculatedDamage, this);
+    }
+    #endregion
 
     #region Combat Management
     /// <summary>
@@ -372,7 +396,7 @@ public class Creature : MonoBehaviour
     public bool Reflect(DamageCategoryType damageCategory, float damage)
     {
         // Check if you have the "Reflect" status effect
-        if (StatusEffectScheduler.Instance(_actor.Guid).CheckIfHasStatusEffect(Constant.REFLECT))
+        if (_actor.Creature.StatusEffectScheduler.CheckIfHasStatusEffect(Constant.REFLECT))
         {
             // Find the attacker from combat targets
             Creature attacker = _combatTargets.First();
@@ -383,7 +407,7 @@ public class Creature : MonoBehaviour
                 attacker.SufferDamage(damageCategory, damage);
 
                 // Remove the Reflect status effect after reflecting
-                StatusEffectScheduler.Instance(_actor.Guid).RemoveStatusEffect(Constant.REFLECT);
+                _actor.Creature.StatusEffectScheduler.RemoveStatusEffect(Constant.REFLECT);
                 return true;
             }
         }
@@ -393,6 +417,7 @@ public class Creature : MonoBehaviour
 
     #endregion
 
+    public bool Stunned { get; set; } = false;
     public bool Dead { get => Health <= 0; }
     public float Size { get; private set; } = 1.0f;
     public float Height { get; private set; } = 2.0f;
@@ -404,6 +429,7 @@ public class Creature : MonoBehaviour
     public TaskScheduler TaskScheduler { get => _taskScheduler; }
     public Animator Animator { get => _animator; }
     public NavMeshAgent NavMeshAgent { get => _navMeshAgent; }
+    public StatusEffectScheduler StatusEffectScheduler { get => _statusEffectScheduler; }
 
     public AbilityStateMachine AbilityStateMachine { get => _abilityStateMachine; }
 }

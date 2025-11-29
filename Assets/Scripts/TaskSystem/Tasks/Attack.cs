@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Jobs;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
-using CombatSystem;
 
 namespace TaskSystem {
 
@@ -42,6 +37,11 @@ namespace TaskSystem {
 			if (!this) {
 				return;
 			}
+
+			if (creature.Stunned)
+            {
+				return;
+            }
 
 			if (creature.Dead || attackArguments.Target.Dead) {
 				OnEnd();
@@ -115,16 +115,6 @@ namespace TaskSystem {
 
 			creature.AbilityStateMachine.TriggerBasicAttack();
 		}
-
-		/// <summary>
-        /// Callback invoked by an animation event when the attack hits.
-        /// </summary>
-		private void OnHit()
-        {
-			float calculatedDamage = Mathf.Round(creature.Damage * UnityEngine.Random.Range(1 - Constant.DAMAGE_JITTER_FACTOR, 1 + Constant.DAMAGE_JITTER_FACTOR));
-
-			attackArguments.Target.SufferDamage(creature.DamageCategoryType, calculatedDamage, creature);
-        }
 
 		private void LookAtTarget()
         {

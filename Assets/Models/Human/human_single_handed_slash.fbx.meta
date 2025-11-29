@@ -56,8 +56,8 @@ ModelImporter:
       curves: []
       events:
       - time: 0.42454728
-        functionName: OnHit
-        data: 
+        functionName: OnAnimationHit
+        data: slam
         objectReferenceParameter: {fileID: 11500000, guid: c25aad272a6ae954f9404ece475771fd,
           type: 3}
         floatParameter: 0

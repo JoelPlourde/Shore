@@ -56,9 +56,9 @@ ModelImporter:
       curves: []
       events:
       - time: 0.6627566
-        functionName: OnHit
+        functionName: OnAnimationHit
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 4c77fec4bef6e4a4cb4d196ed73617a0,
+        objectReferenceParameter: {fileID: 11500000, guid: c25aad272a6ae954f9404ece475771fd,
           type: 3}
         floatParameter: 0
         intParameter: 0

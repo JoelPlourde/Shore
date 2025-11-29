@@ -23,7 +23,7 @@ namespace StatusEffectSystem {
 			Actor actor = other.gameObject.GetComponent<Actor>();
 			if (!ReferenceEquals(actor, null)) {
 				_status = new Status(actor, _magnitude, _statusEffectData);
-				StatusEffectScheduler.Instance(actor.Guid).AddStatusEffect(_status);
+				actor.Creature.StatusEffectScheduler.AddStatusEffect(_status);
 			}
 		}
 
@@ -34,7 +34,7 @@ namespace StatusEffectSystem {
 
 			Actor actor = other.gameObject.GetComponent<Actor>();
 			if (!ReferenceEquals(actor, null)) {
-				StatusEffectScheduler.Instance(actor.Guid).RemoveStatusEffect(_status.StatusEffectData.Name);
+				actor.Creature.StatusEffectScheduler.RemoveStatusEffect(_status.StatusEffectData.Name);
 			}
 		}
 	}

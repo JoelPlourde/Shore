@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AbilitySystem;
+using GameSystem;
 using SaveSystem;
 using UI.AbilitySystem;
 using UnityEngine;
@@ -29,6 +30,8 @@ namespace CombatSystem
 
         // Event triggered when an ability is used. Parameters: slot index, cooldown duration
         public Action<int, float, float> OnAbilityTriggered;
+
+        private Dictionary<string, Action> _pendingAbilities = new Dictionary<string, Action>();
 
         // For monsters/NPCs to use abilities automatically
         public void Initialize(Creature creature)
@@ -147,8 +150,36 @@ namespace CombatSystem
             // Notify listeners about the ability usage
             OnAbilityTriggered?.Invoke(index, _abilities[index].AbilityData.Cooldown, _globalCooldownDuration);
 
-            // Finally trigger the Ability
-             _abilities[index].AbilityData.Execute(_creature, target);
+            // Finally execute the Ability
+            _abilities[index].AbilityData.Execute(_creature, target);
+
+            if (_abilities[index].AbilityData.Immediate == false)
+            {
+                // Store the pending ability to be executed on animation event
+                _pendingAbilities[_abilities[index].AbilityData.GetID()] = () =>
+                {
+                    _abilities[index].AbilityData.OnAnimationEnded(_creature, target);
+                };
+            }
+        }
+
+        /// <summary>
+        /// Executes a pending ability based on its ID.
+        /// 
+        /// Note: Some abilities may not execute immediately upon triggering
+        /// and instead wait for an animation event to call this method.
+        /// </summary>
+        /// <param name="abilityID">The ID of the ability to execute.</param>
+        public void ExecutePendingAbility(string abilityID)
+        {
+            if (_pendingAbilities.ContainsKey(abilityID))
+            {
+                _pendingAbilities[abilityID]?.Invoke();
+                _pendingAbilities.Remove(abilityID);
+            } else
+            {
+                Debug.LogWarning("No pending ability found for ID: " + abilityID);
+            }
         }
 
         public void AssignAbilityToSlot(int slotIndex, AbilityData abilityData)

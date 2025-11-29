@@ -21,7 +21,7 @@ namespace AbilitySystem
                 return;
             }
 
-            StatusEffectScheduler.Instance(actor.Guid).AddStatusEffect(new StatusEffectSystem.Status(
+            actor.Creature.StatusEffectScheduler.AddStatusEffect(new StatusEffectSystem.Status(
                 actor,
                 1f,
                 10, // 10 seconds duration

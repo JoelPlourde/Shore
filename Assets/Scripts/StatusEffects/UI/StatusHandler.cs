@@ -25,15 +25,13 @@ namespace StatusEffectSystem {
 				GridLayoutGroup.constraintCount = 8;
 			}
 
-			public void Initialize(Guid guid) {
+			public void Initialize(Actor actor) {
 				if (_initialized == false) {
 					_initialized = true;
-					StatusEffectScheduler.Instance(guid).OnAddStatusEffectEvent += OnAdd;
-					StatusEffectScheduler.Instance(guid).OnRemoveStatusEffectEvent += OnRemove;
-					StatusEffectScheduler.Instance(guid).OnUpdateStatusEffectsEvent += OnBulkUpdate;
-					StatusEffectScheduler.Instance(guid).OnUpdateStatusEffectEvent += OnUpdate;
-				} else {
-					Debug.LogError("This component has already been initialized with: " + guid.ToString());
+					actor.Creature.StatusEffectScheduler.OnAddStatusEffectEvent += OnAdd;
+					actor.Creature.StatusEffectScheduler.OnRemoveStatusEffectEvent += OnRemove;
+					actor.Creature.StatusEffectScheduler.OnUpdateStatusEffectsEvent += OnBulkUpdate;
+					actor.Creature.StatusEffectScheduler.OnUpdateStatusEffectEvent += OnUpdate;
 				}
 			}
 

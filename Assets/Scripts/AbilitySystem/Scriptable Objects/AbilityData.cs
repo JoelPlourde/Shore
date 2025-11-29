@@ -38,6 +38,10 @@ namespace AbilitySystem
         [Tooltip("The cooldown time for this ability in seconds.")]
         public float Cooldown;
 
+        [SerializeField]
+        [Tooltip("Indicates whether the ability executes immediately upon activation or it waits for an animation event.")]
+        public bool Immediate = true;
+
         public string ID
         {
             get
@@ -47,6 +51,11 @@ namespace AbilitySystem
         }
 
         public virtual void Execute(Creature creature, Creature target)
+        {
+        
+        }
+
+        public virtual void OnAnimationEnded(Creature creature, Creature target)
         {
         
         }

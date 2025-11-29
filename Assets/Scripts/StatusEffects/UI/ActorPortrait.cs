@@ -25,7 +25,7 @@ namespace UI {
 				if (StatusHandler == null) {
 					throw new UnityException("Please verify the structure of the ActorPortrait: StatusesHandler is missing.");
 				}
-				StatusHandler.Initialize(actor.Guid);
+				StatusHandler.Initialize(actor);
 
 				MiniPortrait = transform.Find("Mask/MiniPortrait").GetComponent<RawImage>();
 				if (MiniPortrait == null) {

@@ -23,10 +23,8 @@ namespace CombatSystem
         [SerializeField]
         public MonsterData MonsterData;
 
-        private Animator _animator;
         private NavMeshAgent _navMeshAgent;
         private Creature _creature;
-        private DelayedAction _action;
         private Vector3 _spawnPosition;
 
         private void Start()
@@ -40,7 +38,6 @@ namespace CombatSystem
             // Remember the spawn position
             _spawnPosition = transform.position;
 
-            _animator = GetComponent<Animator>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _creature = GetComponent<Creature>();  
             _navMeshAgent.speed = MonsterData.WalkingSpeed;

@@ -17,7 +17,6 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(TaskScheduler))]
-[RequireComponent(typeof(StatusEffectScheduler))]
 [RequireComponent(typeof(Creature))]
 public class Actor : MonoBehaviour {
 
@@ -32,7 +31,6 @@ public class Actor : MonoBehaviour {
 		AudioPlayer = GetComponent<AudioPlayer>();
 		Animator = GetComponent<Animator>();
 		TaskScheduler = GetComponent<TaskScheduler>();
-		StatusEffectScheduler = GetComponent<StatusEffectScheduler>();
 		NavMeshAgent = GetComponent<NavMeshAgent>();
 		Armory = GetComponentInChildren<Armory>();
 		Emotion = GetComponent<Emotion>();
@@ -65,11 +63,10 @@ public class Actor : MonoBehaviour {
 		FactionType = actorDto.FactionType;
 		Playable = actorDto.Playable;
 
+		Creature.Initialize(this, actorDto.CreatureDto);
 		TaskScheduler.Initialize(Guid);
-		StatusEffectScheduler.Initialize(Guid);
 		Attributes.Initialize(this, actorDto.AttributesDto);
 		Status.Initialize(actorDto.StatusDto);
-		Creature.Initialize(this, actorDto.CreatureDto);
 
 		Inventory.Initialize(actorDto.InventoryDto);
 		Armory.Initialize(this, actorDto.ArmoryDto);
@@ -124,7 +121,6 @@ public class Actor : MonoBehaviour {
 	public bool Dead { get => Status.Dead; set => Status.Dead = value; }
 	public bool Fleeing { get => Status.Fleeing; set => Status.Fleeing = value; }
 	public bool Sheltered { get => Status.Sheltered; set => Status.Sheltered = value; }
-	public bool Stunned { get => Status.Stunned; set => Status.Stunned = value; }
 
 	public bool Selected { get; private set; }
 

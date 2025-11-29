@@ -40,7 +40,7 @@ namespace NodeSystem {
 		/// Callback to create the Interact task.
 		/// </summary>
 		private void InteractCallback() {
-			InteractArguments interactArguments = new InteractArguments(transform.position, this);
+			InteractArguments interactArguments = new InteractArguments(transform, this);
 			if (Squad.FirstSelected(out Actor actor)) {
 				actor.TaskScheduler.CreateTask<Interact>(interactArguments);
 			}
@@ -132,7 +132,7 @@ namespace NodeSystem {
 			return NodeData.Action;
 		}
 
-		protected override OutlineType GetOutlineType() {
+		public override OutlineType GetOutlineType() {
 			return OutlineType.INTERACTABLE;
 		}
 

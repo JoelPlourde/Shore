@@ -1,4 +1,6 @@
-﻿public interface IInteractable
+﻿using UnityEngine;
+
+public interface IInteractable
 {
 	void OnInteractEnter(Actor actor);
 
@@ -13,5 +15,9 @@
 
 	virtual string GetDefaultAction() {
 		return "Interact";
+	}
+
+	virtual OutlineType GetOutlineType() {
+		return OutlineType.INTERACTABLE;
 	}
 }

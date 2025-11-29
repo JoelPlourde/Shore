@@ -157,10 +157,7 @@ public static class Squad {
 					// Calculate the Vector from the Actor to the Interactable.
 					Vector3 direction = raycastHit.collider.bounds.center - x.Actor.transform.position;
 
-					// From a direction, calculate the position of the Actor to the Interactable when accounting for the interaction radius;
-					Vector3 position = (direction.normalized * (direction.magnitude - interactable.GetInteractionRadius())) + x.Actor.transform.position;
-
-					InteractArguments interactArguments = new InteractArguments(position, interactable);
+					InteractArguments interactArguments = new InteractArguments(raycastHit.collider.transform, interactable);
 
 					x.Actor.TaskScheduler.CreateTask<Interact>(interactArguments);
 				}

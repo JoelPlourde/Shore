@@ -45,7 +45,7 @@ namespace ItemSystem {
         }
 
         private void InteractCallback() {
-            InteractArguments interactArguments = new InteractArguments(transform.position, this);
+            InteractArguments interactArguments = new InteractArguments(transform, this);
             if (Squad.FirstSelected(out Actor actor)) {
                 actor.TaskScheduler.CreateTask<Interact>(interactArguments);
             }
@@ -71,7 +71,7 @@ namespace ItemSystem {
             return I18N.GetValue("items." + ItemData.ID + ".name");
         }
 
-        protected override OutlineType GetOutlineType() {
+        public override OutlineType GetOutlineType() {
             return OutlineType.ITEM;
         }
 

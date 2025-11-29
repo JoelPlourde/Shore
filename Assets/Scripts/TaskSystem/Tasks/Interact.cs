@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static TriggerManager;
 
 namespace TaskSystem {
 	public class Interact : TaskBehaviour {
@@ -14,10 +15,15 @@ namespace TaskSystem {
 			// Validate the arguments you've received is of the correct type.
 			_interactArguments = TaskArguments as InteractArguments;
 
-			trigger = TriggerManager.CreateTrigger(_interactArguments.Position, _interactArguments.Interactable.GetInteractionRadius(), OnTriggerEnterCondition, AtDestination);
+			TriggerOptions options = new TriggerOptions {
+				Radius = _interactArguments.Interactable.GetInteractionRadius(),
+				Color =  InteractionManager.Instance.GetOutlineMaterial(_interactArguments.Interactable.GetOutlineType()).GetColor("_OutlineColor")
+			};
 
-			if (Vector3.Distance(actor.transform.position, _interactArguments.Position) > _interactArguments.Interactable.GetInteractionRadius()) {
-				actor.NavMeshAgent.SetDestination(_interactArguments.Position);
+			trigger = TriggerManager.CreateTrigger(_interactArguments.Transform, _interactArguments.Interactable.GetInteractionRadius(), OnTriggerEnterCondition, AtDestination, options);
+
+			if (Vector3.Distance(actor.transform.position, _interactArguments.Transform.position) > _interactArguments.Interactable.GetInteractionRadius()) {
+				actor.NavMeshAgent.SetDestination(_interactArguments.Transform.position);
 				actor.NavMeshAgent.isStopped = false;
 
 				actor.Animator.SetFloat("Speed", actor.NavMeshAgent.speed);
@@ -34,7 +40,7 @@ namespace TaskSystem {
 		}
 
 		private void AtDestination() {
-			Vector3 targetDirection = _interactArguments.Position - actor.transform.position;
+			Vector3 targetDirection = _interactArguments.Transform.position - actor.transform.position;
 			Vector3 currentDirection = actor.transform.forward;
 
 			// Calculate the angle between the two vectors using the Cross Product

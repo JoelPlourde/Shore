@@ -4,10 +4,10 @@ namespace TaskSystem {
 	public class InteractArguments : ITaskArguments {
 
 		public IInteractable Interactable;
-		public Vector3 Position;
+		public Transform Transform;
 
-		public InteractArguments(Vector3 position, IInteractable interactable) {
-			Position = position;
+		public InteractArguments(Transform transform, IInteractable interactable) {
+			Transform = transform;
 			Interactable = interactable;
 		}
 

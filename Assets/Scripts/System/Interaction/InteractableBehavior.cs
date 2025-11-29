@@ -65,7 +65,7 @@ public class InteractableBehavior : MonoBehaviour {
         _renderer.materials =  materials.ToArray();
     }
 
-    protected virtual OutlineType GetOutlineType() {
+    public virtual OutlineType GetOutlineType() {
         return OutlineType.INTERACTABLE;
     }
 

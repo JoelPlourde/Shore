@@ -24,6 +24,7 @@ namespace SaveSystem
             MaxHealth = Constant.DEFAULT_HEALTH;
             Health = Constant.DEFAULT_HEALTH;
             Damage = Constant.DEFAULT_DAMAGE;
+            AbilityDtos = new List<AbilityDto>();
         }
 
         public CreatureDto(Creature creature)

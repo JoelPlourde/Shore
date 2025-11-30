@@ -25,7 +25,7 @@ namespace RockTools
         [Range(0f, 1f)] [SerializeField] private float wave;
         [Range(0f, 1f)] [SerializeField] private float decentralize = 0.5f;
 
-        [Header("Scale"), Range(0f, 2f)] [SerializeField]
+        [Header("Scale"), Range(0f, 5f)] [SerializeField]
         private float scaleLocal = 2f;
 
         [SerializeField] private AnimationCurve scaleByDistance = new AnimationCurve(new Keyframe(0, 0, 0, 0), new Keyframe(1, 1, 2, 2));

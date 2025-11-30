@@ -118,6 +118,8 @@ namespace SaveSystem {
 					saveable.Load(save);
 				}
 			}
+			
+			Squad.TeleportSquadToSpawnPoint();
 
 			// Select the first actor in the squad.
 			Squad.FirstSelected(out Actor actor);

@@ -20,7 +20,7 @@ MonoBehaviour:
   Attackable: 1
   Size: 1
   Height: 1
-  Health: 100
+  Health: 10
   Damage: 1
   DamageCategoryType: 1
   AttackRange: 1

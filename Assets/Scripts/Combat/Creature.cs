@@ -311,6 +311,10 @@ public class Creature : MonoBehaviour
             }
         } else
         {
+            if (damageCategory == DamageCategoryType.TYPELESS)
+            {
+                damageCategory = DamageCategoryType.MELEE;
+            }
             _accumulatedDamage[damageCategory] += damage;
         }
 

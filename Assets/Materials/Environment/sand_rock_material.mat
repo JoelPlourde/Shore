@@ -2,23 +2,31 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water
-  m_Shader: {fileID: 4800000, guid: 832f80b328b89da4b896e458dccbd0ee, type: 3}
-  m_ShaderKeywords: 
+  m_Name: sand_rock_material
+  m_Shader: {fileID: 4800000, guid: c33eb388ad772a649bd04981c972b6b7, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _AO_Texture:
+        m_Texture: {fileID: 2800000, guid: 228759cfe38802c4e89810ec00251f1c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -47,8 +55,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Normals:
-        m_Texture: {fileID: 0}
+    - _Normal_Map:
+        m_Texture: {fileID: 2800000, guid: 8f961e17d07f8c042806206fa35f0574, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -59,42 +67,40 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Reflection:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Shadermap:
-        m_Texture: {fileID: 2800000, guid: 6e7daa097fc1d6845861a5ed0ed39db7, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
+    - _AO_Intensity: 0.7
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _Depth: 7.5
-    - _Depthdarkness: 0.257
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FlowSpeed: 1.2
     - _GlossMapScale: 1
-    - _Glossiness: 0.263
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LightInfluence: 1
     - _Metallic: 0
     - _Mode: 0
+    - _Normal_Map_Intensity: 1.78
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RefractionAmount: 0.038
-    - _RimSize: 4
-    - _Rimfalloff: 1.5
+    - _Rock_Color_Pos: 0.887
+    - _Rock_Color_Smooth: 0.132
+    - _Sand_Amount: 0.098
+    - _Sand_Dir_X: -0.026
+    - _Sand_Dir_Y: 1
+    - _Sand_Dir_Z: 0
+    - _Sand_Edge_Smooth: 0.1056
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Tiling: 0.15
-    - _Transparency: 0.875
     - _UVSec: 0
+    - _UV_Offset: 1.29
+    - _UV_Tile: 0.11
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.7571974, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _WaterColor: {r: 0, g: 0.38025475, b: 1, a: 1}
+    - _Rock_Bottom_Color: {r: 0.6039216, g: 0.5882353, b: 0.58431375, a: 1}
+    - _Rock_Top_Color: {r: 1, g: 0.7921569, b: 0.4392157, a: 1}
+    - _Sand_Color: {r: 1, g: 0.8745099, b: 0.6666667, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

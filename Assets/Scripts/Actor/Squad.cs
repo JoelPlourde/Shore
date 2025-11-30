@@ -94,6 +94,11 @@ public static class Squad {
 		}
 	}
 
+	public static void TeleportSquadToSpawnPoint() {
+		Transform spawnPoint = GameObject.FindGameObjectWithTag("Respawn").transform;
+		TeleportSquad(spawnPoint.position);
+	}
+
 	/// <summary>
 	/// Select the following actor only.
 	/// </summary>
